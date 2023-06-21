@@ -1,18 +1,22 @@
 
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink,useLocation } from 'react-router-dom'
 
-const CategoryImg = ({image,name}) => {
+const CategoryImg = ({image,name,link}) => {
   
+ const location = useLocation();
+ const isActive = location.pathname === link
+
+
     return (
 
-   <div className="CategoryImg">
+   <div className={isActive ? 'activeImageCategory' : ''}>
      
      
           <img src={image} alt=""  />
           <div className="image-category-content">
           <p className='name'>{name}</p>
-          <button className="explore"><NavLink to='' className='navlink-explore' >Explore</NavLink></button>
+          <NavLink to={link} className={({isActive})=> isActive ? 'explore' : 'hideBtn'} ><p>Explore</p></NavLink>
           </div>
 
 
