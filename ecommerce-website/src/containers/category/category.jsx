@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import mobileIcon from "../header/header-assets/mobileMenu.png";
 import searchIcon from "../category/category-assets/search.png";
 import "./category.css";
@@ -12,9 +12,34 @@ import arrowUp from "../category/category-assets/arrow2.png";
 import shortLine from "../category/category-assets/shorter-line.png";
 import longerLine from "../category/category-assets/longer-line.png";
 
+import bedroom from '../category/category-assets/bedroom-resize.jpg'
+import dinning_room from '../category/category-assets/dinning room.jpg'
+import meeting_room from '../category/category-assets/meeting room.jpg'
+import workspace from '../category/category-assets/workspace.jpg'
+import living_room from '../category/category-assets/living room.jpg'
+import kitechen_room from '../category/category-assets/kitechen room.jpg'
+
 const Category = () => {
-  const imagetest =
-    "https://workjoby.com/wp-content/uploads/2022/06/retire-early-768x432.jpg?ezimgfmt=ngcb1/notWebP";
+
+  const maxScrollDown=600;
+  const maxScrollUp=0;
+  const [scrollingUpBy,setscrollingUpBy]=useState(0);
+  const [scrollingDownBy,setscrollingDownBy]=useState(0);
+  const [scrollPosition,setscrollPosition]=useState(0)
+
+  console.log(scrollingDownBy)
+
+function down(){
+
+   scrollPosition === maxScrollDown ? '' : setscrollPosition(scrollPosition+100)
+
+  }
+function up(){
+
+  scrollPosition === maxScrollUp ? '' : setscrollPosition(scrollPosition-100)
+
+}
+
   return (
     <div className="category">
       <h2 className="category-title">Explore by Category</h2>
@@ -41,25 +66,25 @@ const Category = () => {
             <div className="category-links-top">
               <NavLink
                 to="/az"
-                className={({ isActive }) => (isActive ? "style-link" : "")}
+                
               >
                 Bedroom
               </NavLink>
               <NavLink
                 to="/"
-                className={({ isActive }) => (isActive ? "style-link" : "")}
+                
               >
                 Dinning Room
               </NavLink>
               <NavLink
                 to="/"
-                className={({ isActive }) => (isActive ? "" : "")}
+                
               >
                 Meeting Room
               </NavLink>
               <NavLink
                 to="/"
-                className={({ isActive }) => (isActive ? "" : "")}
+                
               >
                 Workspace
               </NavLink>
@@ -86,6 +111,12 @@ const Category = () => {
               </NavLink>
             </div>
 
+            <div className="category-links-hidden">
+              <div className="test1">test1</div>
+              <div className="test2">test2</div>
+              <div className="test3">test3</div>
+            </div>
+
           </div>
 
             <div className="category-sidebar-scrollBar">
@@ -94,12 +125,12 @@ const Category = () => {
                 <div className="longer-line">
                   <img src={longerLine} alt="" />
                 </div>
-                <div className="shorter-line">
+                <div className="shorter-line" style={{ translate : ` 0 ${scrollPosition}%` }}>
                   <img src={shortLine} alt="" />
                 </div>
               </div>
-              <div className="circle-up">
-                <div className="up-cirlce">
+              <div className="circle-up" onClick={()=>up()}>
+                <div className="up-circle">
                   <img src={upCircle} alt="" />
                 </div>
                 <div className="up-circle-arrow">
@@ -107,7 +138,7 @@ const Category = () => {
                 </div>
               </div>
 
-              <div className="circle-down">
+              <div className="circle-down" onClick={()=>down()}>
                 <div className="down-circle">
                   <img src={donwCirle} alt="" />
                 </div>
@@ -127,12 +158,16 @@ const Category = () => {
         </div>
 
         <div className="category-images">
-          <CategoryImg image={imagetest} name={"Bedroom"} link={"/y"} />
-          <CategoryImg image={imagetest} name={"Dinning Room"} link={"/"} />
-          <CategoryImg image={imagetest} name={"Meeting Room"} link={"/b"} />
-          <CategoryImg image={imagetest} name={"Workspace"} link={"/c"} />
-          <CategoryImg image={imagetest} name={"Living Room"} link={"/e"} />
-          <CategoryImg image={imagetest} name={"Kitchen Room"} link={"/f"} />
+
+        <CategoryImg image={bedroom} name={"Bedroom"} link={"/y"} />
+          <CategoryImg image={dinning_room} name={"Dinning Room"} link={"/"} />
+          <CategoryImg image={meeting_room} name={"Meeting Room"} link={"/b"} />
+          <CategoryImg image={workspace} name={"Workspace"} link={"/c"} />
+          <CategoryImg image={living_room} name={"Living Room"} link={"/e"} />
+  <CategoryImg image={kitechen_room} name={"Kitchen Room"} link={"/f"} /> 
+
+
+
         </div>
       </div>
 
