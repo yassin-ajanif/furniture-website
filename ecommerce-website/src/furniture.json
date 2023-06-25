@@ -1,0 +1,27 @@
+
+
+
+[
+
+{"name":"Bedroom","image":"src/containers/category/category-assets/bedroom-resize.jpg"},
+{"name":"Dinning Room","image":"src/containers/category/category-assets/dinning room.jpg" },
+{"name":"Meeting Room","image":"src/containers/category/category-assets/meeting room.jpg"},
+{"name":"Workspace","image":"src/containers/category/category-assets/workspace.jpg" },
+{"name":"LivingRoom","image":"src/containers/category/category-assets/living room.jpg" },
+{"name":"Room Kitchen","image":"src/containers/category/category-assets/kitechen room.jpg" },
+{"name":"Living Space","image":"src/containers/category/category-assets/living room.jpg" },
+{"name":"Bathroom","image":"src/containers/category/category-assets/bathroom.jpg" },
+{"name":"Exercise Room","image":"src/containers/category/category-assets/trainning.jpg" },
+{"name":"Entertainment Room","image":"src/containers/category/category-assets/playing.jpg" }
+
+
+
+
+
+
+]
+
+
+
+
+

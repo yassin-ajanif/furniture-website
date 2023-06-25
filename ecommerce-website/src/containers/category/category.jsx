@@ -12,33 +12,40 @@ import arrowUp from "../category/category-assets/arrow2.png";
 import shortLine from "../category/category-assets/shorter-line.png";
 import longerLine from "../category/category-assets/longer-line.png";
 
-import bedroom from "../category/category-assets/bedroom-resize.jpg";
-import dinning_room from "../category/category-assets/dinning room.jpg";
-import meeting_room from "../category/category-assets/meeting room.jpg";
-import workspace from "../category/category-assets/workspace.jpg";
-import living_room from "../category/category-assets/living room.jpg";
-import kitechen_room from "../category/category-assets/kitechen room.jpg";
+import furniture from '../../furniture.json'
+
 
 const Category = () => {
-  const maxScrollDown = 900;
+
+  const maxScrollDown = 400;
   const maxScrollUp = 0;
   const oneStepScroll = 100;
   const [scrollPosition, setscrollPosition] = useState(0);
-  const [value,setValue]=useState(0)
+  const [headlinesPosition,setheadlinesPosition]=useState(0);
+  const [imgPosition,setimgPosition]=useState(0)
 
   function down() {
     
     if(scrollPosition !== maxScrollDown)  
+
     {   setscrollPosition(scrollPosition + oneStepScroll);
-        setValue(value+1)}
+        setheadlinesPosition(headlinesPosition+1);
+        setimgPosition(imgPosition+1)
+        
+      }
        
   }
   function up() {
 
     if(scrollPosition !== maxScrollUp)
      
-    {setscrollPosition(scrollPosition - oneStepScroll);
-        setValue(value-1)}
+    {
+      setscrollPosition(scrollPosition - oneStepScroll);
+      setheadlinesPosition(headlinesPosition-1);
+      setimgPosition(imgPosition-1)
+      
+
+      }
       
     }
 
@@ -76,22 +83,19 @@ const Category = () => {
               </div>
             </div>
 
-            <div className="category-links-desktop" style={{translate : ` 0 -${value*14.28}% `}}>
+            <div className="category-links-desktop" style={{translate : ` 0 -${headlinesPosition*10}% `}}>
 
-            <div className="shown-links"> 
-              <NavLink to="/az">Bedroom</NavLink>
+              <NavLink to="/">Bedroom</NavLink>
               <NavLink to="/">Dinning Room</NavLink>
               <NavLink to="/">Meeting Room</NavLink>
               <NavLink to="/">Workspace</NavLink>
               <NavLink to="/">LivingRoom</NavLink>
               <NavLink to="/">Room Kitchen</NavLink>
               <NavLink to="/">Living Space</NavLink>
-            </div>
-            <div className="hidden-links">
-              <NavLink to="/">Test 1</NavLink>
-              <NavLink to="/">Test 2</NavLink>
-              <NavLink to="/">Test 3</NavLink>
-            </div>
+              <NavLink to="/">Bathroom</NavLink>
+              <NavLink to="/">Exercise Room</NavLink>
+              <NavLink to="/">Entertainment Room</NavLink>
+            
       </div>
             <div className="category-sidebar-scrollBar">
               <div className="scrollBar-line">
@@ -133,16 +137,31 @@ const Category = () => {
         </div>
 
         <div className="category-images">
-          <CategoryImg image={bedroom} name={"Bedroom"} link={"/y"} />
-          <CategoryImg image={dinning_room} name={"Dinning Room"} link={"/"} />
-          <CategoryImg image={meeting_room} name={"Meeting Room"} link={"/b"} />
-          <CategoryImg image={workspace} name={"Workspace"} link={"/c"} />
-          <CategoryImg image={living_room} name={"Living Room"} link={"/e"} />
-          <CategoryImg
-            image={kitechen_room}
-            name={"Kitchen Room"}
-            link={"/f"}
-          />
+
+         {  
+         
+         furniture.map( (furniture,index) => 
+         
+          {
+
+          const ifScrollBtnPressed = index >=imgPosition && index <=imgPosition+5 ? 
+
+         <CategoryImg image={furniture.image} name={furniture.name} link={"/y"} />
+
+          :
+
+          ''
+
+         return ifScrollBtnPressed
+
+        }
+
+         )
+        }
+         
+         
+         
+          
         </div>
       </div>
 
