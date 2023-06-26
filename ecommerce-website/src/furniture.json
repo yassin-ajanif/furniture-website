@@ -1,7 +1,8 @@
 
 
+{
 
-[
+ "categoryProducts" : [
 
 {"name":"Bedroom","image":"src/containers/category/category-assets/bedroom-resize.jpg"},
 {"name":"Dinning Room","image":"src/containers/category/category-assets/dinning room.jpg" },
@@ -14,7 +15,17 @@
 {"name":"Exercise Room","image":"src/containers/category/category-assets/trainning.jpg" },
 {"name":"Entertainment Room","image":"src/containers/category/category-assets/playing.jpg" }
 
+]
+,  
 
+"popularProducts" : [
+
+{"image":"src/containers/popular-products/popular-products-assets/chair1.jpg", "name":"Armchair" , "description":"Light single chair" , "price":"$145"},
+{"image":"src/containers/popular-products/popular-products-assets/chair2.jpg", "name":"Premium Sofa" , "description":"Light single chair" , "price":"$180"},
+{"image":"src/containers/popular-products/popular-products-assets/chair3.jpg", "name":"Minimal Sofa" , "description":"Light single chair" , "price":"$150"},
+{"image":"src/containers/popular-products/popular-products-assets/chair4.jpg", "name":"Dinning chair" , "description":"Light single chair" , "price":"$120"},
+{"image":"src/containers/popular-products/popular-products-assets/chair5.jpg", "name":"Armchair" , "description":"Light single chair" , "price":"$150"},
+{"image":"src/containers/popular-products/popular-products-assets/chair6.jpg", "name":"Armchair" , "description":"Light single chair" , "price":"$105"}
 
 
 
@@ -22,6 +33,6 @@
 ]
 
 
-
+}
 
 

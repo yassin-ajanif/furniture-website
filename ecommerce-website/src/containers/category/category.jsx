@@ -24,6 +24,8 @@ const Category = () => {
   const [headlinesPosition,setheadlinesPosition]=useState(0);
   const [imgPosition,setimgPosition]=useState(0)
 
+  
+
   function down() {
     
     if(scrollPosition !== maxScrollDown)  
@@ -140,7 +142,7 @@ const Category = () => {
 
          {  
          
-         furniture.map( (furniture,index) => 
+         furniture.categoryProducts.map( (furniture,index) => 
          
           {
 
@@ -157,7 +159,7 @@ const Category = () => {
         }
 
          )
-        }
+      }
          
          
          
