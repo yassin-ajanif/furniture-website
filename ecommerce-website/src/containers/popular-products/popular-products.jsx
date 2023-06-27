@@ -7,27 +7,6 @@ import ScrollingBar from '../../components/scrollingBar/scroolingBar'
 
 const PopularProducts = () => {
 
-  const [mouseisClicked,setmouseisClicked]=useState(false)
-  const [mouseisMoved,setmouseisMoved]=useState(false)
-  const [test,setTest]=useState(false)
-  
-
-
-  function handleMouseMove(event){
-    
-    if(mouseisClicked ) {
-
-     setTest(true)
-    console.log(event.clientX)
-
-  }
-
-  else {setTest(false)}
-    
-}
-
-  
-
     return (
 
     <div className="popularProducts">
@@ -38,14 +17,7 @@ const PopularProducts = () => {
           item => <PopularProduct image={item.image} name={item.name} description={item.description} price={item.price}/>)}
       </div>
       <ScrollingBar/>
-      <button onMouseDown = {()=>setmouseisClicked(true)}
-              onMouseMove={handleMouseMove}
-              onMouseUp = {()=>setmouseisClicked(false)} 
-              onMouseLeave={() =>{ setTest(false); 
-                setmouseisClicked(false)} }
-
-             
-      style={{backgroundColor: test ? 'red' : ''}}>Explore all items</button>
+      <button >Explore all items</button>
 
     </div>
 
