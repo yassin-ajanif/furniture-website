@@ -1,83 +1,101 @@
-import React, { useState } from 'react'
-import longerLine from '../scrollingBar/scrollingBarAssets/longerLine.png'
-import shortLigne from '../scrollingBar/scrollingBarAssets/shortLine.png'
+import React, { useState, useRef, useEffect } from "react";
+import longerLine from "../scrollingBar/scrollingBarAssets/longerLine.png";
+import shortLigne from "../scrollingBar/scrollingBarAssets/shortLine.png";
 
 const ScrollingBar = () => {
 
-  const [ismousClicked,setIsmousClicked] = useState(false)
-  const [refPos,setrefPos]=useState(0)
-  const [cursor,setCursor] = useState(refPos)
-  
- 
-    console.log('refPos '+refPos)
-    console.log('cursor '+cursor)
+  const [ismousClicked, setIsmousClicked] = useState(false);
+  const [smothDrag, setsmothDrag] = useState(0);
+  const [cursor, setCursor] = useState(0);
+  const [dragingElmnPos, setdragingElmnPos] = useState(0);
+  const scrollbarContainer = useRef(null);
+  const [ifScrollBarInScope,setifScrollBarInScope]=useState(true)
+  const [scrollBarPosition,setscrollBarPosition]=useState(0)
+  const [permisbaleDistance,setpermisbaleDistance]=useState(0)
 
-  function handleMouseclick(event){
+  let scrollingPosition = cursor - smothDrag - dragingElmnPos;
 
-    setIsmousClicked(true); 
-    // fixing the refrence position
-   /* if(cursor===0) {
+  console.log("smothDrag " + smothDrag);
+  console.log("cursor " + cursor);
+  console.log("position " + dragingElmnPos);
+  console.log("scrollingPosition " + scrollingPosition);
+  console.log('condition',ifScrollBarInScope)
 
-          setrefPos(event.clientX)
-         setCursor(event.clientX)
-        }*/
-  
-  }  
 
-  function handleDrag(event){
+  function handleMouseclick(event) {
+    setIsmousClicked(true);
 
-   event.preventDefault()
+    setsmothDrag(event.nativeEvent.offsetX);
+    setCursor(event.nativeEvent.clientX);
 
-    if(ismousClicked ) {
+   //determining the position of a scrollbar according to a viewport
+   
+   const scrollBarPosition = scrollbarContainer.current.getBoundingClientRect().left;
+   const permisbaleDistance = scrollbarContainer.current.getBoundingClientRect().width 
+     
+   setscrollBarPosition(scrollingPosition)
+   setdragingElmnPos(scrollBarPosition);
+   /*setpermisbaleDistance(permisbaleDistance)*/
+     
+  // setting the permisbale interval to drag a bar
 
+  }
+
+  function test(event){
+
+    setsmothDrag(event.nativeEvent.offsetX);
+    setCursor(event.nativeEvent.clientX);
+    const scrollBarPosition = 
+    scrollbarContainer.current.getBoundingClientRect().left;     
+   
+   setdragingElmnPos(scrollBarPosition);
+
+  }
+
+  function handleDrag(event) {
+
+    event.preventDefault();
+
+    if (ismousClicked ) {
       
-    setCursor(event.clientX)
-    
-    
+      setCursor(event.nativeEvent.clientX);
+      setscrollBarPosition(scrollingPosition)
+ 
 
     }
-  }
 
-  
+
+
+  }
 
   const elementStyle = {
-
-    display:'block',
-    fontSize:'20px',
-    width: '83px',
-    height: '19px',
-    position: 'absolute' ,
-    transform: `translate(${cursor-80}px, ${0})`,
-    
-
-  }
+    display: "block",
+    fontSize: "20px",
+    width: "83px",
+    height: "29px",
+    position: "absolute",
+    transform: `translate(${scrollingPosition}px, ${0})`
+  };
 
   return (
-
     <div className="scrollingBar">
+      <div className="scrollingBarLine" ref={scrollbarContainer}>
+        <img className="longerLine" src={longerLine} />
 
-      <div className="scrollingBarLine">
-
-        <img className='longerLine' src={longerLine}  />
-        
-      
-        <img  src={shortLigne} 
-              
-              style={elementStyle}
-      
-  onMouseDown= {handleMouseclick} 
-  onMouseUp={()=> {setIsmousClicked(false);}}
-  onMouseMove={handleDrag}
-  onMouseLeave={()=>setIsmousClicked(false)}
-        
+        <img
+          className="short"
+          src={shortLigne}
+          style={elementStyle}
+          onMouseDown={handleMouseclick}
+         /* onClick={test}*/
+          onMouseUp={() => {
+            setIsmousClicked(false);
+          }}
+          onMouseMove={handleDrag}
+          onMouseLeave={() => setIsmousClicked(false)}
         />
-         
-        
-
-         
-
-        </div> 
-   {/*
+      </div>
+      {/*
       <div className="scrollingBtn">
 
         <div className="scrollingBtnUp">
@@ -86,11 +104,9 @@ const ScrollingBar = () => {
           <img src="" alt="" />
         </div>
       </div>
-  */ }
+  */}
     </div>
+  );
+};
 
-  )
-
-}
-
-export default ScrollingBar
+export default ScrollingBar;
