@@ -16,7 +16,15 @@ const PopularProducts = () => {
         {furniture.popularProducts.map(
           item => <PopularProduct image={item.image} name={item.name} description={item.description} price={item.price}/>)}
       </div>
-      <ScrollingBar/>
+      <ScrollingBar
+        
+        objectToDragWidth={83}
+        objectToDragHeight={29}
+        distanceWhereToDragWidth={1000}
+        distanceWhereToDragHeight={5}
+
+      
+      />
       <button >Explore all items</button>
 
     </div>

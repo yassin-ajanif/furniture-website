@@ -2,64 +2,83 @@ import React, { useState, useRef, useEffect } from "react";
 import longerLine from "../scrollingBar/scrollingBarAssets/longerLine.png";
 import shortLigne from "../scrollingBar/scrollingBarAssets/shortLine.png";
 
-const ScrollingBar = () => {
+const ScrollingBar = (
+
+  {objectToDragWidth,
+    objectToDragHeight,
+    distanceWhereToDragWidth,
+    distanceWhereToDragHeight}) => {
 
   const [ismousClicked, setIsmousClicked] = useState(false);
-  const [smothDrag, setsmothDrag] = useState(0);
+  const [scrollingElmnOffsetX, setScrollingElmnOffsetX] = useState(0);
   const [cursor, setCursor] = useState(0);
-  const [dragingElmnPos, setdragingElmnPos] = useState(0);
+  const [objectToDragPosition, setobjectToDragPosition] = useState(0);
   const scrollbarContainer = useRef(null);
-  const [ifScrollBarInScope,setifScrollBarInScope]=useState(true)
+  const scrollbarElement = useRef(null)
   const [scrollBarPosition,setscrollBarPosition]=useState(0)
-  const [permisbaleDistance,setpermisbaleDistance]=useState(0)
+  const [scrollPosition,setScrollPosition]=useState(0)
+  const [maxDistanceToScroll,setmaxDistanceToScroll]=useState(null)
+  const [test1,setTest1] = useState(0)
+  const [test2,setTest2] = useState(0)
 
-  let scrollingPosition = cursor - smothDrag - dragingElmnPos;
 
-  console.log("smothDrag " + smothDrag);
+  let scrollingPosition = cursor - scrollingElmnOffsetX - objectToDragPosition;
+  
+
   console.log("cursor " + cursor);
-  console.log("position " + dragingElmnPos);
-  console.log("scrollingPosition " + scrollingPosition);
-  console.log('condition',ifScrollBarInScope)
+  console.log("scrollingElmnOffsetX " + scrollingElmnOffsetX);
+  console.log("position " + objectToDragPosition)
+  console.log('scrollPosition',scrollPosition)
+  console.log('maxDistanceToScroll',maxDistanceToScroll)
+  //console.log(test1)
+  
+  
+  
 
 
   function handleMouseclick(event) {
+
     setIsmousClicked(true);
 
-    setsmothDrag(event.nativeEvent.offsetX);
+    setScrollingElmnOffsetX(event.nativeEvent.offsetX);
     setCursor(event.nativeEvent.clientX);
 
    //determining the position of a scrollbar according to a viewport
    
-   const scrollBarPosition = scrollbarContainer.current.getBoundingClientRect().left;
-   const permisbaleDistance = scrollbarContainer.current.getBoundingClientRect().width 
-     
+   const scrollBarPosition = scrollbarContainer.current.getBoundingClientRect().left
    setscrollBarPosition(scrollingPosition)
-   setdragingElmnPos(scrollBarPosition);
-   /*setpermisbaleDistance(permisbaleDistance)*/
-     
+   setobjectToDragPosition(scrollBarPosition)
+
+   //setpermisbaleDistance(permisbaleDistance)
+    const lengthOfScrollBar = scrollbarContainer.current.getBoundingClientRect().width
+    const lengthofobjectToDrag = objectToDragWidth
+    
+    setmaxDistanceToScroll(lengthOfScrollBar-lengthofobjectToDrag)
+
+    
+
   // setting the permisbale interval to drag a bar
 
   }
 
-  function test(event){
 
-    setsmothDrag(event.nativeEvent.offsetX);
-    setCursor(event.nativeEvent.clientX);
-    const scrollBarPosition = 
-    scrollbarContainer.current.getBoundingClientRect().left;     
-   
-   setdragingElmnPos(scrollBarPosition);
-
-  }
 
   function handleDrag(event) {
 
     event.preventDefault();
+   
+   
 
-    if (ismousClicked ) {
+    if (ismousClicked) {
+      
       
       setCursor(event.nativeEvent.clientX);
-      setscrollBarPosition(scrollingPosition)
+      
+      //setScrollPosition(scrollbarElement.current.offsetLeft)
+      
+      setScrollPosition( Math.min( maxDistanceToScroll, Math.max(0,scrollingPosition) ) )
+      //setScrollPosition(  Math.max(0,scrollingPosition) ) 
+     
  
 
     }
@@ -68,26 +87,51 @@ const ScrollingBar = () => {
 
   }
 
-  const elementStyle = {
+  const scrollBarLineContainer = {
+
+    position: 'relative',
+    display: 'inline-flex',
+    alignItems: 'center',
+    marginLeft: '8.213vw',
+   /* margin-left:18px;*/
+    marginBottom: '4vh',
+    marginTop: '9.4054vh'
+}
+
+  const objectToDragStyle = {
+
     display: "block",
     fontSize: "20px",
-    width: "83px",
-    height: "29px",
+    width: objectToDragWidth+'px',
+    height: objectToDragHeight+'px',
     position: "absolute",
-    transform: `translate(${scrollingPosition}px, ${0})`
-  };
+    //transform: `translate(${scrollingPosition+10}px, ${0})`
+    left: `${scrollPosition}px`
+
+  }
+
+
+
+  const distanceWhereToDrag = {
+
+      width: distanceWhereToDragWidth+'px',
+      height:distanceWhereToDragHeight+'px',
+      
+  }
+
+  
 
   return (
     <div className="scrollingBar">
-      <div className="scrollingBarLine" ref={scrollbarContainer}>
-        <img className="longerLine" src={longerLine} />
+      <div style={scrollBarLineContainer} ref={scrollbarContainer}>
+        <img style={distanceWhereToDrag} src={longerLine} />
 
         <img
-          className="short"
+          ref={scrollbarElement}
           src={shortLigne}
-          style={elementStyle}
+          style={objectToDragStyle}
           onMouseDown={handleMouseclick}
-         /* onClick={test}*/
+         // onClick={test}
           onMouseUp={() => {
             setIsmousClicked(false);
           }}
