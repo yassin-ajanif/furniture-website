@@ -1,13 +1,25 @@
 import React, { useState, useRef, useEffect } from "react";
 import longerLine from "../scrollingBar/scrollingBarAssets/longerLine.png";
 import shortLigne from "../scrollingBar/scrollingBarAssets/shortLine.png";
+import circleRight from  "../scrollingBar/scrollingBarAssets/circleRight.png"
+import circleLeft from  "../scrollingBar/scrollingBarAssets/circleLeft.png"
+import arrowRight from  "../scrollingBar/scrollingBarAssets/arrowRight.png"
+import arrowLeft from  "../scrollingBar/scrollingBarAssets/arrowLeft.png"
+
 
 const ScrollingBar = (
 
-  {objectToDragWidth,
+  { className,
+    objectToDragWidth,
     objectToDragHeight,
     distanceWhereToDragWidth,
-    distanceWhereToDragHeight}) => {
+    distanceWhereToDragHeight,
+    btnsPosition,
+    btnsDisplay,
+    btnsDisplayJustifyPosition,
+   
+    
+  }) => {
 
   const [ismousClicked, setIsmousClicked] = useState(false);
   const [scrollingElmnOffsetX, setScrollingElmnOffsetX] = useState(0);
@@ -18,23 +30,53 @@ const ScrollingBar = (
   const [scrollBarPosition,setscrollBarPosition]=useState(0)
   const [scrollPosition,setScrollPosition]=useState(0)
   const [maxDistanceToScroll,setmaxDistanceToScroll]=useState(null)
-  const [test1,setTest1] = useState(0)
-  const [test2,setTest2] = useState(0)
+  
 
 
   let scrollingPosition = cursor - scrollingElmnOffsetX - objectToDragPosition;
+  const remainingPosition= maxDistanceToScroll-scrollPosition
   
+
 
   console.log("cursor " + cursor);
   console.log("scrollingElmnOffsetX " + scrollingElmnOffsetX);
   console.log("position " + objectToDragPosition)
   console.log('scrollPosition',scrollPosition)
   console.log('maxDistanceToScroll',maxDistanceToScroll)
-  //console.log(test1)
-  
-  
-  
+  console.log('objectwidth',objectToDragWidth)
+  console.log('remaining',remainingPosition)
+  console.log(distanceWhereToDragWidth)
+ 
+ 
+  useEffect(() => {
 
+    const handleResize = () => {
+
+      calibartionOfScrollBar()
+      setScrollPosition(0)
+      console.log('resizing')
+    };
+
+    window.onresize = handleResize;
+
+    return () => {
+      // Clean up the event listener on component unmount
+      window.onresize = null;
+    };
+  }, []);
+
+ 
+ 
+
+
+  function calibartionOfScrollBar(){
+
+    const lengthOfScrollBar = scrollbarContainer.current.getBoundingClientRect().width
+    const lengthofobjectToDrag = objectToDragWidth
+    setmaxDistanceToScroll(lengthOfScrollBar-lengthofobjectToDrag)
+  
+  }
+  
 
   function handleMouseclick(event) {
 
@@ -48,16 +90,10 @@ const ScrollingBar = (
    const scrollBarPosition = scrollbarContainer.current.getBoundingClientRect().left
    setscrollBarPosition(scrollingPosition)
    setobjectToDragPosition(scrollBarPosition)
-
-   //setpermisbaleDistance(permisbaleDistance)
-    const lengthOfScrollBar = scrollbarContainer.current.getBoundingClientRect().width
-    const lengthofobjectToDrag = objectToDragWidth
-    
-    setmaxDistanceToScroll(lengthOfScrollBar-lengthofobjectToDrag)
-
+   
+    calibartionOfScrollBar()
     
 
-  // setting the permisbale interval to drag a bar
 
   }
 
@@ -67,23 +103,48 @@ const ScrollingBar = (
 
     event.preventDefault();
    
-   
-
     if (ismousClicked) {
       
       
       setCursor(event.nativeEvent.clientX);
       
-      //setScrollPosition(scrollbarElement.current.offsetLeft)
-      
       setScrollPosition( Math.min( maxDistanceToScroll, Math.max(0,scrollingPosition) ) )
-      //setScrollPosition(  Math.max(0,scrollingPosition) ) 
-     
- 
 
     }
 
+  }
 
+  function handleClickRightBottom(){
+
+    calibartionOfScrollBar()
+    
+    if(objectToDragWidth>=remainingPosition) 
+    {
+    setScrollPosition(maxDistanceToScroll) }
+
+    else {setScrollPosition(scrollPosition+objectToDragWidth)} 
+  }
+  
+
+  function handleClickLeftTop(){
+
+    calibartionOfScrollBar()
+
+    if(scrollPosition<=objectToDragWidth){setScrollPosition(0)}
+    else{setScrollPosition(scrollPosition-objectToDragWidth)}
+
+    
+  }
+
+  
+  
+
+  // these is for line and object scrolling styling
+
+  const scrollingBarStyle = {
+
+    display: btnsPosition,
+    alignItems: 'center'
 
   }
 
@@ -92,10 +153,7 @@ const ScrollingBar = (
     position: 'relative',
     display: 'inline-flex',
     alignItems: 'center',
-    marginLeft: '8.213vw',
-   /* margin-left:18px;*/
-    marginBottom: '4vh',
-    marginTop: '9.4054vh'
+  
 }
 
   const objectToDragStyle = {
@@ -105,7 +163,6 @@ const ScrollingBar = (
     width: objectToDragWidth+'px',
     height: objectToDragHeight+'px',
     position: "absolute",
-    //transform: `translate(${scrollingPosition+10}px, ${0})`
     left: `${scrollPosition}px`
 
   }
@@ -119,11 +176,65 @@ const ScrollingBar = (
       
   }
 
+  // these for button styles
+
+  
+
+  const scrollingBarBtn = {
+    
+    display:btnsDisplay,
+    justifySelf:btnsDisplayJustifyPosition
+
+  }
+
+  const scrollingBtnUpStyle = {
+
+    position: 'relative',
+    display: 'flex' ,
+    width: 'max-content',
+    height: 'max-content',
+  }
+
+  const scrollingBtnDownStyle = {
+
+    position: 'relative',
+    display: 'flex' ,
+    width: 'max-content',
+    height: 'max-content',
+  }
+  
+  const circleLeftStyle = {
+
+    
+  }
+
+  const arrowLeftStyle = {
+
+    position: 'absolute',
+    inset: '0',
+    margin:'auto'
+  }
+  
+  const circleRightStyle = {}
+
+  const arrowRightStyle = {
+
+    position:'absolute',
+    inset:'0',
+    margin:'auto'
+  }
+
+
   
 
   return (
-    <div className="scrollingBar">
-      <div style={scrollBarLineContainer} ref={scrollbarContainer}>
+
+
+    <div style={scrollingBarStyle}>
+     
+      <div style={scrollBarLineContainer} 
+           ref={scrollbarContainer}
+           >
         <img style={distanceWhereToDrag} src={longerLine} />
 
         <img
@@ -139,17 +250,31 @@ const ScrollingBar = (
           onMouseLeave={() => setIsmousClicked(false)}
         />
       </div>
-      {/*
-      <div className="scrollingBtn">
 
-        <div className="scrollingBtnUp">
-          <img src="" alt="" /></div>
-        <div className="scrollingBtnDown">
-          <img src="" alt="" />
+      
+      <div style={scrollingBarBtn}>
+
+        <div style={scrollingBtnUpStyle}
+             onMouseDown={calibartionOfScrollBar}
+             onMouseUp={handleClickLeftTop}>
+          <img src={circleLeft} style={circleLeftStyle}  />
+          <img src={arrowLeft} style={arrowLeftStyle}  />
         </div>
+
+
+        <div style={scrollingBtnDownStyle}
+              onMouseDown={calibartionOfScrollBar}
+              onMouseUp={handleClickRightBottom}>
+          <img src={circleRight} style={circleRightStyle} alt="" />
+          <img src={arrowRight} style={arrowRightStyle} alt="" />
+        
       </div>
-  */}
+  
     </div>
+
+    </div>
+
+  
   );
 };
 
