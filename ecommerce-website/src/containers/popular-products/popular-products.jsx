@@ -14,11 +14,8 @@ const PopularProducts = () => {
  const show='flex'
  const hide='none'
  const scrollBar= useRef(null)
- const [scrollBarOffsetX,setscrollBarOffsetX]=useState(0)
- const pageViewPort =  document.documentElement.clientWidth
- const scrollBarWidth=pageViewPort-scrollBarOffsetX
+ const [scrollBarWidth,setScrollBarWidth]=useState(null)
 
- 
 
 
  useEffect(()=>{ 
@@ -27,14 +24,26 @@ const PopularProducts = () => {
   setpopularGridImgWidth(getPopularImageGridWidth) 
   const getPopularProductWidth =getPopularImageGridWidth/numberOfProducts
   setpopularProductWidth(getPopularProductWidth)
-  const getscrollBarOffsetX = scrollBar.current.getBoundingClientRect().left
-  setscrollBarOffsetX(getscrollBarOffsetX)
-}
+
+  const pageViewPort= document.documentElement.clientWidth
+  const scrollBarOffsetX = scrollBar.current.getBoundingClientRect().left
+  setScrollBarWidth(pageViewPort-scrollBarOffsetX)
   
+}
   ,[])
 
+ window.addEventListener('resize',calibrate)
 
+ 
 
+ function calibrate (){
+  
+  const newViewPort = document.documentElement.clientWidth
+  const newScrollBarOffsetX = scrollBar.current.getBoundingClientRect().left
+  setScrollBarWidth(newViewPort-newScrollBarOffsetX)
+ 
+ 
+ }
 
     return (
 
@@ -45,11 +54,12 @@ const PopularProducts = () => {
       ref={popularImgGrid}
       >
         {furniture.popularProducts.map(
-          item => <PopularProduct image={item.image} name={item.name} description={item.description} price={item.price}/>)}
+          (item,index )=> <PopularProduct key={index} image={item.image} name={item.name} description={item.description} price={item.price}/>)}
       </div>
 
-    <div className="scrollBarContainer-mobile-tablet" ref={scrollBar}>
+   { <div className="scrollBarContainer-mobile-tablet" ref={scrollBar}>
       <ScrollingBar 
+
         btnsDisplay={hide}
         btnsDisplayJustifyPosition={'end'}
         btnsPosition={'inline-grid'} 
@@ -60,9 +70,9 @@ const PopularProducts = () => {
         distanceWhereToDragHeight={5}
         
         />
-    </div>   
+        </div>  }
 
-   <div className="scrollBarContainer-desktop">
+ { /* <div className="scrollBarContainer-desktop">
     <ScrollingBar 
         btnsDisplay={show}
         btnsDisplayJustifyPosition={'end'}
@@ -73,10 +83,12 @@ const PopularProducts = () => {
         distanceWhereToDragWidth={scrollBarWidth}
         distanceWhereToDragHeight={5}
         />
-  </div>
+        </div>   */}
         
 
-      <button  >Explore all items</button>
+      <button 
+      
+       >Explore all items</button>
 
     </div>
 

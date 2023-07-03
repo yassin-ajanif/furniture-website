@@ -17,6 +17,7 @@ const ScrollingBar = (
     btnsPosition,
     btnsDisplay,
     btnsDisplayJustifyPosition,
+    makeItResponsive
    
     
   }) => {
@@ -30,14 +31,14 @@ const ScrollingBar = (
   const [scrollBarPosition,setscrollBarPosition]=useState(0)
   const [scrollPosition,setScrollPosition]=useState(0)
   const [maxDistanceToScroll,setmaxDistanceToScroll]=useState(null)
-  
+  const [calibrate,setcalibrate]=useState(true)
 
 
   let scrollingPosition = cursor - scrollingElmnOffsetX - objectToDragPosition;
   const remainingPosition= maxDistanceToScroll-scrollPosition
   
 
-
+/*
   console.log("cursor " + cursor);
   console.log("scrollingElmnOffsetX " + scrollingElmnOffsetX);
   console.log("position " + objectToDragPosition)
@@ -46,35 +47,32 @@ const ScrollingBar = (
   console.log('objectwidth',objectToDragWidth)
   console.log('remaining',remainingPosition)
   console.log(distanceWhereToDragWidth)
+  */
+  
  
  
-  useEffect(() => {
+  if(scrollPosition>maxDistanceToScroll){
 
-    const handleResize = () => {
+    setScrollPosition(maxDistanceToScroll)
 
-      calibartionOfScrollBar()
-      setScrollPosition(0)
-      console.log('resizing')
-    };
+  }
 
-    window.onresize = handleResize;
+   
 
-    return () => {
-      // Clean up the event listener on component unmount
-      window.onresize = null;
-    };
-  }, []);
+   console.log('scrollPosition',scrollPosition)
+   console.log('maxDistanceToScroll',maxDistanceToScroll)
 
- 
- 
-
+   function test (){console.log('hi')}
 
   function calibartionOfScrollBar(){
 
     const lengthOfScrollBar = scrollbarContainer.current.getBoundingClientRect().width
     const lengthofobjectToDrag = objectToDragWidth
     setmaxDistanceToScroll(lengthOfScrollBar-lengthofobjectToDrag)
-  
+
+//setScrollPosition(Math.min(scrollPosition,maxDistanceToScroll))
+    
+
   }
   
 
@@ -128,7 +126,7 @@ const ScrollingBar = (
 
   function handleClickLeftTop(){
 
-    calibartionOfScrollBar()
+   calibartionOfScrollBar()
 
     if(scrollPosition<=objectToDragWidth){setScrollPosition(0)}
     else{setScrollPosition(scrollPosition-objectToDragWidth)}
@@ -225,8 +223,6 @@ const ScrollingBar = (
   }
 
 
-  
-
   return (
 
 
@@ -271,6 +267,8 @@ const ScrollingBar = (
       </div>
   
     </div>
+        
+  
 
     </div>
 

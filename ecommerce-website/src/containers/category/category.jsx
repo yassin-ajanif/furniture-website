@@ -148,7 +148,7 @@ const Category = () => {
 
           const ifScrollBtnPressed = index >=imgPosition && index <=imgPosition+5 ? 
 
-         <CategoryImg image={furniture.image} name={furniture.name} link={"/y"} />
+         <CategoryImg image={furniture.image} name={furniture.name} link={"/y"} key={index}/>
 
           :
 
