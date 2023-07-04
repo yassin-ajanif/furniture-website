@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
+
 import longerLine from "../scrollingBar/scrollingBarAssets/longerLine.png";
 import shortLigne from "../scrollingBar/scrollingBarAssets/shortLine.png";
 import circleRight from  "../scrollingBar/scrollingBarAssets/circleRight.png"
@@ -17,7 +18,9 @@ const ScrollingBar = (
     btnsPosition,
     btnsDisplay,
     btnsDisplayJustifyPosition,
-    makeItResponsive
+    calibrateScrollBar,
+    getScrollingPosition,
+    test
    
     
   }) => {
@@ -38,45 +41,40 @@ const ScrollingBar = (
   const remainingPosition= maxDistanceToScroll-scrollPosition
   
 
-/*
-  console.log("cursor " + cursor);
-  console.log("scrollingElmnOffsetX " + scrollingElmnOffsetX);
-  console.log("position " + objectToDragPosition)
-  console.log('scrollPosition',scrollPosition)
-  console.log('maxDistanceToScroll',maxDistanceToScroll)
-  console.log('objectwidth',objectToDragWidth)
-  console.log('remaining',remainingPosition)
-  console.log(distanceWhereToDragWidth)
-  */
-  
- 
- 
-  if(scrollPosition>maxDistanceToScroll){
 
-    setScrollPosition(maxDistanceToScroll)
+ useEffect(()=>{
 
-  }
+ calibartionOfScrollBar()
 
-   
+ getScrollingPosition(scrollPosition)
 
-   console.log('scrollPosition',scrollPosition)
-   console.log('maxDistanceToScroll',maxDistanceToScroll)
+ },[calibrateScrollBar,scrollPosition])
 
-   function test (){console.log('hi')}
+
+
+
 
   function calibartionOfScrollBar(){
 
+ 
     const lengthOfScrollBar = scrollbarContainer.current.getBoundingClientRect().width
+    const ScrollbarIsexisting = lengthOfScrollBar>0
+   
+    if(ScrollbarIsexisting){
+
     const lengthofobjectToDrag = objectToDragWidth
     setmaxDistanceToScroll(lengthOfScrollBar-lengthofobjectToDrag)
 
-//setScrollPosition(Math.min(scrollPosition,maxDistanceToScroll))
+   setScrollPosition(Math.min(scrollPosition,maxDistanceToScroll))
     
+  }
 
   }
   
 
   function handleMouseclick(event) {
+    
+    calibartionOfScrollBar()
 
     setIsmousClicked(true);
 
@@ -89,7 +87,7 @@ const ScrollingBar = (
    setscrollBarPosition(scrollingPosition)
    setobjectToDragPosition(scrollBarPosition)
    
-    calibartionOfScrollBar()
+   // calibartionOfScrollBar()
     
 
 
@@ -107,6 +105,7 @@ const ScrollingBar = (
       setCursor(event.nativeEvent.clientX);
       
       setScrollPosition( Math.min( maxDistanceToScroll, Math.max(0,scrollingPosition) ) )
+      
 
     }
 
@@ -178,10 +177,13 @@ const ScrollingBar = (
 
   
 
-  const scrollingBarBtn = {
+  const scrollingBarBtns = {
     
     display:btnsDisplay,
-    justifySelf:btnsDisplayJustifyPosition
+    justifySelf:btnsDisplayJustifyPosition,
+    gap:'14px',
+    marginTop:'14px'
+    
 
   }
 
@@ -248,7 +250,7 @@ const ScrollingBar = (
       </div>
 
       
-      <div style={scrollingBarBtn}>
+      <div style={scrollingBarBtns}>
 
         <div style={scrollingBtnUpStyle}
              onMouseDown={calibartionOfScrollBar}

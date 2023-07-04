@@ -13,9 +13,13 @@ const PopularProducts = () => {
  const numberOfProducts = furniture.popularProducts.length
  const show='flex'
  const hide='none'
- const scrollBar= useRef(null)
- const [scrollBarWidth,setScrollBarWidth]=useState(null)
-
+ const scrollBarMobileTablet= useRef(null)
+ const scrollBarDesktop = useRef(null)
+ const [scrollBarMobileTabletWidth,setScrollBarMobileTabletWidth]=useState(null)
+ const [scrollbarDesktopWidth,setScrollbarDesktopWidth]=useState(null)
+ const [calibrate,setcalibrate]=useState(false)
+ const [cursorPosition,setCursorPosition]=useState(0)
+ const [translateImgSteps,settranslateImgSteps]=useState(0)
 
 
  useEffect(()=>{ 
@@ -25,25 +29,62 @@ const PopularProducts = () => {
   const getPopularProductWidth =getPopularImageGridWidth/numberOfProducts
   setpopularProductWidth(getPopularProductWidth)
 
+  // resizing the scrollbar size depending to the viewport
   const pageViewPort= document.documentElement.clientWidth
-  const scrollBarOffsetX = scrollBar.current.getBoundingClientRect().left
-  setScrollBarWidth(pageViewPort-scrollBarOffsetX)
+  const scrollBarOffsetX = scrollBarMobileTablet.current.getBoundingClientRect().left
+  setScrollBarMobileTabletWidth(pageViewPort-scrollBarOffsetX)
+ 
+  //setting the scrollbarDesktopwidth
+
+  const getScrollDesktopWidth = 0.8*pageViewPort
+  setScrollbarDesktopWidth(getScrollDesktopWidth)
+
+// setting the translate images steps
+  
+  const gettranslatePopularImg = cursorPosition*(getPopularImageGridWidth/pageViewPort)
+  settranslateImgSteps(gettranslatePopularImg)
+
+  console.log('pageviewport',pageViewPort)
+
+  window.addEventListener('resize', resizeScrollBar);
+
+    return () => {
+
+      window.removeEventListener('resize', resizeScrollBar);
+
+    };
   
 }
-  ,[])
+  ,[resizeScrollBar])
 
- window.addEventListener('resize',calibrate)
 
- 
+console.log('popularGridImgWidth',popularGridImgWidth)
+console.log('cursor',cursorPosition)
+console.log('translateImgSteps',translateImgSteps)
+console.log('distanceToscroll',scrollBarMobileTabletWidth)
 
- function calibrate (){
+
+
+ function resizeScrollBar (){
   
   const newViewPort = document.documentElement.clientWidth
-  const newScrollBarOffsetX = scrollBar.current.getBoundingClientRect().left
-  setScrollBarWidth(newViewPort-newScrollBarOffsetX)
- 
+  const newScrollBarOffsetX = scrollBarMobileTablet.current.getBoundingClientRect().left
+  setScrollBarMobileTabletWidth(newViewPort-newScrollBarOffsetX)
+  setcalibrate(!calibrate)
  
  }
+
+ const PopularProductImgStyle = {
+
+  transform: `translate(${-translateImgSteps/4}px , 0)`
+
+ }
+
+function extractScrollingPos(PositionOfCursor){
+
+  setCursorPosition(PositionOfCursor)
+
+}
 
     return (
 
@@ -52,42 +93,46 @@ const PopularProducts = () => {
       <h2 className="popularProducts-title">Popular Products</h2>
       <div className="popular-products-images" 
       ref={popularImgGrid}
+      style={PopularProductImgStyle}
       >
         {furniture.popularProducts.map(
           (item,index )=> <PopularProduct key={index} image={item.image} name={item.name} description={item.description} price={item.price}/>)}
       </div>
 
-   { <div className="scrollBarContainer-mobile-tablet" ref={scrollBar}>
+    <div className="scrollBarContainer-mobile-tablet" ref={scrollBarMobileTablet}>
       <ScrollingBar 
 
         btnsDisplay={hide}
         btnsDisplayJustifyPosition={'end'}
         btnsPosition={'inline-grid'} 
-        objectToDragWidth={popularProductWidth/3}
-        //objectToDragWidth={183}
-        objectToDragHeight={12}
-        distanceWhereToDragWidth={scrollBarWidth}
+        //objectToDragWidth={popularProductWidth/3}
+        objectToDragWidth={80}
+        objectToDragHeight={12*2}
+        distanceWhereToDragWidth={scrollBarMobileTabletWidth}
         distanceWhereToDragHeight={5}
+        calibrateScrollBar={calibrate}
+        getScrollingPosition={extractScrollingPos}
         
         />
-        </div>  }
+        </div>  
 
- { /* <div className="scrollBarContainer-desktop">
+  <div className="scrollBarContainer-desktop" ref={scrollBarDesktop}>
     <ScrollingBar 
         btnsDisplay={show}
         btnsDisplayJustifyPosition={'end'}
         btnsPosition={'inline-grid'} 
         objectToDragWidth={popularProductWidth/3}
         //objectToDragWidth={183}
-        objectToDragHeight={12}
-        distanceWhereToDragWidth={scrollBarWidth}
+        objectToDragHeight={12*2}
+        distanceWhereToDragWidth={scrollbarDesktopWidth}
         distanceWhereToDragHeight={5}
+        calibrateScrollBar={calibrate}
+        getScrollingPosition={extractScrollingPos}
         />
-        </div>   */}
+        </div>  
         
 
       <button 
-      
        >Explore all items</button>
 
     </div>

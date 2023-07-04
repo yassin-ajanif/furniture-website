@@ -37,6 +37,10 @@
 
     font-family: var(--font-family-title);
     text-align: center;
+    font-size:36px;
+    margin-top:70px;
+    margin-bottom:20px
+
 }
 
 .popularProduct-name{
@@ -69,7 +73,7 @@ font-weight: 400;
 .popular-products-images {
 
     display: inline-flex;
-    margin-left:8.213vw;
+   /* margin-left:8.213vw;*/
     gap:10px
 }
 
@@ -111,13 +115,34 @@ margin-inline:auto
 .scrollBarContainer-mobile-tablet{
 
     display: block;
-    margin-left:3.865vw;
-    /*margin-left:0px*/
+    /*margin-left:3.865vw;*/
+    margin-top:80px;
+    margin-bottom: 40px;
 }
 
 .scrollBarContainer-desktop{ display: none; margin-inline:auto}
 
 @media screen and (min-width:1024px) {
+
+
+    .popularProducts-title{
+
+        margin-top:180px;
+        margin-bottom:100px;
+        color: #07484A;
+    font-size: 64px;
+    
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    }
+
+    .popular-products-images{
+
+        margin-bottom:74px
+    }
+
+
 
     .scrollBarContainer-mobile-tablet{
 
@@ -128,7 +153,10 @@ margin-inline:auto
     .scrollBarContainer-desktop{ 
 
         display: block; 
-        margin-inline:auto
+        text-align: center;
+       
+        
+       
     } 
     
 }
