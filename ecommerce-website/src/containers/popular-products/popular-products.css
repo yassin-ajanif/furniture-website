@@ -4,6 +4,11 @@
    width:100%;
   /* border:1px solid red;*/
    overflow: hidden;
+   background-image: 
+   url('src/containers/popular-products/popular-products-assets/backgroundImage.png');
+   background-repeat: no-repeat;
+   background-position: -260px bottom;
+   background-size:contain
 }
 
 .popular-products-images > :nth-child(1)
@@ -73,7 +78,8 @@ font-weight: 400;
 .popular-products-images {
 
     display: inline-flex;
-   /* margin-left:8.213vw;*/
+    margin-left:8.213vw;
+    /*margin-left:20px;*/
     gap:10px
 }
 
@@ -115,7 +121,7 @@ margin-inline:auto
 .scrollBarContainer-mobile-tablet{
 
     display: block;
-    /*margin-left:3.865vw;*/
+    margin-left:3.865vw;
     margin-top:80px;
     margin-bottom: 40px;
 }
@@ -124,6 +130,12 @@ margin-inline:auto
 
 @media screen and (min-width:1024px) {
 
+    .popularProducts{
+
+       
+        background-position: left -180px bottom -78px;
+        background-size:contain
+     }
 
     .popularProducts-title{
 

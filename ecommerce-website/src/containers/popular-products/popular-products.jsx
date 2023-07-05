@@ -18,9 +18,21 @@ const PopularProducts = () => {
  const [scrollBarMobileTabletWidth,setScrollBarMobileTabletWidth]=useState(null)
  const [scrollbarDesktopWidth,setScrollbarDesktopWidth]=useState(null)
  const [calibrate,setcalibrate]=useState(false)
- const [cursorPosition,setCursorPosition]=useState(0)
  const [translateImgSteps,settranslateImgSteps]=useState(0)
+ const [ScrollingElmnSize,setScrollingElmnSize]=useState(null)
+ const [ratioImgGridStep,setRatioImgGridStep]=useState(0)
+ const [scrollingGridImgOffset,setScrollingGridImgOffset]=useState(0)
 
+useEffect(()=>{
+
+  // calculate the margin left of grid images
+  const getscrollingGridImgOffset = popularImgGrid.current.getBoundingClientRect().left
+  //i've put 2 to let the same value of margin when you finsih scrolling at the end
+  setScrollingGridImgOffset(2*getscrollingGridImgOffset)
+
+
+},[])
+ 
 
  useEffect(()=>{ 
   
@@ -31,20 +43,46 @@ const PopularProducts = () => {
 
   // resizing the scrollbar size depending to the viewport
   const pageViewPort= document.documentElement.clientWidth
-  const scrollBarOffsetX = scrollBarMobileTablet.current.getBoundingClientRect().left
-  setScrollBarMobileTabletWidth(pageViewPort-scrollBarOffsetX)
- 
+  const scrollBarMobileTabletOffsetX = scrollBarMobileTablet.current.getBoundingClientRect().left
+  const getscrollBarMobileWidth = pageViewPort-scrollBarMobileTabletOffsetX//
+  setScrollBarMobileTabletWidth(getscrollBarMobileWidth)
+  
   //setting the scrollbarDesktopwidth
 
   const getScrollDesktopWidth = 0.8*pageViewPort
   setScrollbarDesktopWidth(getScrollDesktopWidth)
 
+  // the size of scrolling element
+
+  const getScrollingElmnSize = getPopularProductWidth/3
+  setScrollingElmnSize(getScrollingElmnSize)
+
+// checking which scrollbar is displayed mobileTablet or desktop scrollbar 
+
+const scrollBarMobileTabletIsDisplayed = getComputedStyle(scrollBarMobileTablet.current).display !=='none'
+const scrollBarDesktopIsDisplayed = getComputedStyle(scrollBarDesktop.current).display !=='none'
+let scrollingDistance = 0
+
+ if(scrollBarMobileTabletIsDisplayed){scrollingDistance=getscrollBarMobileWidth; }
+ 
+  else if(scrollBarDesktopIsDisplayed){ scrollingDistance=getScrollDesktopWidth; }      
+
 // setting the translate images steps
   
-  const gettranslatePopularImg = cursorPosition*(getPopularImageGridWidth/pageViewPort)
-  settranslateImgSteps(gettranslatePopularImg)
+  const distanceImgsWillTranslate = (getPopularImageGridWidth-pageViewPort+scrollingGridImgOffset)
+  
+  const distanceCursorWillMove =  (scrollingDistance-getScrollingElmnSize)
+  
+  const getRatioStep = distanceImgsWillTranslate/distanceCursorWillMove
+  setRatioImgGridStep(getRatioStep)
 
-  console.log('pageviewport',pageViewPort)
+  console.log(scrollingGridImgOffset)
+  /*console.log('getPopularImageGridWidth',getPopularImageGridWidth)
+  console.log('pageViewPort',pageViewPort)
+  console.log('scrollingGridImgOffset',scrollingGridImgOffset)
+  console.log('scrollingDistance',scrollingDistance)
+  console.log('ScrollingElmnSize',getScrollingElmnSize)
+  console.log('scrollingGridImgOffset',scrollingGridImgOffset)*/
 
   window.addEventListener('resize', resizeScrollBar);
 
@@ -55,15 +93,15 @@ const PopularProducts = () => {
     };
   
 }
-  ,[resizeScrollBar])
+  ,[calibrate,scrollingGridImgOffset])
 
-
+/*
 console.log('popularGridImgWidth',popularGridImgWidth)
 console.log('cursor',cursorPosition)
 console.log('translateImgSteps',translateImgSteps)
-console.log('distanceToscroll',scrollBarMobileTabletWidth)
+console.log('distanceToscroll',scrollBarMobileTabletWidth)*/
 
-
+//console.log(scrollingGridImgOffset)
 
  function resizeScrollBar (){
   
@@ -71,19 +109,21 @@ console.log('distanceToscroll',scrollBarMobileTabletWidth)
   const newScrollBarOffsetX = scrollBarMobileTablet.current.getBoundingClientRect().left
   setScrollBarMobileTabletWidth(newViewPort-newScrollBarOffsetX)
   setcalibrate(!calibrate)
+
  
  }
 
  const PopularProductImgStyle = {
 
-  transform: `translate(${-translateImgSteps/4}px , 0)`
+  transform: `translate(${-translateImgSteps}px , 0)`
 
  }
 
 function extractScrollingPos(PositionOfCursor){
 
-  setCursorPosition(PositionOfCursor)
-
+  //setCursorPosition(PositionOfCursor)
+  settranslateImgSteps(PositionOfCursor*ratioImgGridStep)
+  //console.log(PositionOfCursor,ratioImgGridStep)
 }
 
     return (
@@ -106,8 +146,8 @@ function extractScrollingPos(PositionOfCursor){
         btnsDisplayJustifyPosition={'end'}
         btnsPosition={'inline-grid'} 
         //objectToDragWidth={popularProductWidth/3}
-        objectToDragWidth={80}
-        objectToDragHeight={12*2}
+        objectToDragWidth={ScrollingElmnSize}
+        objectToDragHeight={30}
         distanceWhereToDragWidth={scrollBarMobileTabletWidth}
         distanceWhereToDragHeight={5}
         calibrateScrollBar={calibrate}
@@ -121,9 +161,9 @@ function extractScrollingPos(PositionOfCursor){
         btnsDisplay={show}
         btnsDisplayJustifyPosition={'end'}
         btnsPosition={'inline-grid'} 
-        objectToDragWidth={popularProductWidth/3}
+        objectToDragWidth={ScrollingElmnSize}
         //objectToDragWidth={183}
-        objectToDragHeight={12*2}
+        objectToDragHeight={30}
         distanceWhereToDragWidth={scrollbarDesktopWidth}
         distanceWhereToDragHeight={5}
         calibrateScrollBar={calibrate}

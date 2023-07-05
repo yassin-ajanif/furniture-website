@@ -157,6 +157,8 @@ const ScrollingBar = (
 
     display: "block",
     fontSize: "20px",
+    paddingTop:'8px',
+    paddingBottom:'8px',
     width: objectToDragWidth+'px',
     height: objectToDragHeight+'px',
     position: "absolute",
@@ -235,6 +237,7 @@ const ScrollingBar = (
            >
         <img style={distanceWhereToDrag} src={longerLine} />
 
+       {/*<div style={scrollbarElementWrap}> </div>*/}
         <img
           ref={scrollbarElement}
           src={shortLigne}
@@ -247,6 +250,8 @@ const ScrollingBar = (
           onMouseMove={handleDrag}
           onMouseLeave={() => setIsmousClicked(false)}
         />
+      
+
       </div>
 
       
