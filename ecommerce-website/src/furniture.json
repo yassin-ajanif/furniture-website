@@ -29,7 +29,20 @@
 
 
 ]
+,
 
+"specialPackageProducts":[
+
+
+    {"image":"src/containers/popular-products/popular-products-assets/chair1.jpg", "name":"Armchair" , "description":"Light single chairLight single chair" , "price":"$145"},
+    {"image":"src/containers/popular-products/popular-products-assets/chair2.jpg", "name":"Premium Sofa" , "description":"Light single chairLight single chair" , "price":"$180"},
+    {"image":"src/containers/popular-products/popular-products-assets/chair3.jpg", "name":"Minimal Sofa" , "description":"Light single chairLight single chair" , "price":"$150"},
+    {"image":"src/containers/popular-products/popular-products-assets/chair4.jpg", "name":"Dinning chair" , "description":"Light single chairLight single chair" , "price":"$120"},
+    {"image":"src/containers/popular-products/popular-products-assets/chair5.jpg", "name":"Armchair" , "description":"Light single chairLight single chair" , "price":"$150"},
+    {"image":"src/containers/popular-products/popular-products-assets/chair6.jpg", "name":"Armchair" , "description":"Light single chairLight single chair" , "price":"$105"}
+
+
+]
 
 }
 

@@ -76,7 +76,7 @@ let scrollingDistance = 0
   const getRatioStep = distanceImgsWillTranslate/distanceCursorWillMove
   setRatioImgGridStep(getRatioStep)
 
-  console.log(scrollingGridImgOffset)
+  /*console.log(scrollingGridImgOffset)*/
   /*console.log('getPopularImageGridWidth',getPopularImageGridWidth)
   console.log('pageViewPort',pageViewPort)
   console.log('scrollingGridImgOffset',scrollingGridImgOffset)

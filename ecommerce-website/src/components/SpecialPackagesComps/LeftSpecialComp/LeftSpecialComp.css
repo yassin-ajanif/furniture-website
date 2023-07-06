@@ -1,0 +1,103 @@
+
+.LeftSpecialPackage_image{
+
+
+    border: 1px solid red;
+   
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+.LeftSpecialPackage_image .image{
+    width:100%;
+    /*border: 1px solid rgb(101, 81, 214);*/
+    display: block;
+}
+
+.LeftSpecialPackage_image button{
+
+    position:absolute;
+    inset:0 0 0 0;
+    width:35px;
+    height:36px;
+    left:100%;
+    top:100%;
+    transform: translate(-100%,-100%);
+    border:none;
+    border-radius: 10px;
+    background: #07484A;
+}
+
+
+
+.specialPackageLeftInfos_right .name{
+
+    color: #07484A;
+    font-family: var(--font-family-title);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.specialPackageLeftInfos_right .price{
+
+color: #07484A;
+font-family: var(--font-family-title);
+font-size: 28px;
+font-style: normal;
+font-weight: 700;
+line-height: 115%;
+letter-spacing: -0.56px;
+
+}
+
+.specialPackageLeftInfos_left button {
+
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width:145px;
+    height:50px;
+    gap:11px;
+    border:none;
+    border-radius: 10px;
+   background: #70908B;
+
+}
+
+.specialPackageLeftInfos_left button p {
+
+    color: #FDFBF8;
+font-family: var(--font-family-title);
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.description-mobileTablet .description-title{
+
+    color: #07484A;
+    font-family: var(--font-family-title);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 115%;
+    letter-spacing: -0.48px;
+
+}
+
+.description-mobileTablet .description-content{
+
+    color: #07484A;
+    font-family: var(--font-family-text);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -0.48px;
+}
