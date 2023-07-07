@@ -1,50 +1,57 @@
 import React, { useCallback, useEffect,useRef,useState } from "react";
-import LeftSpecialPackage from "../../components/SpecialPackagesComps/LeftSpecialComp/LeftSpecialPackage";
-import RightSpecialPackage from "../../components/SpecialPackagesComps/RightSpecialPackage/RightSpecialPackage";
 import ScrollingBar from '../../components/scrollingBar/scroolingBar'
 import furniture from '../../furniture.json'
-import expandImg from '../../components/SpecialPackagesComps/LeftSpecialComp/LeftSpecial-assets/expand.png'
-import stars from '../../components/SpecialPackagesComps/LeftSpecialComp/LeftSpecial-assets/stars.png'
-import trolley from '../../components/SpecialPackagesComps/LeftSpecialComp/LeftSpecial-assets/trolley.png'
-
+import expandImgMobile from './special-package-assets/expand.png'
+import stars from './special-package-assets/stars.png'
+import trolley from './special-package-assets/trolley.png'
+import expandImgTablet from './special-package-assets/expand-tablet.png'
+import ScrollingProduct from "../../components/scrollingProduct/scrollingProduct";
 import './special-package.css'
 
 
 const SpecialPackage = () => {
 
  const [scrollingMobileBarWidth,setscrollingMobileBarWidth] =useState(0)
+ const [scrollingTabletBarWidth,setscrollingTabletBarWidth] =useState(0)
  const MobileScrollBarComp = useRef(null)
  const MobileProductsGrid = useRef(null)
- const [translateStep,setTranslateStep]=useState(0)
+ const TabletScrollBarComp=useRef(null)
+ const TabletProductsGrid = useRef(null)
+ const [translateMobileStep,setTranslateMobileStep]=useState(0)
+ const [translateTabletStep,setTranslateTabletStep]=useState(0)
  const scrollingMobileElmntSize =50
- const [GridProductsOffsetX,setGridProductsOffsetX]=useState(0)
+ const scrollingTabletElmntSize=104
+ const [GridProductsMobileOffsetX,setGridMobileProductsOffsetX]=useState(0)
+ const [GridProductsTabletOffsetX,setGridTabletProductsOffsetX]=useState(0)
  const [calibrate,setcalibrate]=useState(false)
 
  useEffect(()=>{
-
-  const getGridProductsOffsetX=MobileProductsGrid.current.getBoundingClientRect().left*2
+ 
+  // set the size of products container mobile version
+  const getGridProductsMobileOffsetX=MobileProductsGrid.current.getBoundingClientRect().left*2
   // i multiplied by 2 to keep the space or the margin as you found in the begining
-  setGridProductsOffsetX(getGridProductsOffsetX)
-  console.log('hi')
+  setGridMobileProductsOffsetX(getGridProductsMobileOffsetX)
+
+  // set the size of products container tablet version
+  const getGridProductsTabletOffsetX=TabletProductsGrid.current.getBoundingClientRect().left*2
+  // i multiplied by 2 to keep the space or the margin as you found in the begining
+  setGridTabletProductsOffsetX(getGridProductsTabletOffsetX)
+
 
 },[])
 
-function test(){}
-
   useEffect(()=>{
 
-    // determining the with of scrollBarMobile
+    // determining the width of scrollBarMobile
   const pageViewPort = document.documentElement.clientWidth
   const scrollBarMobileOffsetX = MobileScrollBarComp.current.getBoundingClientRect().left
   const getScrollBarMobileWidth = pageViewPort-scrollBarMobileOffsetX
   setscrollingMobileBarWidth(getScrollBarMobileWidth)
+   // // determining the width of scrollBarTable
+   const scrollBarTabletOffsetX = TabletScrollBarComp.current.getBoundingClientRect().left
+   const getScrollBarTabletWidth = pageViewPort-scrollBarTabletOffsetX
+   setscrollingTabletBarWidth(getScrollBarTabletWidth) 
 
-  //get the margin-left of mobileProductsWidth
-
-
-
-
-  console.log('useeffect')
   // this section is for autoresizing the scrollBar when you change the viewport 
 
    window.addEventListener('resize',autoResizeScrollBar)
@@ -53,23 +60,27 @@ function test(){}
 
   },[calibrate])
 
-  
+ 
 
 function scrollProductImages(scrollingBarPosition){
   
-  //set houw much the products images will move when i scroll
-  const gridProductsWidth=MobileProductsGrid.current.getBoundingClientRect().width
   const pageViewPort=document.documentElement.clientWidth
-  const maxDistanceToScorllProducts = gridProductsWidth+GridProductsOffsetX-pageViewPort
-  const MaxdistanceToscrollMouse = scrollingMobileBarWidth-scrollingMobileElmntSize
-  const ratio = maxDistanceToScorllProducts/MaxdistanceToscrollMouse
-  const gettranslateStep = scrollingBarPosition*ratio
-  setTranslateStep(gettranslateStep)
 
-  console.log('gridProductsWidth',gridProductsWidth)
-  console.log('gridProductsOffsetX',GridProductsOffsetX)
-  console.log('pageViewPort',pageViewPort)
-  console.log('scrollingMobileBarWidth',scrollingMobileBarWidth)
+  //set houw much the products images will move when you scroll mobile version
+  const gridMobileProductsWidth=MobileProductsGrid.current.getBoundingClientRect().width
+  const maxDistanceToScorllProductsMobile = gridMobileProductsWidth+GridProductsMobileOffsetX-pageViewPort
+  const MaxdistanceToscrollMouseMobile = scrollingMobileBarWidth-scrollingMobileElmntSize
+  const ratioMobile = maxDistanceToScorllProductsMobile/MaxdistanceToscrollMouseMobile
+  const gettranslateStepMobile = scrollingBarPosition*ratioMobile
+  setTranslateMobileStep(gettranslateStepMobile)
+
+   //set houw much the products images will move when you scroll tablet version
+   const gridTabletProductsWidth=TabletProductsGrid.current.getBoundingClientRect().width
+   const maxDistanceToScorllProductsTablet = gridTabletProductsWidth+GridProductsTabletOffsetX-pageViewPort
+   const MaxdistanceToscrollMouseTablet = scrollingTabletBarWidth-scrollingTabletElmntSize
+   const ratioTablet = maxDistanceToScorllProductsTablet/MaxdistanceToscrollMouseTablet
+   const gettranslateStepTablet = scrollingBarPosition*ratioTablet
+   setTranslateTabletStep(gettranslateStepTablet)
  
   
 
@@ -78,9 +89,17 @@ function scrollProductImages(scrollingBarPosition){
 function autoResizeScrollBar(){
 
   const newViewPort = document.documentElement.clientWidth
+  //setting the new scrollbar size of mobile version when you resize the page
   const newscrollBarMobileOffsetX = MobileScrollBarComp.current.getBoundingClientRect().left
   setscrollingMobileBarWidth(newViewPort-newscrollBarMobileOffsetX )
+  //setting the new scrollbar size of tablet version when you resize the page
+  const newscrollBarTabletOffsetX = TabletScrollBarComp.current.getBoundingClientRect().left
+  setscrollingTabletBarWidth(newViewPort-newscrollBarTabletOffsetX )
+  // change the state to run the useffect agin which mean restart a calibration 
   setcalibrate(!calibrate)
+
+ 
+ 
 }
 function MobileProductComponent(){
 
@@ -96,8 +115,8 @@ function MobileProductComponent(){
             <span>Add to Cart</span>
             <img src={trolley} alt="" />
           </button>
-          <div>Descritption</div>
-          <p>{descriptionTest}</p>
+          <div className="description-title">Descritption</div>
+          <p className="description-context">{descriptionTest}</p>
 
   </div>
 
@@ -107,10 +126,17 @@ function MobileProductComponent(){
 // this section for styling dynamic components elements
 
 const MobileProductsElmnts = {
-/*668*/ 
+
   display:'inline-flex',
   gap:'8vw',
-  transform:`translate(${-translateStep}px,0px)`
+  transform:`translate(${-translateMobileStep}px,0px)`
+}
+
+const TabletProductsElmnts = {
+
+  display:'inline-flex',
+  gap:'8vw',
+  transform:`translate(${-translateTabletStep}px,0px)`
 }
 
 const testImage = furniture.categoryProducts[0].image
@@ -123,13 +149,14 @@ const descriptionTest = furniture.popularProducts[0].description
 
       <div className="sepcialPackage-mobile-section">
        
-        <div className="mobile-products" style={MobileProductsElmnts} ref={MobileProductsGrid}>
+      <div className="products" style={MobileProductsElmnts} ref={MobileProductsGrid}>
+        
         <MobileProductComponent />
         <MobileProductComponent/>
         <MobileProductComponent/>
         <MobileProductComponent/>
         
-          </div>
+      </div>
           
         <div className="scrolling-bar" ref={MobileScrollBarComp}>
           <ScrollingBar
@@ -155,7 +182,65 @@ const descriptionTest = furniture.popularProducts[0].description
 
       <div className="sepcialPackage-tablet-section">
         
+     <div className="first-group">
+       <div className="productsImage">
+            <img className='principalImage' src={testImage} />
+            <button className="expandBtn">
+              <img className='expandImage' src={expandImgTablet}  />
+            </button>
       </div>
+
+       <div className="product-infos">
+          <div className="productName">Larkin Wood Full Set</div>
+          <div className="stars"><img src={stars} alt="" /></div>
+          <p className="price">$729.99</p>
+          <button className="addToCart">
+            <span>Add to Cart</span>
+            <img src={trolley} alt="" />
+          </button>
+          <div className="description-title">Descritption</div>
+          <p className="description-content">{descriptionTest}</p>
+      </div>
+    </div>
+
+
+     <div className="second-group">
+       <div style={TabletProductsElmnts} ref={TabletProductsGrid}>
+      
+         <ScrollingProduct/>
+         <ScrollingProduct/>
+         <ScrollingProduct/>
+
+       </div>
+
+       <div className="scrolling-bar" ref={TabletScrollBarComp}>
+          <ScrollingBar
+
+          btnsDisplay={'none'}
+          btnsDisplayJustifyPosition={'end'}
+          btnsPosition={'inline-grid'} 
+          //objectToDragWidth={popularProductWidth/3}
+          objectToDragWidth={scrollingTabletElmntSize}
+          objectToDragHeight={30}
+          //distanceWhereToDragWidth={scrollBarMobileTabletWidth}
+          distanceWhereToDragWidth={scrollingTabletBarWidth}
+          distanceWhereToDragHeight={5}
+          calibrateScrollBar={calibrate}
+          getScrollingPosition={scrollProductImages}
+
+          />
+       </div>
+     </div>
+
+
+
+      </div>
+
+
+
+
+
+
 
       <div className="sepcialPackage-desktop-section">
         
