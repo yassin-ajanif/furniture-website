@@ -168,6 +168,7 @@ function extractScrollingPos(PositionOfCursor){
         distanceWhereToDragHeight={5}
         calibrateScrollBar={calibrate}
         getScrollingPosition={extractScrollingPos}
+        marginBtns={'14px 0 0 0'}
         />
         </div>  
         

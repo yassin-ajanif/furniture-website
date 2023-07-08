@@ -20,7 +20,7 @@ const ScrollingBar = (
     btnsDisplayJustifyPosition,
     calibrateScrollBar,
     getScrollingPosition,
-    test
+    marginBtns
    
     
   }) => {
@@ -184,8 +184,7 @@ const ScrollingBar = (
     display:btnsDisplay,
     justifySelf:btnsDisplayJustifyPosition,
     gap:'14px',
-    marginTop:'14px'
-    
+    margin:marginBtns
 
   }
 
