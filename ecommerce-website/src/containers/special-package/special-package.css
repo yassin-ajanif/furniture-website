@@ -299,6 +299,7 @@ margin-bottom: 10px;
     .specialPackage {
 
     margin-inline: 3.25vw;
+    
 
                }
     .sepcialPackage-tablet-section{
@@ -310,7 +311,9 @@ margin-bottom: 10px;
 
         display: grid;
         grid-template-columns: 1fr 1fr;
-        column-gap:5vw
+        column-gap:5vw;
+        border:1px solid blue
+        
         
     }
 
@@ -420,6 +423,8 @@ margin-bottom: 10px;
         font-weight: 700;
         line-height: 115%;
         letter-spacing: -0.48px;
+        margin-bottom:10px;
+
     }
 
     .sepcialPackage-desktop-section .right-group 
@@ -432,7 +437,7 @@ margin-bottom: 10px;
         font-weight: 500;
         line-height: 115%;
         letter-spacing: -0.48px;
-
+        margin-bottom:10px;
        
 
     }
@@ -446,6 +451,7 @@ margin-bottom: 10px;
     font-weight: 700;
     line-height: 115%;
     letter-spacing: -0.36px;
+    margin-bottom: 20px;
 
 }
 
@@ -465,29 +471,35 @@ margin-bottom: 10px;
     .sepcialPackage-desktop-section .scrolling-products-container{
 
         display: grid;
-        grid-template-columns: 1fr 45px;
+        grid-template-columns: 1fr 60px;
+    }
+
+    .sepcialPackage-desktop-section .scrolling-section .top{
+
+        margin-bottom: 30px;
     }
      
-    .sepcialPackage-desktop-section .scrollingBarContainer{
+    .sepcialPackage-desktop-section .scrolling-products-container .lists{
+
         
-        /*height: max-content;*/
-        /*transform: translate(50%,0%) rotate(00deg);*/
-        /*position: relative;*/
-        /*border: 1px solid blue*/
-        
+        display: grid;
+        grid-template-rows: max-content max-content 0 0  ;
+        gap:20px;
        
     }
 
-    .sepcialPackage-desktop-section .scrollingBar  {
+    .sepcialPackage-desktop-section .scrollingBar{
 
-       /* position: absolute;
-        inset:0;*/
-
-        transform: translate(0,10%) rotate(90deg);
         
-
+       display: grid;
+      
 
     }
+
+   
+    
+
+   
 
 
 }

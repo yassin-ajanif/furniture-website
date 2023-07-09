@@ -57,12 +57,13 @@ const SpecialPackage = () => {
    setscrollingTabletBarWidth(getScrollBarTabletWidth) 
 
    //determining the width of scrollBarTablet  the height is width becuase with just rotaed our scrollBar
-   const scrollingDesktopProductListHeight = scrollingDesktopProductList.current.getBoundingClientRect().height
+   const scrollingDesktopProductListHeight = scrollingDesktopProductList.current.clientHeight
    const HeightOfBtns = 80  // this is the height of two buttns up and donw arrows
    const marginsAndGaps = 40 // theses are the margins and gaps between btns
    const getScrollBarDesktopHeight = scrollingDesktopProductListHeight-HeightOfBtns-marginsAndGaps
    setscrollingDesktopBarHeight(getScrollBarDesktopHeight) 
 
+   console.log(scrollingDesktopProductListHeight)
   // this section is for autoresizing the scrollBar when you change the viewport 
 
    window.addEventListener('resize',autoResizeScrollBar)
@@ -71,7 +72,9 @@ const SpecialPackage = () => {
 
   },[calibrate])
 
- 
+
+  
+
 
 function scrollProductImages(scrollingBarPosition){
   
@@ -284,21 +287,59 @@ const descriptionTest = furniture.popularProducts[0].description
        </div>
        <div className="scrolling-section">
 
-            <ScrollingProduct/>
+            <div className="top">
+              <ScrollingProduct/>
+              </div>
 
             <div className="scrolling-products-container">
 
             <div className="lists" ref={scrollingDesktopProductList}>
-            <ScrollingProduct/>
-            <ScrollingProduct/>
+
+           
+            <ScrollingProduct
+              infoSectionBckColor={'white'}
+              ProductNameFontSize={'16px'}
+              starsImgSize={90}
+              seeDetailsFontSize={'14px'}
+            />
+            <ScrollingProduct
+              infoSectionBckColor={'white'}
+              ProductNameFontSize={'16px'}
+              starsImgSize={90}
+              seeDetailsFontSize={'14px'}
+            />
+           
+
+           <ScrollingProduct
+              infoSectionBckColor={'white'}
+              ProductNameFontSize={'16px'}
+              starsImgSize={90}
+              seeDetailsFontSize={'14px'}
+            />
+
+           <ScrollingProduct
+              infoSectionBckColor={'white'}
+              ProductNameFontSize={'16px'}
+              starsImgSize={90}
+              seeDetailsFontSize={'14px'}
+            />
+         
+
+
             </div>
 
-           <div className="scrollingBarContainer">
+           
+
             <div className="scrollingBar">
             
+            <VerticalScrollBar
+
+             scrollBarHeight={scrollingDesktopBarHeight}
+      
+            />
             
 
-            </div>
+           
            </div>
 
            
@@ -311,7 +352,7 @@ const descriptionTest = furniture.popularProducts[0].description
 
       </div>
 
-      <VerticalScrollBar/>
+      
   
     </div>
   );

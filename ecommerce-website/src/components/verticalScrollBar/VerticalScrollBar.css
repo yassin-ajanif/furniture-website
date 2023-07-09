@@ -1,20 +1,28 @@
 
 
+.VerticalScrollBar-container{
+
+  display: grid;
+  justify-items: center;
+  align-content: space-between;
+}
+
 .VerticalScrollBar{
 
-  
-  justify-items: center;
-  width:40px;
-  position:relative
+
+  width:10px;
+  position:relative;
+ 
+ 
   
 }
 
 .scrollBarRoad{
 
 
-    height:183px;
-    width:50%;
-    background-color: green;
+    
+    width:2px;
+    background: #07484A;
     margin-inline:auto
     
     
@@ -24,11 +32,29 @@
 
     height:30px;
     width:100%;
-    background-color: rgb(128, 66, 0);
+    background: #70908B;
     position:absolute;
     inset:0;
     
     
     
+}
+
+.btnsScrollBar{
+  width:max-content;
+  height:max-content;
+  margin-bottom:10px
+}
+
+.btnUp, .btnDown{position: relative; width:max-content }
+
+.btnUp { margin-bottom: 14px; } 
+
+
+.arrow{
+
+  position: absolute;
+  inset:0;
+  margin: auto;
 }
 

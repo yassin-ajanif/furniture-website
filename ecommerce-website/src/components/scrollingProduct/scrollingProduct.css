@@ -96,7 +96,7 @@ overflow: hidden;
        
        
         display: inline-grid;
-        grid-template-columns: 1fr 1.7fr;
+        grid-template-columns: 1fr 2fr;
         column-gap: 1vw;
         border: 1px solid green
         
