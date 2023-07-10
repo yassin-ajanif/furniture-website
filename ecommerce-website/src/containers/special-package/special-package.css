@@ -312,7 +312,9 @@ margin-bottom: 10px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap:5vw;
-        border:1px solid blue
+        border:1px solid blue;
+        
+
         
         
     }
@@ -478,14 +480,20 @@ margin-bottom: 10px;
 
         margin-bottom: 30px;
     }
-     
-    .sepcialPackage-desktop-section .scrolling-products-container .lists{
 
+    .sepcialPackage-desktop-section .scrolling-products-container{
+
+        height: max-content;
+        overflow: hidden;
+    }
+     
+    .sepcialPackage-desktop-section .scrolling-products-container 
+    .lists{
+
+        border: 2px solid blue; 
+        /*display: grid;*/
+        transform: translateY(0px);
         
-        display: grid;
-        grid-template-rows: max-content max-content 0 0  ;
-        gap:20px;
-       
     }
 
     .sepcialPackage-desktop-section .scrollingBar{
@@ -493,6 +501,14 @@ margin-bottom: 10px;
         
        display: grid;
       
+
+    }
+
+    
+    .sepcialPackage-desktop-section .scrollingProduct-wrap{
+
+
+      padding-bottom: 25px;
 
     }
 

@@ -5,21 +5,22 @@ import circleDown from './verticalScrollingBar-assets/circleDown.png'
 import arrowUp from './verticalScrollingBar-assets/arrowUp.png'
 import arrowDown from './verticalScrollingBar-assets/arrowDown.png'
 
-const VerticalScrollBar = ({scrollBarHeight}) => {
+const VerticalScrollBar = ({scrollBarHeight,getScrollingPosition,HeightOfScrollingElmnt}) => {
 
 const scrollBar = useRef(null)
 const [mouseIsDown,setMouseIsDown]=useState(false)
 const [scrollPosition,setScrollPosition]=useState(0)
-const dragingElementHeight = 30
+const dragingElementHeight = HeightOfScrollingElmnt
  
 
 
-    useEffect(()=>{
-      
 
-    },[])
+   
+function sendScrollPosoitionToParent(){
 
-   console.log('scrollPosition',scrollPosition)
+  getScrollingPosition(scrollPosition)
+   
+}
 
 function handleMouseDown(event){
     
@@ -39,8 +40,11 @@ function handleMouseMove(event){
     const MaxDistanceToScroll=scrollBarHeight-dragingElementHeight
     const DistanceToScroll= Math.max(0,Math.min(getscrollingElmnPos,MaxDistanceToScroll))
     setScrollPosition(DistanceToScroll)
+    sendScrollPosoitionToParent()
 
   }
+
+ 
 
 }
      
@@ -52,7 +56,7 @@ function handleMouseUp(){
 
 function handleMouseLeave(){
   setMouseIsDown(false)
-
+  
 }
 
 function goDown(){
@@ -68,7 +72,10 @@ function goDown(){
 
   else{   setScrollPosition(MaxDistanceToScrollDown)  }
 
+  sendScrollPosoitionToParent()
+
 }
+
 
 function goUp(){
 
@@ -80,7 +87,10 @@ function goUp(){
 
   else{  setScrollPosition(0)  }
 
+  sendScrollPosoitionToParent()
+
 }
+
 // this thing here is for styling
 
 const scrollBarCursor = {

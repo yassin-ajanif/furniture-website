@@ -20,15 +20,24 @@ const SpecialPackage = () => {
  const MobileProductsGrid = useRef(null)
  const TabletScrollBarComp=useRef(null)
  const TabletProductsGrid = useRef(null)
- const scrollingDesktopProductList = useRef(null)
+ const scrolledProdcut = useRef(null)
  const [translateMobileStep,setTranslateMobileStep]=useState(0)
  const [translateTabletStep,setTranslateTabletStep]=useState(0)
+ const [translateDesktopStep,setTranslateDesktopStep]=useState(0)
  const scrollingMobileElmntSize =50
  const scrollingTabletElmntSize=104
+ const scrollingDesktopEmntSize=30
+ const [scrollingSectionHeight,setscrollingSectionHeight]=useState(0)
+ const [ScrollProductHeight,SetScrollProductHeight]=useState(0)
  const [GridProductsMobileOffsetX,setGridMobileProductsOffsetX]=useState(0)
  const [GridProductsTabletOffsetX,setGridTabletProductsOffsetX]=useState(0)
  const [calibrate,setcalibrate]=useState(false)
+ 
 
+
+
+ console.log('scrollingSectionHeight',scrollingSectionHeight)
+ 
  useEffect(()=>{
  
   // set the size of products container mobile version
@@ -40,7 +49,11 @@ const SpecialPackage = () => {
   const getGridProductsTabletOffsetX=TabletProductsGrid.current.getBoundingClientRect().left*2
   // i multiplied by 2 to keep the space or the margin as you found in the begining
   setGridTabletProductsOffsetX(getGridProductsTabletOffsetX)
+ // 
 
+ window.addEventListener('load',CalibrateScrolledProductHeight_CalibrateScrollBarHeight)
+
+ return ()=>window.removeEventListener('resize',CalibrateScrolledProductHeight_CalibrateScrollBarHeight)
 
 },[])
 
@@ -55,27 +68,44 @@ const SpecialPackage = () => {
    const scrollBarTabletOffsetX = TabletScrollBarComp.current.getBoundingClientRect().left
    const getScrollBarTabletWidth = pageViewPort-scrollBarTabletOffsetX
    setscrollingTabletBarWidth(getScrollBarTabletWidth) 
+    
+   // calibrate the scrollbar and scrolling height of products list
 
-   //determining the width of scrollBarTablet  the height is width becuase with just rotaed our scrollBar
-   const scrollingDesktopProductListHeight = scrollingDesktopProductList.current.clientHeight
-   const HeightOfBtns = 80  // this is the height of two buttns up and donw arrows
-   const marginsAndGaps = 40 // theses are the margins and gaps between btns
-   const getScrollBarDesktopHeight = scrollingDesktopProductListHeight-HeightOfBtns-marginsAndGaps
-   setscrollingDesktopBarHeight(getScrollBarDesktopHeight) 
-
-   console.log(scrollingDesktopProductListHeight)
+   CalibrateScrolledProductHeight_CalibrateScrollBarHeight()
+  
+   
   // this section is for autoresizing the scrollBar when you change the viewport 
 
    window.addEventListener('resize',autoResizeScrollBar)
 
    return ()=>window.removeEventListener('resize',autoResizeScrollBar)
 
+   
+
   },[calibrate])
 
 
+console.log('stepscrolling',translateDesktopStep)
+
+function CalibrateScrolledProductHeight_CalibrateScrollBarHeight(){
   
+  // getting the height of one of the scrolledProduct when it rendered
+  const getScrolledProductHeight = scrolledProdcut.current.clientHeight
+  // the product all have the same height so i want it to include 2 products which is the reason of multiplying by 2
+  
+  const listOfScrollProductsHeight = getScrolledProductHeight*2
+  
+  const HeightOfBtns = 80  // this is the height of two buttns up and donw arrows
+  const marginsAndGaps = 40 // theses are the margins and gaps between btns
+  const getScrollBarDesktopHeight = listOfScrollProductsHeight-HeightOfBtns-marginsAndGaps
+  
+  SetScrollProductHeight(getScrolledProductHeight)
+  setscrollingSectionHeight(listOfScrollProductsHeight)
+  setscrollingDesktopBarHeight(getScrollBarDesktopHeight)
 
-
+}
+  
+// this is only fo tablet and mobile version
 function scrollProductImages(scrollingBarPosition){
   
   const pageViewPort=document.documentElement.clientWidth
@@ -98,6 +128,28 @@ function scrollProductImages(scrollingBarPosition){
  
   
 
+}
+
+// this is for desktop version
+function scrollProductsImagesDesktop(scrollingBarPosition){
+  
+    //Setting the height of the products group we're going to scroll
+  const gridOfScrollingProductsHeight = ScrollProductHeight*4
+  const maxDistanceToScorllProductsDesktop = gridOfScrollingProductsHeight-scrollingSectionHeight
+  const maxScrollBarCursordistance = scrollingDesktopBarHeight-scrollingDesktopEmntSize
+  const ratioDesktop = maxDistanceToScorllProductsDesktop/maxScrollBarCursordistance
+  const gettranslateStepDesktop = (scrollingBarPosition)*ratioDesktop
+
+  console.log('ScrollProductHeight',ScrollProductHeight)
+  console.log('gridOfScrollingProductsHeight',gridOfScrollingProductsHeight)
+  console.log('scrollingSectionHeight',scrollingSectionHeight)
+  console.log('maxDistanceToScorllProductsDesktop',maxDistanceToScorllProductsDesktop)
+  console.log('maxScrollBarCursordistance',maxScrollBarCursordistance)
+  console.log('ratio',ratioDesktop)
+  console.log('scrollingBarPosition',scrollingBarPosition)
+
+  setTranslateDesktopStep(gettranslateStepDesktop)
+  
 }
 
 function autoResizeScrollBar(){
@@ -151,6 +203,13 @@ const TabletProductsElmnts = {
   display:'inline-flex',
   gap:'8vw',
   transform:`translate(${-translateTabletStep}px,0px)`
+}
+
+const listsStyle={
+
+height:`${scrollingSectionHeight}px`,
+transform: `translateY(${-translateDesktopStep}px)`
+
 }
 
 const testImage = furniture.categoryProducts[0].image
@@ -293,40 +352,52 @@ const descriptionTest = furniture.popularProducts[0].description
 
             <div className="scrolling-products-container">
 
-            <div className="lists" ref={scrollingDesktopProductList}>
+            <div className="lists" style={listsStyle} >
 
-           
+            
+
+           <div className="scrollingProduct-wrap" ref={scrolledProdcut}>
             <ScrollingProduct
               infoSectionBckColor={'white'}
               ProductNameFontSize={'16px'}
               starsImgSize={90}
               seeDetailsFontSize={'14px'}
             />
-            <ScrollingProduct
-              infoSectionBckColor={'white'}
-              ProductNameFontSize={'16px'}
-              starsImgSize={90}
-              seeDetailsFontSize={'14px'}
-            />
-           
-
-           <ScrollingProduct
-              infoSectionBckColor={'white'}
-              ProductNameFontSize={'16px'}
-              starsImgSize={90}
-              seeDetailsFontSize={'14px'}
-            />
-
-           <ScrollingProduct
-              infoSectionBckColor={'white'}
-              ProductNameFontSize={'16px'}
-              starsImgSize={90}
-              seeDetailsFontSize={'14px'}
-            />
-         
-
-
             </div>
+            
+            <div className="scrollingProduct-wrap">
+
+            <ScrollingProduct
+              infoSectionBckColor={'white'}
+              ProductNameFontSize={'16px'}
+              starsImgSize={90}
+              seeDetailsFontSize={'14px'}
+            />
+            </div>
+          
+           
+            <div className="scrollingProduct-wrap">
+
+           <ScrollingProduct
+              infoSectionBckColor={'white'}
+              ProductNameFontSize={'16px'}
+              starsImgSize={90}
+              seeDetailsFontSize={'14px'}
+            />
+            </div>
+          
+            <div className="scrollingProduct-wrap">
+           <ScrollingProduct
+              infoSectionBckColor={'white'}
+              ProductNameFontSize={'16px'}
+              starsImgSize={90}
+              seeDetailsFontSize={'14px'}
+            />
+            </div>
+         
+            </div>
+
+            
 
            
 
@@ -335,7 +406,8 @@ const descriptionTest = furniture.popularProducts[0].description
             <VerticalScrollBar
 
              scrollBarHeight={scrollingDesktopBarHeight}
-      
+             getScrollingPosition={scrollProductsImagesDesktop}
+             HeightOfScrollingElmnt={scrollingDesktopEmntSize}
             />
             
 
