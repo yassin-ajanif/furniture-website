@@ -1,4 +1,4 @@
-import React , {useEffect,useState,useRef}from 'react'
+import React , {useEffect,useState,useRef, useCallback}from 'react'
 import './VerticalScrollBar.css'
 import circleUp from './verticalScrollingBar-assets/circleUp.png'
 import circleDown from './verticalScrollingBar-assets/circleDown.png'
@@ -12,15 +12,10 @@ const [mouseIsDown,setMouseIsDown]=useState(false)
 const [scrollPosition,setScrollPosition]=useState(0)
 const dragingElementHeight = HeightOfScrollingElmnt
  
+ 
+useEffect(()=>{getScrollingPosition(scrollPosition)},[scrollPosition])
 
 
-
-   
-function sendScrollPosoitionToParent(){
-
-  getScrollingPosition(scrollPosition)
-   
-}
 
 function handleMouseDown(event){
     
@@ -36,11 +31,10 @@ function handleMouseMove(event){
     const cursorPosition=event.clientY
     const getoffsetY = scrollBar.current.getBoundingClientRect().top  
     const getscrollingElmnPos = cursorPosition-getoffsetY-dragingElementHeight/2
-    const scrollBarHeights = 183
     const MaxDistanceToScroll=scrollBarHeight-dragingElementHeight
     const DistanceToScroll= Math.max(0,Math.min(getscrollingElmnPos,MaxDistanceToScroll))
     setScrollPosition(DistanceToScroll)
-    sendScrollPosoitionToParent()
+    
 
   }
 
@@ -62,17 +56,19 @@ function handleMouseLeave(){
 function goDown(){
   
   const MaxDistanceToScrollDown=scrollBarHeight-dragingElementHeight
-  const remainingDistanceToScrollDown = scrollBarHeight-scrollPosition-dragingElementHeight/2
+  const remainingDistanceToScrollDown = scrollBarHeight-scrollPosition-dragingElementHeight
   
+ 
 
   if(remainingDistanceToScrollDown>dragingElementHeight){
 
     setScrollPosition(scrollPosition+dragingElementHeight)
+  
   }
 
   else{   setScrollPosition(MaxDistanceToScrollDown)  }
 
-  sendScrollPosoitionToParent()
+ 
 
 }
 
@@ -87,7 +83,7 @@ function goUp(){
 
   else{  setScrollPosition(0)  }
 
-  sendScrollPosoitionToParent()
+  
 
 }
 
@@ -138,7 +134,7 @@ const scrollBarRoadStyle={
 
     </div>   
 
-  )
-}
+  )}
+
 
 export default VerticalScrollBar

@@ -140,13 +140,13 @@ function scrollProductsImagesDesktop(scrollingBarPosition){
   const ratioDesktop = maxDistanceToScorllProductsDesktop/maxScrollBarCursordistance
   const gettranslateStepDesktop = (scrollingBarPosition)*ratioDesktop
 
-  console.log('ScrollProductHeight',ScrollProductHeight)
+  /*console.log('ScrollProductHeight',ScrollProductHeight)
   console.log('gridOfScrollingProductsHeight',gridOfScrollingProductsHeight)
   console.log('scrollingSectionHeight',scrollingSectionHeight)
   console.log('maxDistanceToScorllProductsDesktop',maxDistanceToScorllProductsDesktop)
   console.log('maxScrollBarCursordistance',maxScrollBarCursordistance)
   console.log('ratio',ratioDesktop)
-  console.log('scrollingBarPosition',scrollingBarPosition)
+  console.log('scrollingBarPosition',scrollingBarPosition)*/
 
   setTranslateDesktopStep(gettranslateStepDesktop)
   
