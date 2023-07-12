@@ -34,12 +34,24 @@
 "specialPackageProducts":[
 
 
-    {"image":"src/containers/popular-products/popular-products-assets/chair1.jpg", "name":"Armchair" , "description":"Light single chairLight single chair" , "price":"$145"},
-    {"image":"src/containers/popular-products/popular-products-assets/chair2.jpg", "name":"Premium Sofa" , "description":"Light single chairLight single chair" , "price":"$180"},
-    {"image":"src/containers/popular-products/popular-products-assets/chair3.jpg", "name":"Minimal Sofa" , "description":"Light single chairLight single chair" , "price":"$150"},
-    {"image":"src/containers/popular-products/popular-products-assets/chair4.jpg", "name":"Dinning chair" , "description":"Light single chairLight single chair" , "price":"$120"},
-    {"image":"src/containers/popular-products/popular-products-assets/chair5.jpg", "name":"Armchair" , "description":"Light single chairLight single chair" , "price":"$150"},
-    {"image":"src/containers/popular-products/popular-products-assets/chair6.jpg", "name":"Armchair" , "description":"Light single chairLight single chair" , "price":"$105"}
+    {"image":"src/containers/special-package/special-package-assets/bedroom.jpg", "name":"Bedroom Special set" ,
+     "description":"Introducing our exquisite and luxurious bedroom set, designed to transform your sleep space into a haven of comfort and style. " 
+     , "price":"$1450"},
+    {"image":"src/containers/special-package/special-package-assets/kitechen.jpg", "name":"kitchen Special set" ,
+     "description":"Elevate your cooking experience with this exquisite ensemble, making every meal a delightful journey of taste and aesthetics." ,
+      "price":"$1800"},
+    {"image":"src/containers/special-package/special-package-assets/living room.jpg", "name":"Living Room Special set" ,
+     "description":"Experience the perfect balance of comfort and sophistication, making your living space the heart of cherished memories and endless conversations." ,
+      "price":"$1500"},
+    {"image":"src/containers/special-package/special-package-assets/workspace.jpg", "name":"Workspace Special set" ,
+     "description":"Whether you're working from home or in a professional office setting, this workspace set provides the perfect environment for you to accomplish your goals and unleash your full potential. " ,
+      "price":"$1200"},
+    {"image":"src/containers/special-package/special-package-assets/dinning room.jpg", "name":"Dinning Room Special set" , 
+    "description":"Create an inviting atmosphere that celebrates togetherness and culinary delights, making every dining occasion a true feast for the senses." ,
+     "price":"$1500"},
+    {"image":"src/containers/special-package/special-package-assets/meeting room.jpg", "name":"Meeting Room Special set" ,
+     "description":" With its sleek lines, comfortable seating, and smart storage solutions, this meeting room set effortlessly combines comfort and practicality." ,
+      "price":"$1050"}
 
 
 ]

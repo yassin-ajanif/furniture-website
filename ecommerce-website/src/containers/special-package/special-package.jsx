@@ -85,7 +85,7 @@ const SpecialPackage = () => {
   },[calibrate])
 
 
-console.log('stepscrolling',translateDesktopStep)
+
 
 function CalibrateScrolledProductHeight_CalibrateScrollBarHeight(){
   
@@ -139,15 +139,6 @@ function scrollProductsImagesDesktop(scrollingBarPosition){
   const maxScrollBarCursordistance = scrollingDesktopBarHeight-scrollingDesktopEmntSize
   const ratioDesktop = maxDistanceToScorllProductsDesktop/maxScrollBarCursordistance
   const gettranslateStepDesktop = (scrollingBarPosition)*ratioDesktop
-
-  /*console.log('ScrollProductHeight',ScrollProductHeight)
-  console.log('gridOfScrollingProductsHeight',gridOfScrollingProductsHeight)
-  console.log('scrollingSectionHeight',scrollingSectionHeight)
-  console.log('maxDistanceToScorllProductsDesktop',maxDistanceToScorllProductsDesktop)
-  console.log('maxScrollBarCursordistance',maxScrollBarCursordistance)
-  console.log('ratio',ratioDesktop)
-  console.log('scrollingBarPosition',scrollingBarPosition)*/
-
   setTranslateDesktopStep(gettranslateStepDesktop)
   
 }
@@ -167,22 +158,22 @@ function autoResizeScrollBar(){
  
  
 }
-function MobileProductComponent(){
+function MobileProductComponent({image,productName,price,description}){
 
   return <div className="MobileProductContainer">
 
 <div className="images">
-            <img src={testImage} alt="" />
+            <img src={image} alt="" />
           </div>
-          <div className="productName">Larkin Wood Full Set</div>
+          <div className="productName">{productName}</div>
           <div className="stars"><img src={stars} alt="" /></div>
-          <p className="price">$729.99</p>
+          <p className="price">{price}</p>
           <button className="addToCart">
             <span>Add to Cart</span>
             <img src={trolley} alt="" />
           </button>
           <div className="description-title">Descritption</div>
-          <p className="description-context">{descriptionTest}</p>
+          <p className="description-context">{description}</p>
 
   </div>
 
@@ -207,13 +198,14 @@ const TabletProductsElmnts = {
 
 const listsStyle={
 
-height:`${scrollingSectionHeight}px`,
+height:`${scrollingSectionHeight-4}px`,
+// the 4px is for the shadow that go out of the block which makes the product seen before scrolling it
 transform: `translateY(${-translateDesktopStep}px)`
 
 }
 
-const testImage = furniture.categoryProducts[0].image
-const descriptionTest = furniture.popularProducts[0].description
+const testImage = furniture.specialPackageProducts[5].image
+const descriptionTest = furniture.specialPackageProducts[0].description
 
   return (
     <div className="specialPackage">
@@ -222,12 +214,23 @@ const descriptionTest = furniture.popularProducts[0].description
 
       <div className="sepcialPackage-mobile-section">
        
-      <div className="products" style={MobileProductsElmnts} ref={MobileProductsGrid}>
+      <div className="products" 
+           style={MobileProductsElmnts} 
+           ref={MobileProductsGrid}>
         
-        <MobileProductComponent />
-        <MobileProductComponent/>
-        <MobileProductComponent/>
-        <MobileProductComponent/>
+        {furniture.specialPackageProducts.map( item =>
+          
+
+          <MobileProductComponent 
+          
+          image={item.image}
+          productName={item.name}
+          price={item.price}
+          description={item.description}
+          
+          />
+          
+          )}
         
       </div>
           
@@ -280,9 +283,19 @@ const descriptionTest = furniture.popularProducts[0].description
      <div className="second-group">
        <div style={TabletProductsElmnts} ref={TabletProductsGrid}>
       
-         <ScrollingProduct/>
-         <ScrollingProduct/>
-         <ScrollingProduct/>
+       {furniture.specialPackageProducts.map( item =>
+          
+
+          <ScrollingProduct
+          
+          image={item.image}
+          productName={item.name}
+          price={item.price}
+         
+          
+          />
+          
+          )}
 
        </div>
 
@@ -344,10 +357,16 @@ const descriptionTest = furniture.popularProducts[0].description
        <span>See More</span>
        <img src={SeeMoreArrowDown} />
        </div>
+
        <div className="scrolling-section">
 
             <div className="top">
-              <ScrollingProduct/>
+              <ScrollingProduct
+              productName={furniture.specialPackageProducts[1].name}
+              image={furniture.specialPackageProducts[1].image}
+              price={furniture.specialPackageProducts[1].price}
+              
+              />
               </div>
 
             <div className="scrolling-products-container">
@@ -355,7 +374,30 @@ const descriptionTest = furniture.popularProducts[0].description
             <div className="lists" style={listsStyle} >
 
             
+            {
 
+             furniture.specialPackageProducts.map(
+
+             item => 
+
+             <div className="scrollingProduct-wrap" ref={scrolledProdcut}>
+             <ScrollingProduct
+               infoSectionBckColor={'#f2fffc'}
+               ProductNameFontSize={'16px'}
+               starsImgSize={90}
+               seeDetailsFontSize={'14px'}
+               image={item.image}
+               productName={item.name}
+               price={item.price}
+             />
+             </div>
+               
+             )
+
+            }
+
+
+       {/*
            <div className="scrollingProduct-wrap" ref={scrolledProdcut}>
             <ScrollingProduct
               infoSectionBckColor={'white'}
@@ -394,6 +436,8 @@ const descriptionTest = furniture.popularProducts[0].description
               seeDetailsFontSize={'14px'}
             />
             </div>
+          */}
+
          
             </div>
 

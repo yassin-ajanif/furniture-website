@@ -1,0 +1,162 @@
+
+.benefits{
+
+    background: #E0EFF6;
+
+    margin-top: 80px;
+    padding-top: 70px;
+    padding-bottom: 100px;
+}
+
+
+.benefits-options, .benefits .title{
+    
+
+text-align: center;
+
+}
+
+
+
+.benefits h2{
+
+color: #07484A;
+text-align: center;
+font-family: var(--font-family-title);
+font-size: 36px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+
+}
+
+h3{
+
+    color: #07484A;
+    font-family: var(--font-family-title);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.benefits p{
+
+    color: #07484A;
+text-align: center;
+font-family: Open Sans;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+}
+
+
+.benefits .title{
+
+    max-width: 15ch;
+    margin-inline:auto;
+    
+}
+
+.container{
+
+   margin-inline:auto;
+}
+
+.benefits h3 , .benefits p {
+
+   max-width: 20ch;
+   margin-inline:auto;
+}
+
+
+.payment-methode .container{
+
+width:115px;
+height: 115px;
+border-radius: 25px;
+background: #EEEBFF;
+position:relative;
+margin-top:50px
+
+}
+
+.return-policy .container{
+
+    width:115px;
+height: 115px;
+border-radius: 25px;
+background: #FFF4E7;
+position:relative;
+margin-top:70px
+}
+
+.customer-support .container{
+
+    width:115px;
+    height: 115px;
+    border-radius: 25px;
+    background: #CAF3E5;
+    position:relative;
+    margin-top:70px
+
+}
+
+.container img {
+
+    position:absolute;
+    inset:0;
+    margin:auto;
+    
+}
+
+.payment-methode h3,
+.return-policy h3,
+.customer-support h3
+
+ {
+    margin-top:40px;
+    margin-bottom: 20px;
+
+}
+
+@media screen and (min-width:728px) {
+
+    .benefits-options{
+
+        display: flex;
+        justify-content: center;
+        margin-inline: 40px;
+        gap:8vw
+    }
+
+    .benefits .title {
+
+        max-width: none;
+    }
+
+    .payment-methode h3 ,.payment-methode  p {
+
+        max-width: 25ch;
+       
+     }
+
+     .return-policy h3 ,.return-policy  p {
+
+        max-width: 25ch;
+       
+     }
+
+     .customer-support h3 ,.customer-support  p {
+
+        max-width: 25ch;
+       
+     }
+    
+     .payment-methode .container{
+
+        margin-top: 70px;
+     }
+}

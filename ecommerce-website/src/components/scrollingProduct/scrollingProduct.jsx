@@ -10,33 +10,39 @@ const ScrollingProduct = (
    infoSectionBckColor,
    ProductNameFontSize,
    starsImgSize,
-   seeDetailsFontSize
+   seeDetailsFontSize,
+   image,
+   productName,
+   price,
+   description,
+  
 }
 
   ) => {
 
   
 
-    const [seeDetailsIsClicked,setseeDetailsIsClicked]=useState(false)
-
   return (
   
     <div className="scrollingProduct">
 
         <div className="scrollingProduct-left">
-          <img src={furniture.categoryProducts[4].image} 
-          className='principalImage'/>
+          <img src={image} 
+          className='principalImage'
+          />
         </div>
 
         <div className="scrollingProduct-right" 
         style={{backgroundColor:infoSectionBckColor}}>
 
-          <span className='productName' style={{fontSize:ProductNameFontSize}}>living room familty set </span>
-          <span className='price'>$229.99</span>
+        <div className="productName_price">
+          <span className='productName' style={{fontSize:ProductNameFontSize}}>{productName}</span>
+          <span className='price'>{price}</span>
+        </div>
+
           <img className='stars'src={stars} style={{width:starsImgSize}}/>
           <div className='seeDetails'>
             <p onClick={()=>setseeDetailsIsClicked(!seeDetailsIsClicked)} style={{fontSize:seeDetailsFontSize}}>See Details</p>
-            {seeDetailsIsClicked && <p>{seeDetailsDescription}</p>}
             </div>
           <button className='loopBtn'>
             <img src={loop} alt="" />

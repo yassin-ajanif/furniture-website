@@ -28,7 +28,9 @@
     border-radius: 10px;
     background: #C4C4C4;
     display: block;
-    width: 294px
+    width: 294px;
+    height:230px;
+    object-fit: cover;
 }
 
 .MobileProductContainer .productName{
@@ -56,7 +58,7 @@ margin-bottom:10px
 
 color: #07484A;
 font-family: Open Sans;
-font-size: 14px;
+font-size: 16px;
 font-style: normal;
 font-weight: 700;
 line-height: 115%;
@@ -167,12 +169,13 @@ margin-bottom: 10px;
         border-radius: 20px;
         background: #C4C4C4;
         overflow: hidden;
+        
     
     }
 
     .sepcialPackage-tablet-section .expandBtn{
 
-        border : 2px solid green;
+        /*border : 2px solid green;*/
         position: absolute;
         inset:0;
         width:35px;
@@ -196,6 +199,7 @@ margin-bottom: 10px;
         object-fit: cover;
         display: block;
     }
+
 
     .sepcialPackage-tablet-section .product-infos .productName{
 
@@ -311,8 +315,9 @@ margin-bottom: 10px;
 
         display: grid;
         grid-template-columns: 1fr 1fr;
+
         column-gap:5vw;
-        border:1px solid blue;
+       /* border:1px solid blue;*/
         
 
         
@@ -350,6 +355,7 @@ margin-bottom: 10px;
         left:100%;
         top:100%;
         transform: translate(-100%,-100%);
+        border:none
     }
 
     .sepcialPackage-desktop-section .left-group .productName-addTocard{
@@ -436,7 +442,7 @@ margin-bottom: 10px;
         font-family: Open Sans;
         font-size: 16px;
         font-style: normal;
-        font-weight: 500;
+        font-weight: 400;
         line-height: 115%;
         letter-spacing: -0.48px;
         margin-bottom:10px;
@@ -476,11 +482,15 @@ margin-bottom: 10px;
         grid-template-columns: 1fr 60px;
     }
 
+    
+
     .sepcialPackage-desktop-section .scrolling-section .top{
 
         margin-bottom: 30px;
+      
     }
-
+    
+  
     .sepcialPackage-desktop-section .scrolling-products-container{
 
         height: max-content;
@@ -489,8 +499,9 @@ margin-bottom: 10px;
      
     .sepcialPackage-desktop-section .scrolling-products-container 
     .lists{
-
-        border: 2px solid blue; 
+         
+       
+        /*border: 2px solid blue; */
         /*display: grid;*/
         transform: translateY(0px);
         
@@ -508,10 +519,15 @@ margin-bottom: 10px;
     .sepcialPackage-desktop-section .scrollingProduct-wrap{
 
 
+     /*display: grid;*/
       padding-bottom: 25px;
-
+     
+     
+      
     }
-
+    
+   
+    
    
     
 
