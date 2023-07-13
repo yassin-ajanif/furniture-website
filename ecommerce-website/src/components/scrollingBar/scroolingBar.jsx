@@ -56,6 +56,7 @@ const ScrollingBar = (
 
   function calibartionOfScrollBar(){
 
+    
  
     const lengthOfScrollBar = scrollbarContainer.current.getBoundingClientRect().width
     const ScrollbarIsexisting = lengthOfScrollBar>0
@@ -67,6 +68,8 @@ const ScrollingBar = (
 
    setScrollPosition(Math.min(scrollPosition,maxDistanceToScroll))
     
+   
+   
   }
 
   }

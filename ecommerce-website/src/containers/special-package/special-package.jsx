@@ -36,7 +36,7 @@ const SpecialPackage = () => {
 
 
 
- console.log('scrollingSectionHeight',scrollingSectionHeight)
+ 
  
  useEffect(()=>{
  
@@ -227,6 +227,7 @@ const descriptionTest = furniture.specialPackageProducts[0].description
           productName={item.name}
           price={item.price}
           description={item.description}
+          key={item.name}
           
           />
           
@@ -291,6 +292,7 @@ const descriptionTest = furniture.specialPackageProducts[0].description
           image={item.image}
           productName={item.name}
           price={item.price}
+          key={item.name}
          
           
           />
@@ -371,7 +373,7 @@ const descriptionTest = furniture.specialPackageProducts[0].description
 
             <div className="scrolling-products-container">
 
-            <div className="lists" style={listsStyle} >
+            <div className="lists" style={listsStyle}  >
 
             
             {
@@ -380,7 +382,10 @@ const descriptionTest = furniture.specialPackageProducts[0].description
 
              item => 
 
-             <div className="scrollingProduct-wrap" ref={scrolledProdcut}>
+             <div className="scrollingProduct-wrap" 
+                 ref={scrolledProdcut}
+                 key={Math.random()}
+             >
              <ScrollingProduct
                infoSectionBckColor={'#f2fffc'}
                ProductNameFontSize={'16px'}
@@ -389,6 +394,7 @@ const descriptionTest = furniture.specialPackageProducts[0].description
                image={item.image}
                productName={item.name}
                price={item.price}
+               key={Math.random()}
              />
              </div>
                
@@ -396,47 +402,6 @@ const descriptionTest = furniture.specialPackageProducts[0].description
 
             }
 
-
-       {/*
-           <div className="scrollingProduct-wrap" ref={scrolledProdcut}>
-            <ScrollingProduct
-              infoSectionBckColor={'white'}
-              ProductNameFontSize={'16px'}
-              starsImgSize={90}
-              seeDetailsFontSize={'14px'}
-            />
-            </div>
-            
-            <div className="scrollingProduct-wrap">
-
-            <ScrollingProduct
-              infoSectionBckColor={'white'}
-              ProductNameFontSize={'16px'}
-              starsImgSize={90}
-              seeDetailsFontSize={'14px'}
-            />
-            </div>
-          
-           
-            <div className="scrollingProduct-wrap">
-
-           <ScrollingProduct
-              infoSectionBckColor={'white'}
-              ProductNameFontSize={'16px'}
-              starsImgSize={90}
-              seeDetailsFontSize={'14px'}
-            />
-            </div>
-          
-            <div className="scrollingProduct-wrap">
-           <ScrollingProduct
-              infoSectionBckColor={'white'}
-              ProductNameFontSize={'16px'}
-              starsImgSize={90}
-              seeDetailsFontSize={'14px'}
-            />
-            </div>
-          */}
 
          
             </div>
