@@ -20,7 +20,8 @@ const ScrollingBar = (
     btnsDisplayJustifyPosition,
     calibrateScrollBar,
     getScrollingPosition,
-    marginBtns
+    marginBtns,
+    color
    
     
   }) => {
@@ -153,19 +154,18 @@ const ScrollingBar = (
     position: 'relative',
     display: 'inline-flex',
     alignItems: 'center',
+    height:objectToDragHeight+'px'
   
 }
 
   const objectToDragStyle = {
-
-    display: "block",
-    fontSize: "20px",
-    paddingTop:'8px',
-    paddingBottom:'8px',
+    
+   
     width: objectToDragWidth+'px',
     height: objectToDragHeight+'px',
     position: "absolute",
-    left: `${scrollPosition}px`
+    left: `${scrollPosition}px`,
+    backgroundColor:color
 
   }
 
@@ -237,12 +237,12 @@ const ScrollingBar = (
       <div style={scrollBarLineContainer} 
            ref={scrollbarContainer}
            >
+
         <img style={distanceWhereToDrag} src={longerLine} />
 
-       {/*<div style={scrollbarElementWrap}> </div>*/}
-        <img
+      
+        <div
           ref={scrollbarElement}
-          src={shortLigne}
           style={objectToDragStyle}
           onMouseDown={handleMouseclick}
          // onClick={test}
@@ -251,7 +251,7 @@ const ScrollingBar = (
           }}
           onMouseMove={handleDrag}
           onMouseLeave={() => setIsmousClicked(false)}
-        />
+        ></div>
       
 
       </div>

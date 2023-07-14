@@ -6,12 +6,18 @@ import furniture from '../../furniture.json'
 const OwnCreation = () => {
 
 const [scrollBarMobileWidth,setScrollBarMobileWidth]=useState(0)
+const [scrollBarTabletDesktopWidth,setScrollBarTabletDesktopWidth]=useState(0)
+
 const scrollBarMobile = useRef(null)
 const gridOwnCreationImages = useRef(null)
 const imageContainer = useRef(null)
-const [translateImgs,settranslateImgs]=useState(0)
+const ownCreationLeft = useRef(null)
+const gridOwnCreationImagesRight = useRef(null)
+const [translateMobileImgs,settranslateMobileImgs]=useState(0)
+const [translateTabletDesktopImgs,settranslateTabletDesktopImgs]=useState(0)
 const [calibrate,setCalibrate]=useState(false)
-const scrollingBarElmntWidth =84
+const scrollingBarMobileElmntWidth =84
+const scrollingBarTabletDesktopElmntWidth =27
 const scrollingBarElmntHeight =5
 const [slideImageWidth,setslideImageWidth]=useState(0)
     
@@ -23,6 +29,7 @@ autoResizeScrollBar()
 const getSlidingImageWidth = imageContainer.current.getBoundingClientRect().width
 setslideImageWidth(prevImageWidth => getSlidingImageWidth)
 
+//
 window.addEventListener('resize',autoResizeScrollBar)
 
 return () => window.removeEventListener('resize',autoResizeScrollBar) 
@@ -31,35 +38,152 @@ return () => window.removeEventListener('resize',autoResizeScrollBar)
 },[])
 
 
-//console.log('slideImageWidth',slideImageWidth)
-console.log('translateImgs',translateImgs)
+console.log('translateMobileImgs',translateMobileImgs)
+console.log('translateTabletDesktopImgs',translateTabletDesktopImgs)
+
 
 function autoResizeScrollBar(){
 
     const PageViewPort = document.documentElement.clientWidth
+
     //setting the new scrollbar size of mobile version when you resize the page
     const scrollBarMobileOffsetX = scrollBarMobile.current.getBoundingClientRect().left
     setScrollBarMobileWidth(PageViewPort-scrollBarMobileOffsetX )
     
     setCalibrate(prev => !prev)
-    
-   
+
+//setting the new scrollbar size of tablet version when you resize the page   
+
+// setting the scrollbarWidth according to it container owncreating left this is for the tablet and desktops version
+// we set the width of the container a scrollbar is inside which is ownCreationLeft
+const ownCreationLeftWidth = ownCreationLeft.current.clientWidth
+// the width of right and left scrolling btns
+const scrollingbtnsWidth = 94
+// margins between btns and scrollbarLine
+const margins = 130
+const getScrollBarTabletDesktopWidth = ownCreationLeftWidth-scrollingbtnsWidth-margins
+
+setScrollBarTabletDesktopWidth(getScrollBarTabletDesktopWidth)
+
+   checkTheViewPort()
   }
 
-function scrollImages (scrollPosition) {
+function scrollImagesMobile (scrollPosition) {
 
 const PageViewPort = document.documentElement.clientWidth;
 // detemining the widht of whole container that contain images the container will be draging
 const MobilegridOwnCreationImagesWidth = gridOwnCreationImages.current.clientWidth
+
 // determinng the widht of non show grid 
 const widthOfgridHiddenPart = MobilegridOwnCreationImagesWidth-PageViewPort
 // determining the max distance the scrollBarCursor will move
-const MaxScrollBarDistance = scrollBarMobileWidth - scrollingBarElmntWidth
+const MaxScrollBarDistance = scrollBarMobileWidth - scrollingBarMobileElmntWidth
 const scrollingRatio = widthOfgridHiddenPart/MaxScrollBarDistance    
 const scrollingElmntsPosition = scrollPosition*scrollingRatio
-settranslateImgs(scrollingElmntsPosition)
+settranslateMobileImgs(scrollingElmntsPosition)
 
     }
+
+function scrollImagesTabletDesktop(scrollPosition) {
+
+  
+
+const PageViewPort = document.documentElement.clientWidth; // detemining the widht of whole container that contain images the container will be draging
+const TabletgridOwnCreationImagesWidth = gridOwnCreationImagesRight.current.clientWidth
+// determinng the widht of non show grid 
+const ownCreationLeftWidth = ownCreationLeft.current.clientWidth
+// this is the gap that we set in our css file is 20 it's in the ".ownCreationRight .images" function
+const gap = 20
+const widthOfgridHiddenPart = TabletgridOwnCreationImagesWidth + ownCreationLeftWidth -PageViewPort +gap
+// determining the max distance the scrollBarCursor will move
+
+const MaxScrollBarDistance = scrollBarTabletDesktopWidth - scrollingBarTabletDesktopElmntWidth
+
+const scrollingRatio = widthOfgridHiddenPart/MaxScrollBarDistance    
+const scrollingElmntsPosition = scrollPosition*scrollingRatio
+settranslateTabletDesktopImgs(scrollingElmntsPosition)
+
+    }
+
+function checkImgsPositionMobile(imageSlidePosition){
+ 
+      if(
+    
+        translateMobileImgs >= imageSlidePosition 
+        && 
+        translateMobileImgs <= imageSlidePosition+slideImageWidth
+        
+       
+       )  return '1.05' 
+       
+           return '1'
+    
+     }
+    
+function checkImgsPositionTabletDesktop(imageSlidePosition){
+    
+      
+      if(
+    
+     translateTabletDesktopImgs >= imageSlidePosition 
+        &&
+     translateTabletDesktopImgs <= imageSlidePosition+slideImageWidth )  return '1.05' 
+       
+           return '1'
+     }
+
+function scalingImages (index){
+    
+      const imageSlidePosition = slideImageWidth*index
+      const PageViewPort = window.innerWidth
+      const ismobileMode = PageViewPort<728
+      const istabletAndDesktopMode = PageViewPort>=728
+      
+      /* 
+      imageSlidePosition is a position of an image according to its container
+      we multiplied by index becuase the images have the same width for example
+      the first image position is  slideImageWidth*index = 0  ==>  slideImageWidth=245 *index=0 so imageSlidePosition=0
+      the second image position is  slideImageWidth=245*1= 245
+      so by conicidence we determining the positon of image just by their width which is cool
+      */
+      
+       // checking the image poisiton to scale it in mobile version 
+       
+       if(ismobileMode){
+      
+      
+      return checkImgsPositionMobile(imageSlidePosition)
+      
+        
+       }
+      
+       else if(istabletAndDesktopMode){
+       
+        return checkImgsPositionTabletDesktop(imageSlidePosition)
+      
+       }
+      
+      
+      
+      }
+
+function checkTheViewPort(){
+
+  const PageViewPort = window.innerWidth
+  const ismobileMode = PageViewPort<728
+  const istabletAndDesktopMode = PageViewPort>=728
+  
+
+   if(ismobileMode) {
+
+    settranslateTabletDesktopImgs(0)
+    console.log('mobile')
+  }
+
+   else if( istabletAndDesktopMode) settranslateMobileImgs(0)
+
+   
+}
 
 
     
@@ -67,34 +191,15 @@ settranslateImgs(scrollingElmntsPosition)
 
 const ownCreationContainerStyle ={ 
 
-    transform: `translateX(${-translateImgs}px)`,
+    transform: `translateX(${-translateMobileImgs}px)`,
 }
 
-function scalingImages (index){
-    
-const imageSlidePosition = slideImageWidth*index
+const ownCreationLeftStyle ={
 
-/* 
-imageSlidePosition is a position of an image according to its container
-we multiplied by index becuase the images have the same width for example
-the first image position is  slideImageWidth*index = 0  ==>  slideImageWidth=245 *index=0 so imageSlidePosition=0
-the second image position is  slideImageWidth=245*1= 245
-so by conicidence we determining the positon of image just by their width which is cool
-*/
-
-    
-if(
-
- translateImgs >= imageSlidePosition 
-
- &&
-
- translateImgs <= imageSlidePosition+slideImageWidth
-
-) return '1.05'
-
-    return '1'
+  transform: `translateX(${-translateTabletDesktopImgs}px)`
 }
+
+
 
 
   return (
@@ -107,26 +212,29 @@ if(
     style={ownCreationContainerStyle}
     >
      
-     <div className="ownCreationLeft">
+     <div className="ownCreationLeft" ref={ownCreationLeft}>
        
         <div className="wrap">
         <h2>Our Own Creation</h2>
         <h3>Designed in our studio</h3>
         <div className="more_scrollBar">
             <p>More</p>
-            <div className="ownCreationScrollBarTabletDesktop" ref={scrollBarMobile}>
+            <div className="ownCreationScrollBarTabletDesktop"
+             ref={scrollBarMobile}>
      <ScrollBar
 
-getScrollingPosition={scrollImages}
+getScrollingPosition={scrollImagesTabletDesktop}
 
 btnsDisplay={'flex'}
 btnsDisplayJustifyPosition={'end'}
 btnsPosition={'inline-flex'} 
-objectToDragWidth={30}
-objectToDragHeight={30}
-distanceWhereToDragWidth={150}
+objectToDragWidth={scrollingBarTabletDesktopElmntWidth}
+objectToDragHeight={8}
+distanceWhereToDragWidth={scrollBarTabletDesktopWidth}
 distanceWhereToDragHeight={scrollingBarElmntHeight}
 calibrateScrollBar={calibrate}
+marginBtns={'0 0 0 40px'}
+color={'white'}
 
 />
 
@@ -137,9 +245,11 @@ calibrateScrollBar={calibrate}
 
      </div> 
 
-     <div className="ownCreationRight">
+     <div className="ownCreationRight" 
+     >
       
-       <div className="images"  >
+       <div className="images" ref={gridOwnCreationImagesRight}
+            style={ownCreationLeftStyle} >
         {
           furniture.ownCreationGallery.map((item,index) =>
            
@@ -163,16 +273,17 @@ calibrateScrollBar={calibrate}
      <div className="ownCreationScrollBarMobile" ref={scrollBarMobile}>
      <ScrollBar
 
-getScrollingPosition={scrollImages}
+getScrollingPosition={scrollImagesMobile}
 
 btnsDisplay={'none'}
 btnsDisplayJustifyPosition={'end'}
 btnsPosition={'inline-grid'} 
-objectToDragWidth={scrollingBarElmntWidth}
+objectToDragWidth={scrollingBarMobileElmntWidth}
 objectToDragHeight={30}
 distanceWhereToDragWidth={scrollBarMobileWidth}
 distanceWhereToDragHeight={scrollingBarElmntHeight}
 calibrateScrollBar={calibrate}
+color={'green'}
 
 />
 
