@@ -70,7 +70,10 @@ setScrollBarTabletDesktopWidth(getScrollBarTabletDesktopWidth)
 
 function scrollImagesMobile (scrollPosition) {
 
+  //geting the viewport value without including scrollBar
 const PageViewPort = document.documentElement.clientWidth;
+  // getting the viewport value including the scrollBar
+  const fullViewPort = window.innerWidth
 // detemining the widht of whole container that contain images the container will be draging
 const MobilegridOwnCreationImagesWidth = gridOwnCreationImages.current.clientWidth
 
@@ -80,15 +83,24 @@ const widthOfgridHiddenPart = MobilegridOwnCreationImagesWidth-PageViewPort
 const MaxScrollBarDistance = scrollBarMobileWidth - scrollingBarMobileElmntWidth
 const scrollingRatio = widthOfgridHiddenPart/MaxScrollBarDistance    
 const scrollingElmntsPosition = scrollPosition*scrollingRatio
-settranslateMobileImgs(scrollingElmntsPosition)
+
+// if we resize to the tablet or dektop reset the images positions to zero for mobile version
+if(fullViewPort>=728) settranslateMobileImgs(0)
+
+else {settranslateMobileImgs(scrollingElmntsPosition)}
+
+
 
     }
 
 function scrollImagesTabletDesktop(scrollPosition) {
 
   
-
-const PageViewPort = document.documentElement.clientWidth; // detemining the widht of whole container that contain images the container will be draging
+// detemining the widht of whole container that contain images the container will be draging
+// getting the viewport value without including the scrollBar
+const PageViewPort = document.documentElement.clientWidth; 
+ // getting the viewport value including the scrollBar
+const fullViewPort = window.innerWidth
 const TabletgridOwnCreationImagesWidth = gridOwnCreationImagesRight.current.clientWidth
 // determinng the widht of non show grid 
 const ownCreationLeftWidth = ownCreationLeft.current.clientWidth
@@ -101,7 +113,14 @@ const MaxScrollBarDistance = scrollBarTabletDesktopWidth - scrollingBarTabletDes
 
 const scrollingRatio = widthOfgridHiddenPart/MaxScrollBarDistance    
 const scrollingElmntsPosition = scrollPosition*scrollingRatio
-settranslateTabletDesktopImgs(scrollingElmntsPosition)
+
+// if we resize to the mobile version reset the images positions to zero for mobile version
+
+
+if(fullViewPort<=728) settranslateTabletDesktopImgs(0)
+
+else {settranslateTabletDesktopImgs(scrollingElmntsPosition)}
+
 
     }
 
@@ -191,7 +210,7 @@ function checkTheViewPort(){
 
 const ownCreationContainerStyle ={ 
 
-    transform: `translateX(${-translateMobileImgs}px)`,
+  transform: `translateX(${-translateMobileImgs}px)`,
 }
 
 const ownCreationLeftStyle ={

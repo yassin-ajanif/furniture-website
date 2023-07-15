@@ -55,7 +55,7 @@ border-radius: 10px;
 
 }
 
-::placeholder{
+.serach-category input::placeholder{
 
    
 font-family: 'Roboto';
@@ -553,8 +553,6 @@ height: 2.083vw
     inset: 0;
     margin:auto
 }
-
-
 
 
 
