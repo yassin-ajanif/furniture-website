@@ -1,0 +1,110 @@
+
+.testimonials-container{
+
+   overflow: hidden;
+}
+
+.testimonials .persons{
+
+    display: grid;
+    grid-template-columns: repeat(3,100%);
+    
+}
+
+.testimonials .title{
+
+    color: #07484A;
+font-family: var(--font-family-title);
+font-size: 36px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+text-align: center;
+
+}
+
+.testimonials .text{
+
+    color: #07484A;
+font-family: var(--font-family-text);
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-align: center;
+margin-top:30px;
+margin-bottom: 49px;
+}
+
+
+.testimonials .colons{
+
+width: 129px;
+height: 97px;
+}
+
+.testimonials .colons img{
+
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonials-container .scrollBarDesktop{
+
+    display: none;
+    margin-left:3vw;
+
+   }
+
+   .testimonials-container .scrollBarMobileTablet{
+
+  
+    margin-left:3vw;
+
+   }
+
+
+@media screen and (min-width:728px){
+
+
+
+    .testimonials .title{
+
+        color: #07484A;
+        font-family: var(--font-family-title);
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    
+    }
+    
+    .testimonials .text{
+    
+        color: #07484A;
+        font-family: var(--font-family-text);
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    
+
+}
+
+@media screen and (min-width:1024px){
+
+
+  .testimonials-container .scrollBarDesktop{
+
+    display: block;
+  }
+
+  .testimonials-container .scrollBarMobileTablet{
+
+    display: none;
+  }
+
+
+}

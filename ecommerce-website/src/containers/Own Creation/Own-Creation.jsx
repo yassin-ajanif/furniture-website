@@ -38,8 +38,7 @@ return () => window.removeEventListener('resize',autoResizeScrollBar)
 },[])
 
 
-console.log('translateMobileImgs',translateMobileImgs)
-console.log('translateTabletDesktopImgs',translateTabletDesktopImgs)
+
 
 
 function autoResizeScrollBar(){
@@ -196,7 +195,7 @@ function checkTheViewPort(){
    if(ismobileMode) {
 
     settranslateTabletDesktopImgs(0)
-    console.log('mobile')
+    
   }
 
    else if( istabletAndDesktopMode) settranslateMobileImgs(0)

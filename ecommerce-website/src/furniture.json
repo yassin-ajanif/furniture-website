@@ -61,9 +61,23 @@
 [{"image":"src/containers/special-package/special-package-assets/living room.jpg"},
 {"image":"src/containers/special-package/special-package-assets/workspace.jpg"},
 {"image":"src/containers/special-package/special-package-assets/dinning room.jpg"},
-{"image":"src/containers/special-package/special-package-assets/meeting room.jpg"}]
+{"image":"src/containers/special-package/special-package-assets/meeting room.jpg"}],
 
+"Testimonials" : 
+[ 
+  {"image":"src/containers/testimonials/testimonials-assets/ceo1p.jpg",
+   "text":"“My experience with Mark is a complete sucess, from customer service, wide range of products, clean store, purchasing experience, the newsletter. Literally is great. Thank you.”",
+   "name":"Leona Paul","profession":"CEO of Floatcom"},
+  
+{"image":"src/containers/testimonials/testimonials-assets/ceo2p.jpg",
+  "text":"“My experience with Mark is a complete sucess, from customer service, wide range of products, clean store, purchasing experience, the newsletter. Literally is great. Thank you.”",
+  "name":"Adam Yates","profession":"CEO of Sg Tech"},
+ 
+{"image":"src/containers/testimonials/testimonials-assets/ceo3p.jpg",
+ "text":"“My experience with Mark is a complete sucess, from customer service, wide range of products, clean store, purchasing experience, the newsletter. Literally is great. Thank you.”",
+"name":"Tomas Geraint","profession":"CEO of VirginCom"}
 
+]
 
 
 }

@@ -91,7 +91,7 @@ const ScrollingBar = (
    setscrollBarPosition(scrollingPosition)
    setobjectToDragPosition(scrollBarPosition)
    
-   // calibartionOfScrollBar()
+ 
     
 
 

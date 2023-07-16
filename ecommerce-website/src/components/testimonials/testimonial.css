@@ -1,0 +1,166 @@
+
+
+
+.Testimonial{
+
+    display: grid;
+    border: 1px solid blue;
+    
+}
+
+.Testimonial .image{
+
+
+width:auto;
+height: 88vw;
+border-radius: 20px;
+background: #C4C4C4;
+margin-bottom: 30px;
+margin-inline: 16px;
+overflow: hidden;
+}
+
+.Testimonial .image img {
+
+ width:100%;
+ height: 100%;
+ object-fit: cover;
+ object-position: top;
+
+
+}
+
+
+.Testimonial .right {
+
+    margin-inline:16px
+}
+
+.Testimonial .left {
+
+    position: relative;
+}
+
+.Testimonial .left  .colons{
+
+    position: absolute;
+    inset: 0;
+    transform: translateY(-30%);
+}
+
+
+
+.Testimonial .Text {
+
+color: #07484A;
+font-family: var(--font-family-text);
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+}
+
+.Testimonial .Name{
+
+    color: #07484A;
+    font-family: var(--font-family-title);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 20px;
+    margin-bottom: 11px;
+}
+
+.Testimonial .Profession{
+
+
+    color: #07484A;
+    font-family: var(--font-family-text);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+@media screen and (min-width:728px) {
+    
+
+    .Testimonial{
+
+        display: grid;
+        grid-template-columns: 421px 1fr;
+        grid-template-rows: 410px;
+        column-gap: 20px;
+        border: 1px solid blue;
+    }
+   
+    .Testimonial .image{ 
+       
+        height: 100%;
+        
+    }
+    
+    .Testimonial .image {}
+
+
+    .Testimonial .Text {
+
+        margin-bottom: 50px;
+        
+        }
+        
+        .Testimonial .Name{
+        
+            color: #07484A;
+            font-family: var(--font-family-title);
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+        
+        .Testimonial .Profession{
+        
+        
+            color: #07484A;
+            font-family: var(--font-family-text);
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+        }
+
+        .Testimonial .image{
+
+            width:421px;
+            height: 410px;
+        }
+}
+
+@media screen and (min-width:1024px) {
+
+
+    .Testimonial{
+
+       
+        column-gap: 50px;
+        
+    }
+
+    .Testimonial .Text {
+
+        margin-bottom: 50px;
+        margin-top: 50px;
+        color: #07484A;
+        font-family: var(--font-family-text);
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        }
+        
+      
+
+}
