@@ -243,12 +243,13 @@ const descriptionTest = furniture.specialPackageProducts[0].description
           btnsPosition={'inline-grid'} 
           //objectToDragWidth={popularProductWidth/3}
           objectToDragWidth={scrollingMobileElmntSize}
-          objectToDragHeight={30}
+          objectToDragHeight={7}
           //distanceWhereToDragWidth={scrollBarMobileTabletWidth}
           distanceWhereToDragWidth={scrollingMobileBarWidth}
           distanceWhereToDragHeight={5}
           calibrateScrollBar={calibrate}
           getScrollingPosition={scrollProductImages}
+          color={' #70908B'}
 
           />
 
@@ -309,12 +310,13 @@ const descriptionTest = furniture.specialPackageProducts[0].description
           btnsPosition={'inline-grid'} 
           //objectToDragWidth={popularProductWidth/3}
           objectToDragWidth={scrollingTabletElmntSize}
-          objectToDragHeight={10}
+          objectToDragHeight={7}
           //distanceWhereToDragWidth={scrollBarMobileTabletWidth}
           distanceWhereToDragWidth={scrollingTabletBarWidth}
           distanceWhereToDragHeight={5}
           calibrateScrollBar={calibrate}
           getScrollingPosition={scrollProductImages}
+          color={'#70908B'}
 
           />
        </div>

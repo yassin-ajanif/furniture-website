@@ -4,7 +4,7 @@
 .Testimonial{
 
     display: grid;
-    border: 1px solid blue;
+    
     
 }
 
@@ -93,7 +93,7 @@ line-height: normal;
         grid-template-columns: 421px 1fr;
         grid-template-rows: 410px;
         column-gap: 20px;
-        border: 1px solid blue;
+       
     }
    
     .Testimonial .image{ 

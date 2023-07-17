@@ -247,7 +247,7 @@ btnsDisplay={'flex'}
 btnsDisplayJustifyPosition={'end'}
 btnsPosition={'inline-flex'} 
 objectToDragWidth={scrollingBarTabletDesktopElmntWidth}
-objectToDragHeight={8}
+objectToDragHeight={7}
 distanceWhereToDragWidth={scrollBarTabletDesktopWidth}
 distanceWhereToDragHeight={scrollingBarElmntHeight}
 calibrateScrollBar={calibrate}
@@ -297,11 +297,11 @@ btnsDisplay={'none'}
 btnsDisplayJustifyPosition={'end'}
 btnsPosition={'inline-grid'} 
 objectToDragWidth={scrollingBarMobileElmntWidth}
-objectToDragHeight={30}
+objectToDragHeight={7}
 distanceWhereToDragWidth={scrollBarMobileWidth}
 distanceWhereToDragHeight={scrollingBarElmntHeight}
 calibrateScrollBar={calibrate}
-color={'green'}
+color={'#70908B'}
 
 />
 

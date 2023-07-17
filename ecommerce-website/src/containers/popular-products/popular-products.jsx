@@ -147,11 +147,12 @@ function extractScrollingPos(PositionOfCursor){
         btnsPosition={'inline-grid'} 
         //objectToDragWidth={popularProductWidth/3}
         objectToDragWidth={ScrollingElmnSize}
-        objectToDragHeight={30}
+        objectToDragHeight={7}
         distanceWhereToDragWidth={scrollBarMobileTabletWidth}
         distanceWhereToDragHeight={5}
         calibrateScrollBar={calibrate}
         getScrollingPosition={extractScrollingPos}
+        color={'#70908B'}
         
         />
         </div>  
@@ -163,12 +164,13 @@ function extractScrollingPos(PositionOfCursor){
         btnsPosition={'inline-grid'} 
         objectToDragWidth={ScrollingElmnSize}
         //objectToDragWidth={183}
-        objectToDragHeight={30}
+        objectToDragHeight={7}
         distanceWhereToDragWidth={scrollbarDesktopWidth}
         distanceWhereToDragHeight={5}
         calibrateScrollBar={calibrate}
         getScrollingPosition={extractScrollingPos}
         marginBtns={'14px 0 0 0'}
+        color={'#70908B'}
         />
         </div>  
         

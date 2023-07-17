@@ -60,20 +60,21 @@ const Testimonials = () => {
   MaxScrollBarDistance = scrollBarTabletDesktopWidth - scrollingDesktopElemntWidth;
      
   }
-     
-
+    
+    // we se a scrollingPosition to a value between scrollPosition and MaxScrollBarDistance
+    // it is useful when we resize the scrollBar so the desktop scrollbar value does not affect the mobile version
+    const scrollingPosition = Math.min(scrollPosition,MaxScrollBarDistance)
+  
     const scrollingRatio = scrollingTesimonialDistance/MaxScrollBarDistance    
-    const scrollingElmntsPosition = scrollPosition*scrollingRatio
+    const scrollingElmntsPosition = scrollingPosition*scrollingRatio
 
-    //setTranslatetStep(Math.min(scrollingElmntsPosition,MaxScrollBarDistance))
     setTranslatetStep(scrollingElmntsPosition)
-
-    console.log('MaxScrollBarDistance',MaxScrollBarDistance)
-    console.log('scrollPosition',scrollPosition)
+    
+    
 
   }
  
-  console.log('translateStep',TranslateStep)
+  
   
 
 
