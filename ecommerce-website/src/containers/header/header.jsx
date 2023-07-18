@@ -1,14 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import MobileMenu from './header-assets/mobileMenu.png'
 import logo from './header-assets/logo.png'
 import search from './header-assets/search.png'
 import card from './header-assets/card.png'
 import member from './header-assets/member.png'
 import './header.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink,useNavigate} from 'react-router-dom'
+
 
 
 const Header = () => {
+  
+ const navigate = useNavigate()
+
+  function openYourCart (){
+
+    navigate('/shoppingCard')
+  }
 
   return (
 
@@ -28,7 +36,7 @@ const Header = () => {
         </div>
        <div className="right-icons">
         <div className="search"><img src={search} alt="" /></div>
-        <div className="card"><img src={card} alt="" /></div>
+        <div className="card" onClick={openYourCart}><img src={card}/></div>
         <div className="member"><img src={member} alt="" /></div>
         </div>
 

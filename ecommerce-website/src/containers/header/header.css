@@ -24,26 +24,32 @@ padding-top: 2rem;
 
 }
 
+.header .YourCard{
+
+    width:50vw;
+    height: 50vh;
+    background-color: aqua;
+    position:absolute;
+    inset:0;
+    left:100%;
+    transform: translateX(-100%);
+    opacity:.5
+
+}
+
+
+
 .menu-mobile{
 
     
 
 }
 
-.logo{
-
-   
-}
 
 .desktop-menu{ display: none;}
 
 .right-icons{ display: flex; gap:18px; }
 
-.search{}
-
-.card{}
-
-.member{}
 
 .header-content{
 
