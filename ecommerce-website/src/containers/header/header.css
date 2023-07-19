@@ -21,6 +21,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 padding-top: 2rem;
+background: #C4C4C4;
 
 }
 
@@ -53,7 +54,7 @@ padding-top: 2rem;
 
 .header-content{
 
-    margin-top: 21vh;
+    padding-top: 21vh;
     text-align: center;
     
 }
@@ -128,7 +129,7 @@ color: #FDFBF8;
 
     .header-content {
 
-        margin-top: 14vh;
+        padding-top: 14vh;
         text-align: start;
     }
 

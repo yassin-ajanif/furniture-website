@@ -4,6 +4,7 @@ import { Header,Category,PopularProducts,SpecialPackage,Benefits,Testimonials,Ne
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import OwnCreation from './containers/Own Creation/Own-Creation'
 import YourCard from './components/YourCard'
+import Navabar from './containers/navbar/Navabar'
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
     return (
 
     <>
-   
+    <Header/>
     <Category/>
     <PopularProducts/>
     <SpecialPackage/>
@@ -36,7 +37,7 @@ function App() {
  
   <BrowserRouter>
    
-  <Header/>
+  <Navabar/>
    
   <Routes>
 
