@@ -1,0 +1,121 @@
+
+.YourCard{
+
+}
+
+
+table {
+
+ width:100%;
+ padding: 5vw 28px;
+    
+}
+
+thead tr th{
+
+    text-align: left;
+    font-family: var(--font-family-title);
+    padding-bottom: 50px;
+
+}
+
+td .product-container{
+
+  display: grid;
+  width:max-content;
+  position: relative;
+
+}
+
+td .product-container .close{
+
+    position: absolute;
+    width:12px;
+    height: 12px;
+    inset:0;
+    left:100%;
+    transform: translate(-50% , -50%);
+
+
+}
+
+td .product-container .close img{
+
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+tr .name{
+
+    display: inline-block;
+    font-family: var(--font-family-title);
+    margin-top:10px;
+    justify-self: center;
+    font-weight: 400;
+    
+}
+
+tr .image{
+
+    width:150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 5px;
+    background:  #C4C4C4;
+    
+}
+
+tr .image img{
+
+  width:100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+}
+
+td .quantity {
+
+    background-color: #F0EFF2;
+    width: max-content;
+    height: max-content;
+    /*border-radius: 5px;*/
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 100%;
+    gap:5px;
+    align-items: center;
+    
+    
+}
+
+
+td .quantity img{
+    
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    
+}
+
+ td.price , td.total {
+
+  font-family: var(--font-family-title);
+  
+}
+
+td .quantity .quantityValue{
+
+    color:gray;
+    font-family: var(--font-family-title);
+    font-weight: 400px;
+}
+
+
+
+.YourCard .line-divider {
+
+    padding-block:30px
+}

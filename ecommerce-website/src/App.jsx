@@ -3,7 +3,7 @@ import './App.css'
 import { Header,Category,PopularProducts,SpecialPackage,Benefits,Testimonials,Newsletter,Footer } from './index'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import OwnCreation from './containers/Own Creation/Own-Creation'
-import YourCard from './components/YourCard'
+import YourCard from './components/yourCard/YourCard'
 import Navabar from './containers/navbar/Navabar'
 
 function App() {

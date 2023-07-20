@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import stars from '../../containers/special-package/special-package-assets/stars.png'
 import loop from '../../containers/special-package/special-package-assets/loop.png'
-import furniture from '../../furniture.json'
+
 import './scrollingProduct.css'
 
 const ScrollingProduct = (

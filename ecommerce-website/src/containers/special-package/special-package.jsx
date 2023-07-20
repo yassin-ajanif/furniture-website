@@ -8,6 +8,8 @@ import SeeMoreArrowDown from './special-package-assets/seeMoreArrowDown.png'
 import expandImgTablet from './special-package-assets/expand-tablet.png'
 import ScrollingProduct from "../../components/scrollingProduct/scrollingProduct";
 import VerticalScrollBar from "../../components/verticalScrollBar/VerticalScrollBar";
+import {useDispatch,useSelector} from 'react-redux'
+import { incrementProductNumber,addingProduct } from "../../Slice";
 import './special-package.css'
 
 
@@ -32,11 +34,8 @@ const SpecialPackage = () => {
  const [GridProductsMobileOffsetX,setGridMobileProductsOffsetX]=useState(0)
  const [GridProductsTabletOffsetX,setGridTabletProductsOffsetX]=useState(0)
  const [calibrate,setcalibrate]=useState(false)
- 
+ const dispatch = useDispatch()
 
-
-
- 
  
  useEffect(()=>{
  
@@ -155,10 +154,21 @@ function autoResizeScrollBar(){
   // change the state to run the useffect agin which mean restart a calibration 
   setcalibrate(!calibrate)
 
- 
- 
 }
+
+function addToCart (image,price,productName) {
+  
+  dispatch(incrementProductNumber());
+  dispatch(addingProduct({image,price,productName}))
+
+
+}
+
+
 function MobileProductComponent({image,productName,price,description}){
+
+
+
 
   return <div className="MobileProductContainer">
 
@@ -168,7 +178,8 @@ function MobileProductComponent({image,productName,price,description}){
           <div className="productName">{productName}</div>
           <div className="stars"><img src={stars} alt="" /></div>
           <p className="price">{price}</p>
-          <button className="addToCart">
+          <button className="addToCart" 
+           onClick={()=>{ addToCart(image,price,productName) }}>
             <span>Add to Cart</span>
             <img src={trolley} alt="" />
           </button>

@@ -14,6 +14,11 @@ reducers: {
 
     incrementProductNumber: (state)=>{state.count++},
     decrementProductNumber: (state)=>{state.count--},
+    addingProduct         : (state,action) => {
+
+    state.addedProducts = [...state.addedProducts,action.payload]
+
+    }
 
 }
 
@@ -22,5 +27,5 @@ reducers: {
 })
 
 export default CardSlice.reducer 
-export const {incrementProductNumber,decrementProductNumber} = CardSlice.actions
+export const {incrementProductNumber,decrementProductNumber,addingProduct} = CardSlice.actions
 
