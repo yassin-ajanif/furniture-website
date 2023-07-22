@@ -100,7 +100,7 @@ td .quantity img{
     
 }
 
- td.price , td.total {
+ td.price , td.total, td.totalBill {
 
   font-family: var(--font-family-title);
   
@@ -118,4 +118,16 @@ td .quantity .quantityValue{
 .YourCard .line-divider {
 
     padding-block:30px
+}
+
+.YourCard .ProccedToCheckOut{
+
+    padding: 10px;
+    font-family: var(--font-family-title);
+    font-size: 16px;
+    background-color: var(--btn-color);
+    color:white;
+    border-radius: 5px;
+    border:none;
+
 }

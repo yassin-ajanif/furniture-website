@@ -158,8 +158,19 @@ function autoResizeScrollBar(){
 
 function addToCart (image,price,productName) {
   
+  // set the quantity and Total intial values to send them through dispatch with product data
+ const quantity = 1
+ 
   dispatch(incrementProductNumber());
-  dispatch(addingProduct({image,price,productName}))
+
+// we have price as  string we want to convert it to a number and remove $ sign before send it to reducer
+  const sliceDollarSignFromPrice = price.slice(1)
+  const priceAsNumber = Number(sliceDollarSignFromPrice)
+  // set the total price when you add products
+  const total = priceAsNumber
+  
+
+  dispatch(addingProduct({image,priceAsNumber,productName,quantity,total}))
 
 
 }
@@ -167,7 +178,7 @@ function addToCart (image,price,productName) {
 
 function MobileProductComponent({image,productName,price,description}){
 
-
+  
 
 
   return <div className="MobileProductContainer">

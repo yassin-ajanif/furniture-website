@@ -1,22 +1,46 @@
-import React from 'react'
+import React, { useState,useEffect,useRef } from 'react'
 import './yourCard.css'
 import furniture from '../../furniture.json'
-import minus from './yourCard-assets/plus.png'
-import plus from './yourCard-assets/minus.png'
+import minus from './yourCard-assets/minus.png'
+import plus from './yourCard-assets/plus.png'
 import close from './yourCard-assets/close.png'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
+import { removingProduct,incrementQuantity,
+  decrementQuantity,upadateTotalBill, incrementProductNumber } from '../../Slice'
+
+ 
+
 
 const YourCard = () => {
 
-
+  
   const pickedProducts = useSelector( state => state.yourCard.addedProducts)
-
-
-  function AddedProduct ({image,price,name}) {
-
-   const imageTest = furniture.specialPackageProducts[0].image
-   const priceTest = furniture.specialPackageProducts[0].price
+  const [TotalToPay,setTotalToPay]=useState(0)
+  const intialized = useRef(false)
+  const dispatch = useDispatch()
+  const thereIsNoProduct= pickedProducts.length===0
+ 
+  function AddedProduct ({image,price,name,quantity,id}) {
+   
     
+   const totalPrice = 
+   useSelector(state=>state.yourCard.addedProducts[id].total)
+     
+
+   function deleteProductFromCard (name){
+
+     dispatch(removingProduct(name))
+   }   
+   function increaseQuantity(){
+
+    dispatch(incrementQuantity(id))
+
+   }
+   function decreaseQuantity(){
+    dispatch(decrementQuantity(id))
+   }
+
+  
    return (
      
   <>
@@ -26,7 +50,8 @@ const YourCard = () => {
           <div className="product-container">
            <div className="image"><img src={image}/></div>
            <div className="name">{name}</div>
-           <div className="close"><img src={close} /></div>
+           <div className="close" onClick={()=>deleteProductFromCard(name)}>
+            <img src={close} /></div>
           </div>
         </td>
 
@@ -34,15 +59,17 @@ const YourCard = () => {
 
         <td>
           <div className="quantity">
-            <div className='increment'>
-              <img src={plus} /></div>
-            <div className='quantityValue'>0</div>
-            <div className='decrement'>
+          <div className='decrement'
+             onClick={decreaseQuantity}>
               <img src={minus} /></div>
+            <div className='quantityValue'>{quantity}</div>
+              <div className='increment' 
+              onClick={increaseQuantity}>
+              <img src={plus} /></div>
           </div>
           </td>
 
-        <td className='total'>{price}</td>
+        <td className='total'>{`$${totalPrice}`}</td>
 
       </tr>
       
@@ -52,36 +79,60 @@ const YourCard = () => {
        </td>
        </tr>
 
+
        </>
         
     )
 
  }
 
+
  // we're ging to filter repeated products if a user click on them more than once
 
+   const filtredPickedProducts = 
 
- function filterPickedProducts (){
+   pickedProducts.filter(
+    
+(product,index)=>pickedProducts.findIndex(object=>object.productName===product.productName)===index
 
-   
+   )
 
- }
 
  const productsLists =  
 
-   pickedProducts.map( product => 
+ filtredPickedProducts.map( (product,index) => 
    
    < AddedProduct 
      image={product.image}
      name={product.productName}
-     price={product.price}
+     price={product.priceAsNumber}
+     quantity={product.quantity}
      key={crypto.randomUUID()}
-
+     id={index}
    />) 
+   
+   useEffect(()=>{
       
- 
-  
-  
+    console.log('working')
+    // reset the state to zero
+    setTotalToPay(0)
+      
+    filtredPickedProducts.map( 
+      
+      product =>  setTotalToPay( prev =>
+       {
+       //console.log('prev',prev) 
+       //console.log('product.total',product.total) 
+       return   prev+product.total;
+
+      }
+        )
+      
+      )
+
+   },[pickedProducts])
+
+    
   return (
 
     <div className="YourCard">
@@ -103,9 +154,15 @@ const YourCard = () => {
 
       {productsLists}
       
+      { thereIsNoProduct ? <tr><td colSpan='3'>you have no product in your cart</td></tr> :
+      <tr>
+        <td colSpan='3'>
+          <button className='ProccedToCheckOut'>Procced To CheckOut</button>
+          </td>
+        <td className='totalBill'>{'$'+TotalToPay}</td>
+      </tr>
+      }
       
-  
-
       </tbody>
       
     
