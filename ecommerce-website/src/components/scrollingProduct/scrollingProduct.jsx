@@ -15,6 +15,8 @@ const ScrollingProduct = (
    productName,
    price,
    description,
+   sendProductId,
+   id
   
 }
 
@@ -44,8 +46,8 @@ const ScrollingProduct = (
           <div className='seeDetails'>
             <p onClick={()=>setseeDetailsIsClicked(!seeDetailsIsClicked)} style={{fontSize:seeDetailsFontSize}}>See Details</p>
             </div>
-          <button className='loopBtn'>
-            <img src={loop} alt="" />
+          <button className='loopBtn' onClick={()=>{sendProductId(id)}}>
+            <img src={loop}  />
           </button>
 
         </div>

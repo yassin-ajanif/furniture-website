@@ -55,7 +55,7 @@ const YourCard = () => {
           </div>
         </td>
 
-        <td className='price'>{price} </td>
+        <td className='price'>{'$'+price} </td>
 
         <td>
           <div className="quantity">
@@ -113,20 +113,13 @@ const YourCard = () => {
    
    useEffect(()=>{
       
-    console.log('working')
+   
     // reset the state to zero
     setTotalToPay(0)
       
     filtredPickedProducts.map( 
       
-      product =>  setTotalToPay( prev =>
-       {
-       //console.log('prev',prev) 
-       //console.log('product.total',product.total) 
-       return   prev+product.total;
-
-      }
-        )
+      product =>  setTotalToPay ( prev =>prev+product.total )
       
       )
 

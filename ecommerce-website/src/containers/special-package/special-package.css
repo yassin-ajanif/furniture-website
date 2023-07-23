@@ -23,6 +23,12 @@
 
 /* this part is dedicated for mobile version */
 
+.sepcialPackage-mobile-section .products-container{
+
+    display: inline-block;
+}
+
+
 .MobileProductContainer .images img{
 
     border-radius: 10px;
@@ -149,6 +155,12 @@ margin-bottom: 10px;
     .sepcialPackage-tablet-section{
 
         display: block;
+    }
+
+    .sepcialPackage-tablet-section .produtcts-container{
+
+        display: inline-block;
+       
     }
 
     .sepcialPackage-tablet-section .first-group{

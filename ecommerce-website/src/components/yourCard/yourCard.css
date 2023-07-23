@@ -8,6 +8,7 @@ table {
 
  width:100%;
  padding: 5vw 28px;
+ padding: 5vw 3vw;
     
 }
 
@@ -129,5 +130,29 @@ td .quantity .quantityValue{
     color:white;
     border-radius: 5px;
     border:none;
+
+}
+
+@media screen and (max-width:768px) {
+    
+
+    tr .image{
+
+        width:100px;
+        height: 100px;
+        overflow: hidden;
+        border-radius: 5px;
+        background:  #C4C4C4;
+        
+    }
+
+    tr .name{
+
+        max-width: 10ch;
+        text-align: center;
+
+        
+    }
+   
 
 }

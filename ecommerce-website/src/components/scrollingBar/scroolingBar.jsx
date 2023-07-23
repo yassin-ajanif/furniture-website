@@ -41,13 +41,14 @@ const ScrollingBar = (
   let scrollingPosition = cursor - scrollingElmnOffsetX - objectToDragPosition;
   const remainingPosition= maxDistanceToScroll-scrollPosition
   
-
+  
 
  useEffect(()=>{
 
  calibartionOfScrollBar()
 
  getScrollingPosition(scrollPosition)
+ 
 
  },[calibrateScrollBar,scrollPosition])
 
@@ -65,11 +66,17 @@ const ScrollingBar = (
     if(ScrollbarIsexisting){
 
     const lengthofobjectToDrag = objectToDragWidth
-    setmaxDistanceToScroll(lengthOfScrollBar-lengthofobjectToDrag)
+    const getMaxDistanceToScroll = lengthOfScrollBar-lengthofobjectToDrag
+    setmaxDistanceToScroll(getMaxDistanceToScroll)
 
-   setScrollPosition(Math.min(scrollPosition,maxDistanceToScroll))
-    
-   
+   setScrollPosition(Math.min(scrollPosition,getMaxDistanceToScroll))
+  
+  
+   console.log('lengthOfScrollBar',lengthOfScrollBar)
+   console.log('lengthofobjectToDrag',lengthofobjectToDrag)
+   console.log('maxDistanceToScroll',maxDistanceToScroll)
+   console.log('scrollPosition',scrollPosition)
+   console.log('-------------')
    
   }
 
@@ -77,6 +84,8 @@ const ScrollingBar = (
   
 
   function handleMouseclick(event) {
+
+    event.preventDefault();
     
     calibartionOfScrollBar()
 
@@ -91,17 +100,12 @@ const ScrollingBar = (
    setscrollBarPosition(scrollingPosition)
    setobjectToDragPosition(scrollBarPosition)
    
- 
-    
-
 
   }
 
 
-
   function handleDrag(event) {
 
-    event.preventDefault();
    
     if (ismousClicked) {
       
@@ -128,7 +132,7 @@ const ScrollingBar = (
   
 
   function handleClickLeftTop(){
-
+  
    calibartionOfScrollBar()
 
     if(scrollPosition<=objectToDragWidth){setScrollPosition(0)}
@@ -145,7 +149,8 @@ const ScrollingBar = (
   const scrollingBarStyle = {
 
     display: btnsPosition,
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingBlock:'50px'
 
   }
 
@@ -197,6 +202,7 @@ const ScrollingBar = (
     display: 'flex' ,
     width: 'max-content',
     height: 'max-content',
+   
   }
 
   const scrollingBtnDownStyle = {
@@ -232,7 +238,12 @@ const ScrollingBar = (
   return (
 
 
-    <div style={scrollingBarStyle}>
+    <div style={scrollingBarStyle} 
+       
+        onMouseUp={() => { setIsmousClicked(false);}}
+        onMouseMove={handleDrag}
+        onMouseLeave={() => setIsmousClicked(false)}
+    >
      
       <div style={scrollBarLineContainer} 
            ref={scrollbarContainer}
@@ -245,12 +256,6 @@ const ScrollingBar = (
           ref={scrollbarElement}
           style={objectToDragStyle}
           onMouseDown={handleMouseclick}
-         // onClick={test}
-          onMouseUp={() => {
-            setIsmousClicked(false);
-          }}
-          onMouseMove={handleDrag}
-          onMouseLeave={() => setIsmousClicked(false)}
         ></div>
       
 

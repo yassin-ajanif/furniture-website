@@ -35,8 +35,8 @@ const SpecialPackage = () => {
  const [GridProductsTabletOffsetX,setGridTabletProductsOffsetX]=useState(0)
  const [calibrate,setcalibrate]=useState(false)
  const dispatch = useDispatch()
+ const [idProduct,setIdProduct]=useState(0)
 
- 
  useEffect(()=>{
  
   // set the size of products container mobile version
@@ -54,7 +54,7 @@ const SpecialPackage = () => {
 
  return ()=>window.removeEventListener('resize',CalibrateScrolledProductHeight_CalibrateScrollBarHeight)
 
-},[])
+},[calibrate])
 
   useEffect(()=>{
 
@@ -125,7 +125,8 @@ function scrollProductImages(scrollingBarPosition){
    const gettranslateStepTablet = scrollingBarPosition*ratioTablet
    setTranslateTabletStep(gettranslateStepTablet)
  
-  
+   
+   
 
 }
 
@@ -161,8 +162,6 @@ function addToCart (image,price,productName) {
   // set the quantity and Total intial values to send them through dispatch with product data
  const quantity = 1
  
-  dispatch(incrementProductNumber());
-
 // we have price as  string we want to convert it to a number and remove $ sign before send it to reducer
   const sliceDollarSignFromPrice = price.slice(1)
   const priceAsNumber = Number(sliceDollarSignFromPrice)
@@ -201,6 +200,19 @@ function MobileProductComponent({image,productName,price,description}){
 
 }
 
+function loopProductTablet(productIdRecieved){
+
+  setIdProduct(productIdRecieved)
+  
+}
+
+function getRightDesktopSectionIdProduct(){
+  
+  const lengthOfProductsArray = furniture.specialPackageProducts.length-1
+  if(idProduct>=0 && idProduct<lengthOfProductsArray ) return idProduct+1 
+  else if(idProduct===lengthOfProductsArray) return idProduct-1
+}
+
 
 // this section for styling dynamic components elements
 
@@ -234,11 +246,14 @@ const descriptionTest = furniture.specialPackageProducts[0].description
 
       <h2 className="title">Special Package</h2>
 
-      <div className="sepcialPackage-mobile-section">
-       
+      <div className="sepcialPackage-mobile-section"
+           
+      >
+    <div className="products-container" ref={MobileProductsGrid}>
       <div className="products" 
            style={MobileProductsElmnts} 
-           ref={MobileProductsGrid}>
+           
+           >
         
         {furniture.specialPackageProducts.map( item =>
           
@@ -255,6 +270,7 @@ const descriptionTest = furniture.specialPackageProducts[0].description
           
           )}
         
+      </div>
       </div>
           
         <div className="scrolling-bar" ref={MobileScrollBarComp}>
@@ -284,45 +300,58 @@ const descriptionTest = furniture.specialPackageProducts[0].description
         
      <div className="first-group">
        <div className="productsImage">
-            <img className='principalImage' src={testImage} />
+            <img className='principalImage' src={furniture.specialPackageProducts[idProduct].image} />
             <button className="expandBtn">
               <img className='expandImage' src={expandImgTablet}  />
             </button>
       </div>
 
        <div className="product-infos">
-          <div className="productName">Larkin Wood Full Set</div>
-          <div className="stars"><img src={stars} alt="" /></div>
-          <p className="price">$729.99</p>
-          <button className="addToCart">
+          <div className="productName">{furniture.specialPackageProducts[idProduct].name}</div>
+          <div className="stars"><img src={stars}/></div>
+          <p className="price">{furniture.specialPackageProducts[idProduct].price}</p>
+          <button className="addToCart"
+          onClick={()=>addToCart(
+            furniture.specialPackageProducts[idProduct].image,
+            furniture.specialPackageProducts[idProduct].price,
+            furniture.specialPackageProducts[idProduct].name
+          )}>
             <span>Add to Cart</span>
             <img src={trolley} alt="" />
           </button>
           <div className="description-title">Descritption</div>
-          <p className="description-content">{descriptionTest}</p>
+          <p className="description-content">{furniture.specialPackageProducts[idProduct].description}</p>
       </div>
     </div>
 
 
      <div className="second-group">
-       <div style={TabletProductsElmnts} ref={TabletProductsGrid}>
-      
-       {furniture.specialPackageProducts.map( item =>
-          
 
+      <div className="produtcts-container"
+           ref={TabletProductsGrid}>
+       <div style={TabletProductsElmnts} >
+      
+       {furniture.specialPackageProducts.map( 
+        
+        (item,index) => index!==idProduct ?
+          
           <ScrollingProduct
           
           image={item.image}
           productName={item.name}
           price={item.price}
           key={item.name}
-         
-          
+          id={index}
+          sendProductId={loopProductTablet}
+        
           />
+
+          : ''
           
           )}
 
        </div>
+      </div>
 
        <div className="scrolling-bar" ref={TabletScrollBarComp}>
           <ScrollingBar
@@ -352,7 +381,8 @@ const descriptionTest = furniture.specialPackageProducts[0].description
         
       <div className="left-group">
        <div className="productsImage">
-            <img className='principalImage' src={testImage} />
+            <img className='principalImage' 
+            src={furniture.specialPackageProducts[idProduct].image} />
             <button className="expandBtn">
               <img className='expandImage' src={expandImgTablet}  />
             </button>
@@ -361,15 +391,21 @@ const descriptionTest = furniture.specialPackageProducts[0].description
        <div className="product-infos">
 
         <div className="productName-addTocard">
-          <div className="productName">Larkin Wood Full Set</div>
-          <button className="addToCart">
+          <div className="productName">
+            {furniture.specialPackageProducts[idProduct].name}</div>
+          <button className="addToCart"
+           onClick={()=>addToCart(
+            furniture.specialPackageProducts[idProduct].image,
+            furniture.specialPackageProducts[idProduct].price,
+            furniture.specialPackageProducts[idProduct].name
+          )}>
             <span>Add to Cart</span>
             <img src={trolley} alt="" />
           </button>
         </div>  
 
           <div className="stars"><img src={stars} alt="" /></div>
-          <p className="price">$729.99</p>
+          <p className="price">{furniture.specialPackageProducts[idProduct].price}</p>
           
           
       </div>
@@ -378,7 +414,7 @@ const descriptionTest = furniture.specialPackageProducts[0].description
        <div className="right-group">
 
        <div className="description-title">Descritption</div>
-       <p className="description-content">{descriptionTest}</p>
+       <p className="description-content">{furniture.specialPackageProducts[idProduct].description}</p>
        <div className="seeMore">
        <span>See More</span>
        <img src={SeeMoreArrowDown} />
@@ -387,12 +423,15 @@ const descriptionTest = furniture.specialPackageProducts[0].description
        <div className="scrolling-section">
 
             <div className="top">
+      
               <ScrollingProduct
-              productName={furniture.specialPackageProducts[1].name}
-              image={furniture.specialPackageProducts[1].image}
-              price={furniture.specialPackageProducts[1].price}
-              
-              />
+  productName={furniture.specialPackageProducts[getRightDesktopSectionIdProduct()].name}
+  image={furniture.specialPackageProducts[getRightDesktopSectionIdProduct()].image}
+  price={furniture.specialPackageProducts[getRightDesktopSectionIdProduct()].price}
+  id={getRightDesktopSectionIdProduct()}
+  sendProductId={loopProductTablet}
+             />
+
               </div>
 
             <div className="scrolling-products-container">
@@ -404,7 +443,8 @@ const descriptionTest = furniture.specialPackageProducts[0].description
 
              furniture.specialPackageProducts.map(
 
-             item => 
+(item,index) => index!==idProduct 
+&& index!==getRightDesktopSectionIdProduct() ?
 
              <div className="scrollingProduct-wrap" 
                  ref={scrolledProdcut}
@@ -419,8 +459,12 @@ const descriptionTest = furniture.specialPackageProducts[0].description
                productName={item.name}
                price={item.price}
                key={Math.random()}
+               id={index}
+               sendProductId={loopProductTablet}
              />
              </div>
+
+             : ''
                
              )
 
@@ -453,7 +497,8 @@ const descriptionTest = furniture.specialPackageProducts[0].description
             </div>
         
         </div>
-       </div>
+          </div>
+       
 
       </div>
 
