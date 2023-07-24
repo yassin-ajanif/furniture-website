@@ -28,6 +28,8 @@ const Navabar = () => {
       navigate('/shoppingCard')
     }
 
+  
+
   return (
 
     <nav className="navbar">
@@ -39,8 +41,8 @@ const Navabar = () => {
       <NavLink to='/' className={({ isActive}) => isActive ? "style-link" : ""} >Home</NavLink>
       <NavLink to='/' >Products</NavLink>
       <NavLink to=''className="categories">Categories</NavLink>
-      <NavLink to=''className="about">About</NavLink>
-<NavLink to=''className="contact-us">Contact us</NavLink>
+      <NavLink to='/aboutPage' className={({ isActive}) => isActive ? "style-link" : ""}>About</NavLink>
+      <NavLink to='/contactUs'className={({ isActive}) => isActive ? "style-link" : ""}>Contact us</NavLink>
     </div>
    <div className="right-icons">
     <div className="search"><img src={search} alt="" /></div>

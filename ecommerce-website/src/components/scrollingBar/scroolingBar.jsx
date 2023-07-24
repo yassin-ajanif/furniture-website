@@ -72,11 +72,7 @@ const ScrollingBar = (
    setScrollPosition(Math.min(scrollPosition,getMaxDistanceToScroll))
   
   
-   console.log('lengthOfScrollBar',lengthOfScrollBar)
-   console.log('lengthofobjectToDrag',lengthofobjectToDrag)
-   console.log('maxDistanceToScroll',maxDistanceToScroll)
-   console.log('scrollPosition',scrollPosition)
-   console.log('-------------')
+   
    
   }
 

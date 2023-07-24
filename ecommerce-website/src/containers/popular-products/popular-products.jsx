@@ -76,13 +76,6 @@ let scrollingDistance = 0
   const getRatioStep = distanceImgsWillTranslate/distanceCursorWillMove
   setRatioImgGridStep(getRatioStep)
 
-  /*console.log(scrollingGridImgOffset)*/
-  /*console.log('getPopularImageGridWidth',getPopularImageGridWidth)
-  console.log('pageViewPort',pageViewPort)
-  console.log('scrollingGridImgOffset',scrollingGridImgOffset)
-  console.log('scrollingDistance',scrollingDistance)
-  console.log('ScrollingElmnSize',getScrollingElmnSize)
-  console.log('scrollingGridImgOffset',scrollingGridImgOffset)*/
 
   window.addEventListener('resize', resizeScrollBar);
 
@@ -95,13 +88,6 @@ let scrollingDistance = 0
 }
   ,[calibrate,scrollingGridImgOffset])
 
-/*
-console.log('popularGridImgWidth',popularGridImgWidth)
-console.log('cursor',cursorPosition)
-console.log('translateImgSteps',translateImgSteps)
-console.log('distanceToscroll',scrollBarMobileTabletWidth)*/
-
-//console.log(scrollingGridImgOffset)
 
  function resizeScrollBar (){
   

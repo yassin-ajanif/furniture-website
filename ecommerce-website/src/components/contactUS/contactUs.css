@@ -1,0 +1,43 @@
+.contactUs {
+
+    font-family: var(--font-family-title);
+    padding: 5vw 5vw;
+    
+    
+}
+
+.contactUs form > *{
+
+    margin-bottom:50px
+}
+
+.contactUs label{
+    display: block;
+    margin-bottom:5px;
+    
+}
+.contactUs input{
+
+    display: block;
+    width:80%;
+    height:30px;
+    max-width: 500px;
+}
+
+.contactUs .YourMessage input{
+
+    height:100px;
+
+}
+
+.contactUs button{
+
+   padding: 7px 15px;
+   font-family: var(--font-family-title);
+   font-size: 16px;
+   border:none;
+   background-color: var(--btn-color);
+   border-radius: 5px;
+   color:#fff;
+
+}   

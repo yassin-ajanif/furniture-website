@@ -5,6 +5,9 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import OwnCreation from './containers/Own Creation/Own-Creation'
 import YourCard from './components/yourCard/YourCard'
 import Navabar from './containers/navbar/Navabar'
+import AboutPage from './components/AboutPage/AboutPage'
+import TermsAndConditionsPage from './components/TermsConditions/Terms&Conditions'
+import ContactUs from './components/contactUS/contactUs'
 
 function App() {
 
@@ -42,8 +45,15 @@ function App() {
   <Routes>
 
    < Route index element = { <Main/> } />
-
    < Route path='/shoppingCard' element= { <YourCard/> } />
+   < Route path='/aboutPage'    element= { <AboutPage/> } />
+   < Route path='/termsAndConditions'  element= { <TermsAndConditionsPage/> } />
+   < Route path='/contactUs'  element= { <ContactUs/> } />
+
+   
+
+   
+   
 
   </Routes>
 

@@ -37,6 +37,7 @@ const SpecialPackage = () => {
  const dispatch = useDispatch()
  const [idProduct,setIdProduct]=useState(0)
 
+
  useEffect(()=>{
  
   // set the size of products container mobile version
@@ -106,17 +107,34 @@ function CalibrateScrolledProductHeight_CalibrateScrollBarHeight(){
   
 // this is only fo tablet and mobile version
 function scrollProductImages(scrollingBarPosition){
+   
   
+  // getting the value of viewprot without a scrollbar
   const pageViewPort=document.documentElement.clientWidth
+  // gettting the value of viewport including scrollbar
+  const fullViewPort = window.innerWidth
+  const isMobileMode = fullViewPort<768
+  const isTabletMode = fullViewPort>=768
 
+  if(isMobileMode){
   //set houw much the products images will move when you scroll mobile version
   const gridMobileProductsWidth=MobileProductsGrid.current.getBoundingClientRect().width
   const maxDistanceToScorllProductsMobile = gridMobileProductsWidth+GridProductsMobileOffsetX-pageViewPort
   const MaxdistanceToscrollMouseMobile = scrollingMobileBarWidth-scrollingMobileElmntSize
   const ratioMobile = maxDistanceToScorllProductsMobile/MaxdistanceToscrollMouseMobile
   const gettranslateStepMobile = scrollingBarPosition*ratioMobile
-  setTranslateMobileStep(gettranslateStepMobile)
+  // I set maxDistancetoscrollproducts mobile with gettranslatestepmobile because when i resize
+  // from the tablet version with a scrollbar postion right to the top in the mobile the prodcuts go right
+  // this is related to the proble that when i resize a page the scrollbar component dsoent send a scrollpositon
+  // untill i click to the scrollbar
+  setTranslateMobileStep( Math.min(gettranslateStepMobile,maxDistanceToScorllProductsMobile) )
 
+
+  
+  
+}
+
+ if(isTabletMode){
    //set houw much the products images will move when you scroll tablet version
    const gridTabletProductsWidth=TabletProductsGrid.current.getBoundingClientRect().width
    const maxDistanceToScorllProductsTablet = gridTabletProductsWidth+GridProductsTabletOffsetX-pageViewPort
@@ -124,6 +142,8 @@ function scrollProductImages(scrollingBarPosition){
    const ratioTablet = maxDistanceToScorllProductsTablet/MaxdistanceToscrollMouseTablet
    const gettranslateStepTablet = scrollingBarPosition*ratioTablet
    setTranslateTabletStep(gettranslateStepTablet)
+  
+  }
  
    
    

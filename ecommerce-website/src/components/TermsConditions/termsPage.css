@@ -1,0 +1,21 @@
+/* termsPage.css */
+.terms-container {
+    font-family: 'Arial', sans-serif; /* Replace 'Arial' with your preferred font family */
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .terms-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-block: 30px;
+  }
+  
+  .terms-text {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 20px; /* Add margin at the bottom of each paragraph */
+  }
+  
