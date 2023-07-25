@@ -25,6 +25,36 @@ background: #C4C4C4;
 
 }
 
+.navbar .Mobile-menu{
+
+    
+    position: absolute;
+    inset:0;
+    display: grid;
+    background-color: #FDFBF8;
+    opacity: .9;
+    font-family: var(--font-family-title);
+    text-align: center;
+    padding: 5vw;
+    width:100%
+    
+}
+
+.navbar .Mobile-menu .close{
+
+    position: absolute;
+    inset:0;
+    left:80%;
+    margin-top: 10px;
+}
+
+.navbar .Mobile-menu > *{
+
+    color:#07484A
+}
+
+
+
 .header .YourCard{
 
     width:50vw;
@@ -114,6 +144,14 @@ color: #FDFBF8;
 
       
  }
+
+ .style-link-mobile{
+
+    color:#07484A;
+    font-weight:900 ;
+ }
+
+
 
  .style-link::before{
     content: "";

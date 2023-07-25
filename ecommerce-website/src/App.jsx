@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import { Header,Category,PopularProducts,SpecialPackage,Benefits,Testimonials,Newsletter,Footer } from './index'
+import { Header,Category,PopularProducts,SpecialPackage,Benefits,Testimonials,Newsletter,Footer,
+  Bedrooms, DinningRooms,LivingRooms,MeetingRooms,RoomKitchens,Workspaces,AllProducts } from './index'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import OwnCreation from './containers/Own Creation/Own-Creation'
 import YourCard from './components/yourCard/YourCard'
@@ -11,7 +12,6 @@ import ContactUs from './components/contactUS/contactUs'
 
 function App() {
 
-  const [count, setCount] = useState(0)
 
   const Main = () => {
 
@@ -50,10 +50,18 @@ function App() {
    < Route path='/termsAndConditions'  element= { <TermsAndConditionsPage/> } />
    < Route path='/contactUs'  element= { <ContactUs/> } />
 
-   
+   < Route path='/Bedrooms'  element= { <Bedrooms/> } />
+   < Route path='/DinningRooms'  element= { <DinningRooms/> } />
+   < Route path='/LivingRooms'  element= { <LivingRooms/> } />
+   < Route path='/MeetingRooms'  element= { <MeetingRooms/> } />
+   < Route path='/RoomKitchens'  element= { <RoomKitchens/> } />
+   < Route path='/Workspaces'  element= { <Workspaces/> } />
 
-   
-   
+   < Route path='/allProducts'  element= {<AllProducts/> } />
+
+   < Route path='*'  element= {<div>Page not found</div>} />
+
+
 
   </Routes>
 

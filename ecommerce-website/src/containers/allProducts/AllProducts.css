@@ -1,0 +1,24 @@
+
+.allProducts h2{
+
+   font-family: var(--font-family-title);
+   text-align: center;
+   font-size: 30px;
+   margin-block:20px;
+   text-decoration: underline;
+   color: #07484A;
+
+}
+
+.allProducts .allproductsBtn{
+
+    text-align: center;
+    background-color: var(--btn-color);
+    border:none;
+    padding:10px;
+    color:white;
+    display: block;
+    margin-inline:auto 10px;
+    border-radius: 0 8px 8px 0px;
+
+}
