@@ -3,7 +3,7 @@ import mobileIcon from "../header/header-assets/mobileMenu.png";
 import searchIcon from "../category/category-assets/search.png";
 import "./category.css";
 import arrow from "../category/category-assets/arrow-right.png";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import CategoryImg from "../../components/CategoryImg";
 import upCircle from "../category/category-assets/upCircle.png";
 import donwCirle from "../category/category-assets/downCircle.png";
@@ -23,7 +23,7 @@ const Category = () => {
   const [scrollPosition, setscrollPosition] = useState(0);
   const [headlinesPosition,setheadlinesPosition]=useState(0);
   const [imgPosition,setimgPosition]=useState(0)
-
+  const navigate = useNavigate() 
   
 
   function down() {
@@ -50,13 +50,20 @@ const Category = () => {
       }
       
     }
+  function displayAllCategories(){
+
+    
+    navigate('/allProducts')
+  }
 
   return (
     <div className="category">
       <h2 className="category-title">Explore by Category</h2>
       <div className="category-context">
         <div className="category-sidebar">
-          <div className="category-searchBar-mobileIcon">
+         
+         { /* this is a serchbar i will be working on later
+         <div className="category-searchBar-mobileIcon">
             <div className="serach-category">
               <input type="text" placeholder="Search" />
               <i>
@@ -67,7 +74,8 @@ const Category = () => {
             <div className="category-mobile-icon">
               <img src={mobileIcon} alt="" />
             </div>
-          </div>
+          </div>*/
+          }
 
           <div className="category-links">
             <div className="category-links-top-bottom">
@@ -133,7 +141,7 @@ const Category = () => {
           </div>
 
           <button className="allCategory-btn tableDesktop-display">
-            <div>All Categories</div>
+            <div onClick={displayAllCategories}>All Categories</div>
             <img src={arrow} alt="" />
           </button>
         </div>
@@ -168,7 +176,7 @@ const Category = () => {
       </div>
 
       <button className="allCategory-btn mobile-display">
-        <div>All Categories</div>
+        <div onClick={displayAllCategories}>All Categories</div>
         <img src={arrow} alt="" />
       </button>
     </div>

@@ -6,6 +6,13 @@
     box-sizing: border-box;
 }
 
+button:hover{
+
+    scale:1.02;
+    opacity: .9;
+    cursor: pointer;
+}
+
 :root{
 
     --font-family-title: 'Roboto Condensed';

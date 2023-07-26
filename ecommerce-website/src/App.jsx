@@ -40,26 +40,25 @@ function App() {
  
   <BrowserRouter>
    
-  <Navabar/>
    
   <Routes>
 
    < Route index element = { <Main/> } />
-   < Route path='/shoppingCard' element= { <YourCard/> } />
-   < Route path='/aboutPage'    element= { <AboutPage/> } />
-   < Route path='/termsAndConditions'  element= { <TermsAndConditionsPage/> } />
-   < Route path='/contactUs'  element= { <ContactUs/> } />
+   < Route path='/shoppingCard' element= { <div><Navabar/><YourCard/></div> } />
+   < Route path='/aboutPage'    element= { <div><Navabar/><AboutPage/></div> } />
+   < Route path='/termsAndConditions'  element= { <div><Navabar/><TermsAndConditionsPage/></div> } />
+   < Route path='/contactUs'  element= { <div><Navabar/><ContactUs/></div> } />
 
-   < Route path='/Bedrooms'  element= { <Bedrooms/> } />
-   < Route path='/DinningRooms'  element= { <DinningRooms/> } />
-   < Route path='/LivingRooms'  element= { <LivingRooms/> } />
-   < Route path='/MeetingRooms'  element= { <MeetingRooms/> } />
-   < Route path='/RoomKitchens'  element= { <RoomKitchens/> } />
-   < Route path='/Workspaces'  element= { <Workspaces/> } />
+   < Route path='/Bedrooms'  element= { <div><Navabar/><Bedrooms/></div> } />
+   < Route path='/DinningRooms'  element= { <div><Navabar/><DinningRooms/></div> } />
+   < Route path='/LivingRooms'  element= { <div><Navabar/><LivingRooms/></div> } />
+   < Route path='/MeetingRooms'  element= { <div><Navabar/><MeetingRooms/></div> } />
+   < Route path='/RoomKitchens'  element= { <div><Navabar/><RoomKitchens/></div> } />
+   < Route path='/Workspaces'  element= { <div><Navabar/><Workspaces/></div> } />
 
-   < Route path='/allProducts'  element= {<AllProducts/> } />
+   < Route path='/allProducts'  element= {<div><Navabar/><AllProducts/></div> } />
 
-   < Route path='*'  element= {<div>Page not found</div>} />
+   < Route path='*'  element= {<div><Navabar/>Page not found</div>} />
 
 
 

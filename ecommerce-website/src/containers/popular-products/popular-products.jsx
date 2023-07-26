@@ -3,6 +3,7 @@ import './popular-products.css'
 import furniture from '../../furniture.json'
 import PopularProduct from '../../components/PopularProduct'
 import ScrollingBar from '../../components/scrollingBar/scroolingBar'
+import { useNavigate } from "react-router-dom"
 
 
 const PopularProducts = () => {
@@ -22,6 +23,7 @@ const PopularProducts = () => {
  const [ScrollingElmnSize,setScrollingElmnSize]=useState(null)
  const [ratioImgGridStep,setRatioImgGridStep]=useState(0)
  const [scrollingGridImgOffset,setScrollingGridImgOffset]=useState(0)
+ const navigate = useNavigate()
 
 useEffect(()=>{
 
@@ -112,6 +114,11 @@ function extractScrollingPos(PositionOfCursor){
   //console.log(PositionOfCursor,ratioImgGridStep)
 }
 
+function displayAllItems(){
+
+  navigate('/allProducts')
+}
+
     return (
 
     <div className="popularProducts" >
@@ -161,8 +168,7 @@ function extractScrollingPos(PositionOfCursor){
         </div>  
         
 
-      <button 
-       >Explore all items</button>
+      <button onClick={displayAllItems} >Explore all items</button>
 
     </div>
 

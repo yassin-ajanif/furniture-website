@@ -11,6 +11,8 @@ import { useSelector } from 'react-redux/es/hooks/useSelector'
 const Navabar = () => {
     
     const [showMobileLinks,setShowMobileLinks]=useState(false)
+    const [showCategoryLinks,setshowCategoryLinks]=useState(false)
+
     const navigate = useNavigate()
     const pickedProducts = useSelector(state=>state.yourCard.addedProducts)
     const youPickedProducts = pickedProducts.length>0
@@ -41,6 +43,19 @@ const Navabar = () => {
 
       setShowMobileLinks(false);
      document.body.style.overflow = 'auto';
+ 
+    }
+
+    function displayCategoryLinks (){
+
+      setshowCategoryLinks(true)
+      console.log('hover')
+    }
+
+    function hideCategoryLinks(){
+
+      setshowCategoryLinks(false)
+      console.log('leaved hover')
 
     }
   
@@ -53,27 +68,43 @@ const Navabar = () => {
     <div className="logo"><img src={logo} alt="" /></div>
 
     {showMobileLinks && <div className="Mobile-menu">
-    <NavLink to='/' className={({ isActive}) => isActive ? "style-link-mobile" : ""} >Home</NavLink>
-      <NavLink to='/allProducts' className={({ isActive}) => isActive ? "style-link-mobile" : ""}>Products</NavLink>
-      <NavLink to=''className={({ isActive}) => isActive ? "style-link-mobile" : ""}>Categories</NavLink>
-      <NavLink to='/aboutPage' className={({ isActive}) => isActive ? "style-link-mobile" : ""}>About</NavLink>
-      <NavLink to='/contactUs'className={({ isActive}) => isActive ? "style-link-mobile" : ""}>Contact us</NavLink>
+    <NavLink to='/' className={({ isActive}) => isActive ? "style-link-mobile" : ""}  onClick={closeMobileLinks} >Home</NavLink>
+      <NavLink to='/allProducts' className={({ isActive}) => isActive ? "style-link-mobile" : ""} onClick={closeMobileLinks}>Products</NavLink>
+      <NavLink to=''className={({ isActive}) => isActive ? "style-link-mobile" : ""}onClick={closeMobileLinks}>Categories</NavLink>
+      <NavLink to='/aboutPage' className={({ isActive}) => isActive ? "style-link-mobile" : ""}onClick={closeMobileLinks}>About</NavLink>
+      <NavLink to='/contactUs'className={({ isActive}) => isActive ? "style-link-mobile" : ""}onClick={closeMobileLinks}>Contact us</NavLink>
       <div className='close' onClick={closeMobileLinks}>X</div>
     </div>}
 
     <div className="desktop-menu">
       <NavLink to='/' className={({ isActive}) => isActive ? "style-link" : ""} >Home</NavLink>
       <NavLink to='/allProducts' className={({ isActive}) => isActive ? "style-link" : ""}>Products</NavLink>
-      <NavLink to=''className={({ isActive}) => isActive ? "style-link" : ""}>Categories</NavLink>
+ <div className="category-container" onMouseLeave={hideCategoryLinks} onMouseOver={displayCategoryLinks}>
+      <div >Categories</div>
+     { showCategoryLinks && <div className="categories">
+        <NavLink to='/Bedrooms' className={({ isActive}) => isActive ? "style-link" : "style-link-disable"} >Bedrooms</NavLink>
+        <NavLink to='/DinningRooms' className={({ isActive}) => isActive ? "style-link" : "style-link-disable"} >Dinning Room</NavLink>
+        <NavLink to='/LivingRooms' className={({ isActive}) => isActive ? "style-link" : "style-link-disable"} >Meeting Room</NavLink>
+        <NavLink to='/MeetingRooms' className={({ isActive}) => isActive ? "style-link" : "style-link-disable"} >Workspace</NavLink>
+        <NavLink to='/RoomKitchens' className={({ isActive}) => isActive ? "style-link" : "style-link-disable"} >Living Room</NavLink>
+        <NavLink to='/Workspaces' className={({ isActive}) => isActive ? "style-link" : "style-link-disable"} >Kitchen Room</NavLink>
+      </div> }
+</div>
+
       <NavLink to='/aboutPage' className={({ isActive}) => isActive ? "style-link" : ""}>About</NavLink>
       <NavLink to='/contactUs'className={({ isActive}) => isActive ? "style-link" : ""}>Contact us</NavLink>
     </div>
 
    <div className="right-icons">
-    <div className="search"><img src={search} alt="" /></div>
-    <div className="card" onClick={openYourCart}><img src={card}/></div>
-    {youPickedProducts ? <div>{numberOfFiltredProducts}</div> : ''}
-    <div className="member"><img src={member} alt="" /></div>
+   
+    <div className="card" onClick={openYourCart}>
+      <img src={card}/>
+    {youPickedProducts && 
+  <div className='numberOfPickedProducts'>{numberOfFiltredProducts}</div>
+     }
+    </div>
+    
+    <div className="member"><img src={member} /></div>
     </div>
 
 </nav>
