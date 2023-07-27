@@ -55,8 +55,13 @@ const Navabar = () => {
     function hideCategoryLinks(){
 
       setshowCategoryLinks(false)
-      console.log('leaved hover')
+      
 
+    }
+
+    function closeMobileLinksANDhideCategoryLinks(){
+
+      hideCategoryLinks(); closeMobileLinks()
     }
   
 
@@ -70,7 +75,22 @@ const Navabar = () => {
     {showMobileLinks && <div className="Mobile-menu">
     <NavLink to='/' className={({ isActive}) => isActive ? "style-link-mobile" : ""}  onClick={closeMobileLinks} >Home</NavLink>
       <NavLink to='/allProducts' className={({ isActive}) => isActive ? "style-link-mobile" : ""} onClick={closeMobileLinks}>Products</NavLink>
-      <NavLink to=''className={({ isActive}) => isActive ? "style-link-mobile" : ""}onClick={closeMobileLinks}>Categories</NavLink>
+      
+     
+
+      <div className="category-container" onMouseLeave={hideCategoryLinks} onMouseOver={displayCategoryLinks}>
+      <div style={{textDecoration: 'underline'}}>Categories</div>
+     { showCategoryLinks && <div className="categories">
+        <NavLink to='/Bedrooms' className={({ isActive}) => isActive ? "style-link-mobile" : "style-link-disable"}onClick={closeMobileLinksANDhideCategoryLinks} >Bedrooms</NavLink>
+        <NavLink to='/DinningRooms' className={({ isActive}) => isActive ? "style-link-mobile" : "style-link-disable"}onClick={closeMobileLinksANDhideCategoryLinks} >Dinning Room</NavLink>
+        <NavLink to='/LivingRooms' className={({ isActive}) => isActive ? "style-link-mobile" : "style-link-disable"} onClick={closeMobileLinksANDhideCategoryLinks}>Meeting Room</NavLink>
+        <NavLink to='/MeetingRooms' className={({ isActive}) => isActive ? "style-link-mobile" : "style-link-disable"}onClick={closeMobileLinksANDhideCategoryLinks} >Workspace</NavLink>
+        <NavLink to='/RoomKitchens' className={({ isActive}) => isActive ? "style-link-mobile" : "style-link-disable"}onClick={closeMobileLinksANDhideCategoryLinks} >Living Room</NavLink>
+        <NavLink to='/Workspaces' className={({ isActive}) => isActive ? "style-link-mobile" : "style-link-disable"}onClick={closeMobileLinksANDhideCategoryLinks} >Kitchen Room</NavLink>
+      </div> }
+      </div>
+
+
       <NavLink to='/aboutPage' className={({ isActive}) => isActive ? "style-link-mobile" : ""}onClick={closeMobileLinks}>About</NavLink>
       <NavLink to='/contactUs'className={({ isActive}) => isActive ? "style-link-mobile" : ""}onClick={closeMobileLinks}>Contact us</NavLink>
       <div className='close' onClick={closeMobileLinks}>X</div>

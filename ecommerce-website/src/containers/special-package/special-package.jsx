@@ -36,6 +36,7 @@ const SpecialPackage = () => {
  const [calibrate,setcalibrate]=useState(false)
  const dispatch = useDispatch()
  const [idProduct,setIdProduct]=useState(0)
+ const [imageClicked,setImageClicked]=useState(false)
 
 
  useEffect(()=>{
@@ -233,6 +234,19 @@ function getRightDesktopSectionIdProduct(){
   else if(idProduct===lengthOfProductsArray) return idProduct-1
 }
 
+function expandClickedImage(){
+
+  setImageClicked(true)
+  document.body.style.overflow='hidden'
+}
+
+function closeExpandedImage(){
+
+  setImageClicked(false)
+  document.body.style.overflow='visible'
+
+}
+
 
 // this section for styling dynamic components elements
 
@@ -258,8 +272,6 @@ transform: `translateY(${-translateDesktopStep}px)`
 
 }
 
-const testImage = furniture.specialPackageProducts[5].image
-const descriptionTest = furniture.specialPackageProducts[0].description
 
   return (
     <div className="specialPackage">
@@ -319,12 +331,22 @@ const descriptionTest = furniture.specialPackageProducts[0].description
       <div className="sepcialPackage-tablet-section">
         
      <div className="first-group">
-       <div className="productsImage">
-            <img className='principalImage' src={furniture.specialPackageProducts[idProduct].image} />
-            <button className="expandBtn">
+       <div className="productsImage" >
+
+          <img className='principalImage'
+            src={furniture.specialPackageProducts[idProduct].image}
+            />
+            <button className="expandBtn" onClick={expandClickedImage}>
               <img className='expandImage' src={expandImgTablet}  />
             </button>
       </div>
+      {imageClicked&&<div className="principalImageExpanded">
+        <img 
+            src={furniture.specialPackageProducts[idProduct].image}
+            />
+            <div className="close" onClick={closeExpandedImage}>X</div>
+        </div>}
+    
 
        <div className="product-infos">
           <div className="productName">{furniture.specialPackageProducts[idProduct].name}</div>

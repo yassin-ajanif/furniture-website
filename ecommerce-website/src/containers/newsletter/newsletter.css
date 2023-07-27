@@ -85,6 +85,11 @@ margin-top:25px;
     
 }
 
+.newsletter input:focus{
+
+    outline: none;
+}
+
 .newsletter button{
 
     width: 184px;

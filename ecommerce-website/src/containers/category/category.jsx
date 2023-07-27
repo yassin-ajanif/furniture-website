@@ -57,6 +57,7 @@ const Category = () => {
   }
 
   return (
+
     <div className="category">
       <h2 className="category-title">Explore by Category</h2>
       <div className="category-context">
@@ -77,19 +78,26 @@ const Category = () => {
           </div>*/
           }
 
+
+
+
+
+
+
+
           <div className="category-links">
             <div className="category-links-top-bottom">
               <div className="category-links-top">
-                <NavLink to="/az">Bedroom</NavLink>
-                <NavLink to="/">Dinning Room</NavLink>
-                <NavLink to="/">Meeting Room</NavLink>
-                <NavLink to="/">Workspace</NavLink>
+                <NavLink to="/Bedrooms">Bedroom</NavLink>
+                <NavLink to="/DinningRooms">Dinning Room</NavLink>
+                <NavLink to="/MeetingRooms">Meeting Room</NavLink>
+                <NavLink to="/Workspaces">Workspace</NavLink>
               </div>
 
               <div className="category-links-bottom">
-                <NavLink to="/">LivingRoom</NavLink>
-                <NavLink to="/">Room Kitchen</NavLink>
-                <NavLink to="/">Living Space</NavLink>
+                <NavLink to="/LivingRooms">LivingRoom</NavLink>
+                <NavLink to="/RoomKitchens">Room Kitchen</NavLink>
+                <NavLink to="/LivingRooms">Living Space</NavLink>
               </div>
             </div>
 

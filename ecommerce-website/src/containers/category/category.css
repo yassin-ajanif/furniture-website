@@ -70,6 +70,7 @@ padding-left: 23%;
 
 
 
+
 .category-searchBar-mobileIcon i{
     
     position:absolute;
@@ -424,6 +425,7 @@ text-decoration: none;
     height: 9vh;
     font-size: 12px;
     margin-bottom: 1vw;
+    margin-top:50px
 }
 
 .tableDesktop-display{  

@@ -2,8 +2,11 @@ import React from 'react'
 import logo from './footer-assets/logo.png'
 import socialMedia from './footer-assets/social.png'
 import './footer.css'
+import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
+
+  const navigate = useNavigate()
   
   return (
 
@@ -30,17 +33,25 @@ const Footer = () => {
         <div className="shop">
         <div className="shop-title">Shop</div>
         <div className="shop-group">
-         <p>All Products</p>
-         <p>Bedroom</p>
-         <p>Dinning Room</p>
+         <p onClick={()=>navigate('/allProducts')} >All Products</p>
+         <p onClick={()=>navigate('/Bedrooms')} >Bedroom</p>
+         <p onClick={()=>navigate('/DinningRooms')} >Dinning Room</p>
         </div></div>
         
+
+
+
+
+
+
+
+
         <div className="MyAccount">
         <div className="MyAccount-title">My Account</div>
         <div className="MyAccount-group">
-         <p>Sign in</p>
+         <p >Sign in</p>
          <p>Register</p>
-         <p>Order status</p>
+         <p onClick={()=>navigate('/orderStatus')}>Order status</p>
         </div>
         </div>
 
@@ -50,18 +61,18 @@ const Footer = () => {
       <div className="help">
       <div className="help-title">Help</div>
         <div className="help-group">
-         <p>Shipping</p>
-         <p>Return</p>
-         <p>Sizing</p>
+         <p onClick={()=>navigate('/shippingDelivery')}>Shipping</p>
+         <p onClick={()=>navigate('/return')}>Return</p>
+         <p onClick={()=>navigate('/sizing')}>Sizing</p>
         </div>
         </div>
         
         <div className="legalStuff">
         <div className="legalStuff-title">Legal stuff</div>
         <div className="legalStuff-group">
-         <p>Shipping & Delivery</p>
-         <p>Terms  & Conditions</p>
-         <p>Privacy & Policy</p>
+         <p onClick={()=>navigate('/shippingDelivery')}>Shipping & Delivery</p>
+         <p onClick={()=>navigate('/termsAndConditions')}>Terms  & Conditions</p>
+         <p onClick={()=>navigate('/privacyPolicy')}>Privacy & Policy</p>
          </div>
 </div>
       </div>

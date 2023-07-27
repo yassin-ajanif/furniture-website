@@ -1,0 +1,15 @@
+
+.orderStatus h4{
+
+font-family: var(--font-family-text);
+font-size: 18px;
+font-weight: 500;
+max-width: 800px;
+line-height: 180%;
+margin-top: 50px;
+padding:2vw;
+margin-inline: auto;
+opacity: .8;
+
+
+}
