@@ -27,6 +27,8 @@ const navigate = useNavigate()
 
 }
 
+// 
+
 function addToCart (image,price,productName) {
   
     console.log('romania')
