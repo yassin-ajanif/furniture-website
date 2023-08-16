@@ -1,5 +1,5 @@
 import React from 'react'
-import './Testimonial.css'
+import './testimonial.css'
 import colons from '../../containers/testimonials/testimonials-assets/colons.png'
 
 const Testimonial = ({image,text,name,profession}) => {
