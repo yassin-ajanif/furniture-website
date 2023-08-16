@@ -84,47 +84,47 @@
 
 "Bedrooms": [
 
-  {"image":"src/containers/products/Bedrooms/bedrooms-assets/bedroom1.jpg",
+  {"image":"products/Bedrooms/bedrooms-assets/bedroom1.jpg",
    "text":"Bedroom1",
   "description":"",
   "price":"$2000"},
 
-  {"image":"src/containers/products/Bedrooms/bedrooms-assets/bedroom2.jpg",
+  {"image":"products/Bedrooms/bedrooms-assets/bedroom2.jpg",
   "text":"Bedroom2",
  "description":"",
  "price":"$2100"},
 
- {"image":"src/containers/products/Bedrooms/bedrooms-assets/bedroom3.jpg",
+ {"image":"products/Bedrooms/bedrooms-assets/bedroom3.jpg",
  "text":"Bedroom3",
 "description":"",
 "price":"$2200"},
 
-{"image":"src/containers/products/Bedrooms/bedrooms-assets/bedroom4.jpg",
+{"image":"products/Bedrooms/bedrooms-assets/bedroom4.jpg",
 "text":"Bedroom4",
 "description":"",
 "price":"$2300"},
 
-{"image":"src/containers/products/Bedrooms/bedrooms-assets/bedroom5.jpg",
+{"image":"products/Bedrooms/bedrooms-assets/bedroom5.jpg",
 "text":"Bedroom5",
 "description":"",
 "price":"$2400"},
 
-{"image":"src/containers/products/Bedrooms/bedrooms-assets/bedroom6.jpg",
+{"image":"products/Bedrooms/bedrooms-assets/bedroom6.jpg",
 "text":"Bedroom6",
 "description":"",
 "price":"$2800"},
 
-{"image":"src/containers/products/Bedrooms/bedrooms-assets/bedroom7.jpg",
+{"image":"products/Bedrooms/bedrooms-assets/bedroom7.jpg",
 "text":"Bedroom7",
 "description":"",
 "price":"$2900"},
 
-{"image":"src/containers/products/Bedrooms/bedrooms-assets/bedroom8.jpg",
+{"image":"products/Bedrooms/bedrooms-assets/bedroom8.jpg",
 "text":"Bedroom8",
 "description":"",
 "price":"$2500"},
 
-{"image":"src/containers/products/Bedrooms/bedrooms-assets/bedroom9.jpg",
+{"image":"products/Bedrooms/bedrooms-assets/bedroom9.jpg",
 "text":"Bedroom9",
 "description":"",
 "price":"$2600"}
