@@ -4,28 +4,28 @@
 
  "categoryProducts" : [
 
-{"name":"Bedroom","image":"src/containers/category/category-assets/bedroom-resize.jpg"},
-{"name":"Dinning Room","image":"src/containers/category/category-assets/dinning room.jpg" },
-{"name":"Meeting Room","image":"src/containers/category/category-assets/meeting room.jpg"},
-{"name":"Workspace","image":"src/containers/category/category-assets/workspace.jpg" },
-{"name":"LivingRoom","image":"src/containers/category/category-assets/living room.jpg" },
-{"name":"Room Kitchen","image":"src/containers/category/category-assets/kitechen room.jpg" },
-{"name":"Living Space","image":"src/containers/category/category-assets/living room.jpg" },
-{"name":"Bathroom","image":"src/containers/category/category-assets/bathroom.jpg" },
-{"name":"Exercise Room","image":"src/containers/category/category-assets/trainning.jpg" },
-{"name":"Entertainment Room","image":"src/containers/category/category-assets/playing.jpg" }
+{"name":"Bedroom","image":"category/category-assets/bedroom-resize.jpg"},
+{"name":"Dinning Room","image":"category/category-assets/dinning room.jpg" },
+{"name":"Meeting Room","image":"category/category-assets/meeting room.jpg"},
+{"name":"Workspace","image":"category/category-assets/workspace.jpg" },
+{"name":"LivingRoom","image":"category/category-assets/living room.jpg" },
+{"name":"Room Kitchen","image":"category/category-assets/kitechen room.jpg" },
+{"name":"Living Space","image":"category/category-assets/living room.jpg" },
+{"name":"Bathroom","image":"category/category-assets/bathroom.jpg" },
+{"name":"Exercise Room","image":"category/category-assets/trainning.jpg" },
+{"name":"Entertainment Room","image":"category/category-assets/playing.jpg" }
 
 ]
 ,  
 
 "popularProducts" : [
 
-{"image":"src/containers/popular-products/popular-products-assets/chair1.jpg", "name":"Armchair" , "description":"Light single chair" , "price":"$145"},
-{"image":"src/containers/popular-products/popular-products-assets/chair2.jpg", "name":"Premium Sofa" , "description":"Light single chair" , "price":"$180"},
-{"image":"src/containers/popular-products/popular-products-assets/chair3.jpg", "name":"Minimal Sofa" , "description":"Light single chair" , "price":"$150"},
-{"image":"src/containers/popular-products/popular-products-assets/chair4.jpg", "name":"Dinning chair" , "description":"Light single chair" , "price":"$120"},
-{"image":"src/containers/popular-products/popular-products-assets/chair5.jpg", "name":"Lounge chair" , "description":"Light single chair" , "price":"$150"},
-{"image":"src/containers/popular-products/popular-products-assets/chair6.jpg", "name":"Wingback chair" , "description":"Light single chair" , "price":"$105"}
+{"image":"popular-products/popular-products-assets/chair1.jpg", "name":"Armchair" , "description":"Light single chair" , "price":"$145"},
+{"image":"popular-products/popular-products-assets/chair2.jpg", "name":"Premium Sofa" , "description":"Light single chair" , "price":"$180"},
+{"image":"popular-products/popular-products-assets/chair3.jpg", "name":"Minimal Sofa" , "description":"Light single chair" , "price":"$150"},
+{"image":"popular-products/popular-products-assets/chair4.jpg", "name":"Dinning chair" , "description":"Light single chair" , "price":"$120"},
+{"image":"popular-products/popular-products-assets/chair5.jpg", "name":"Lounge chair" , "description":"Light single chair" , "price":"$150"},
+{"image":"popular-products/popular-products-assets/chair6.jpg", "name":"Wingback chair" , "description":"Light single chair" , "price":"$105"}
 
 
 ]
@@ -34,22 +34,22 @@
 "specialPackageProducts":[
 
 
-    {"image":"src/containers/special-package/special-package-assets/bedroom.jpg", "name":"Bedroom Special set" ,
+    {"image":"special-package/special-package-assets/bedroom.jpg", "name":"Bedroom Special set" ,
      "description":"Introducing our exquisite and luxurious bedroom set, designed to transform your sleep space into a haven of comfort and style. " 
      , "price":"$1450"},
-    {"image":"src/containers/special-package/special-package-assets/kitechen.jpg", "name":"kitchen Special set" ,
+    {"image":"special-package/special-package-assets/kitechen.jpg", "name":"kitchen Special set" ,
      "description":"Elevate your cooking experience with this exquisite ensemble, making every meal a delightful journey of taste and aesthetics." ,
       "price":"$1800"},
-    {"image":"src/containers/special-package/special-package-assets/living room.jpg", "name":"Living Room Special set" ,
+    {"image":"special-package/special-package-assets/living room.jpg", "name":"Living Room Special set" ,
      "description":"Experience the perfect balance of comfort and sophistication, making your living space the heart of cherished memories and endless conversations." ,
       "price":"$1500"},
-    {"image":"src/containers/special-package/special-package-assets/workspace.jpg", "name":"Workspace Special set" ,
+    {"image":"special-package/special-package-assets/workspace.jpg", "name":"Workspace Special set" ,
      "description":"Whether you're working from home or in a professional office setting, this workspace set provides the perfect environment for you to accomplish your goals and unleash your full potential. " ,
       "price":"$1200"},
-    {"image":"src/containers/special-package/special-package-assets/dinning room.jpg", "name":"Dinning Room Special set" , 
+    {"image":"special-package/special-package-assets/dinning room.jpg", "name":"Dinning Room Special set" , 
     "description":"Create an inviting atmosphere that celebrates togetherness and culinary delights, making every dining occasion a true feast for the senses." ,
      "price":"$1500"},
-    {"image":"src/containers/special-package/special-package-assets/meeting room.jpg", "name":"Meeting Room Special set" ,
+    {"image":"special-package/special-package-assets/meeting room.jpg", "name":"Meeting Room Special set" ,
      "description":" With its sleek lines, comfortable seating, and smart storage solutions, this meeting room set effortlessly combines comfort and practicality." ,
       "price":"$1050"}
 
@@ -58,22 +58,22 @@
 ,
 
 "ownCreationGallery" :
-[{"image":"src/containers/special-package/special-package-assets/living room.jpg"},
-{"image":"src/containers/special-package/special-package-assets/workspace.jpg"},
-{"image":"src/containers/special-package/special-package-assets/dinning room.jpg"},
-{"image":"src/containers/special-package/special-package-assets/meeting room.jpg"}],
+[{"image":"special-package/special-package-assets/living room.jpg"},
+{"image":"special-package/special-package-assets/workspace.jpg"},
+{"image":"special-package/special-package-assets/dinning room.jpg"},
+{"image":"special-package/special-package-assets/meeting room.jpg"}],
 
 "Testimonials" : 
 [ 
-  {"image":"src/containers/testimonials/testimonials-assets/ceo1p.jpg",
+  {"image":"testimonials/testimonials-assets/ceo1p.jpg",
    "text":"“My experience with Mark is a complete sucess, from customer service, wide range of products, clean store, purchasing experience, the newsletter. Literally is great. Thank you.”",
    "name":"Leona Paul","profession":"CEO of Floatcom"},
   
-{"image":"src/containers/testimonials/testimonials-assets/ceo2p.jpg",
+{"image":"testimonials/testimonials-assets/ceo2p.jpg",
   "text":"“My experience with Mark is a complete sucess, from customer service, wide range of products, clean store, purchasing experience, the newsletter. Literally is great. Thank you.”",
   "name":"Adam Yates","profession":"CEO of Sg Tech"},
  
-{"image":"src/containers/testimonials/testimonials-assets/ceo3p.jpg",
+{"image":"testimonials/testimonials-assets/ceo3p.jpg",
  "text":"“My experience with Mark is a complete sucess, from customer service, wide range of products, clean store, purchasing experience, the newsletter. Literally is great. Thank you.”",
 "name":"Tomas Geraint","profession":"CEO of VirginCom"}
 
@@ -134,47 +134,47 @@
 
 "DinningRooms": [
 
-  {"image":"src/containers/products/dinningRooms/dinningRooms-assets/dinningRoom1.jpg",
+  {"image":"products/dinningRooms/dinningRooms-assets/dinningRoom1.jpg",
    "text":"DiningRoom1",
   "description":"",
   "price":"$2900"},
 
-  {"image":"src/containers/products/dinningRooms/dinningRooms-assets/dinningRoom2.jpg",
+  {"image":"products/dinningRooms/dinningRooms-assets/dinningRoom2.jpg",
   "text":"DiningRoom2",
  "description":"",
  "price":"$2300"},
 
- {"image":"src/containers/products/dinningRooms/dinningRooms-assets/dinningRoom3.jpg",
+ {"image":"products/dinningRooms/dinningRooms-assets/dinningRoom3.jpg",
  "text":"DiningRoom3",
 "description":"",
 "price":"$2600"},
 
-{"image":"src/containers/products/dinningRooms/dinningRooms-assets/dinningRoom4.jpg",
+{"image":"products/dinningRooms/dinningRooms-assets/dinningRoom4.jpg",
 "text":"DiningRoom4",
 "description":"",
 "price":"$2800"},
 
-{"image":"src/containers/products/dinningRooms/dinningRooms-assets/dinningRoom5.jpg",
+{"image":"products/dinningRooms/dinningRooms-assets/dinningRoom5.jpg",
 "text":"DiningRoom5",
 "description":"",
 "price":"$2000"},
 
-{"image":"src/containers/products/dinningRooms/dinningRooms-assets/dinningRoom6.jpg",
+{"image":"products/dinningRooms/dinningRooms-assets/dinningRoom6.jpg",
 "text":"DiningRoom6",
 "description":"",
 "price":"$2100"},
 
-{"image":"src/containers/products/dinningRooms/dinningRooms-assets/dinningRoom7.jpg",
+{"image":"products/dinningRooms/dinningRooms-assets/dinningRoom7.jpg",
 "text":"DiningRoom7",
 "description":"",
 "price":"$2300"},
 
-{"image":"src/containers/products/dinningRooms/dinningRooms-assets/dinningRoom8.jpg",
+{"image":"products/dinningRooms/dinningRooms-assets/dinningRoom8.jpg",
 "text":"DiningRoom8",
 "description":"",
 "price":"$2400"},
 
-{"image":"src/containers/products/dinningRooms/dinningRooms-assets/dinningRoom9.jpg",
+{"image":"products/dinningRooms/dinningRooms-assets/dinningRoom9.jpg",
 "text":"DiningRoom9",
 "description":"",
 "price":"$2900"}
@@ -185,47 +185,47 @@
 
 "MeetingRooms": [
 
-  {"image":"src/containers/products/meetingRooms/meetingRooms-assets/meetingRoom1.jpg",
+  {"image":"products/meetingRooms/meetingRooms-assets/meetingRoom1.jpg",
    "text":"meetingRoom1meetingRoom1",
   "description":"",
   "price":"$3000"},
 
- {"image":"src/containers/products/meetingRooms/meetingRooms-assets/meetingRoom2.jpg",
+ {"image":"products/meetingRooms/meetingRooms-assets/meetingRoom2.jpg",
  "text":"meetingRoom2",
 "description":"",
 "price":"$3000"},
 
-{"image":"src/containers/products/meetingRooms/meetingRooms-assets/meetingRoom3.jpg",
+{"image":"products/meetingRooms/meetingRooms-assets/meetingRoom3.jpg",
 "text":"meetingRoom3",
 "description":"",
 "price":"$3000"},
 
-{"image":"src/containers/products/meetingRooms/meetingRooms-assets/meetingRoom4.jpg",
+{"image":"products/meetingRooms/meetingRooms-assets/meetingRoom4.jpg",
 "text":"meetingRoom4",
 "description":"",
 "price":"$3000"},
 
-{"image":"src/containers/products/meetingRooms/meetingRooms-assets/meetingRoom5.jpg",
+{"image":"products/meetingRooms/meetingRooms-assets/meetingRoom5.jpg",
 "text":"meetingRoom5",
 "description":"",
 "price":"$3000"},
 
-{"image":"src/containers/products/meetingRooms/meetingRooms-assets/meetingRoom6.jpg",
+{"image":"products/meetingRooms/meetingRooms-assets/meetingRoom6.jpg",
 "text":"meetingRoom6",
 "description":"",
 "price":"$3000"},
 
-{"image":"src/containers/products/meetingRooms/meetingRooms-assets/meetingRoom7.jpg",
+{"image":"products/meetingRooms/meetingRooms-assets/meetingRoom7.jpg",
 "text":"meetingRoom7",
 "description":"",
 "price":"$3000"},
 
-{"image":"src/containers/products/meetingRooms/meetingRooms-assets/meetingRoom8.jpg",
+{"image":"products/meetingRooms/meetingRooms-assets/meetingRoom8.jpg",
 "text":"meetingRoom8",
 "description":"",
 "price":"$3000"},
 
-{"image":"src/containers/products/meetingRooms/meetingRooms-assets/meetingRoom9.jpg",
+{"image":"products/meetingRooms/meetingRooms-assets/meetingRoom9.jpg",
 "text":"meetingRoom9",
 "description":"",
 "price":"$3000"}
@@ -236,47 +236,47 @@
 
 "WorkSpaces": [
 
-  {"image":"/src/containers/products/workspaces/workspaces-assets/workspace1.jpg",
+  {"image":"/products/workspaces/workspaces-assets/workspace1.jpg",
    "text":"workspace1",
   "description":"",
   "price":"$1500"},
 
-  {"image":"/src/containers/products/workspaces/workspaces-assets/workspace2.jpg",
+  {"image":"/products/workspaces/workspaces-assets/workspace2.jpg",
   "text":"workspace2",
  "description":"",
  "price":"$1500"},
 
- {"image":"/src/containers/products/workspaces/workspaces-assets/workspace3.jpg",
+ {"image":"/products/workspaces/workspaces-assets/workspace3.jpg",
  "text":"workspace3",
 "description":"",
 "price":"$1500"},
 
-{"image":"/src/containers/products/workspaces/workspaces-assets/workspace4.jpg",
+{"image":"/products/workspaces/workspaces-assets/workspace4.jpg",
 "text":"workspace4",
 "description":"",
 "price":"$1500"},
 
-{"image":"/src/containers/products/workspaces/workspaces-assets/workspace5.jpg",
+{"image":"/products/workspaces/workspaces-assets/workspace5.jpg",
 "text":"workspace5",
 "description":"",
 "price":"$1500"},
 
-{"image":"/src/containers/products/workspaces/workspaces-assets/workspace6.jpg",
+{"image":"/products/workspaces/workspaces-assets/workspace6.jpg",
 "text":"workspace6",
 "description":"",
 "price":"$1500"},
 
-{"image":"/src/containers/products/workspaces/workspaces-assets/workspace7.jpg",
+{"image":"/products/workspaces/workspaces-assets/workspace7.jpg",
 "text":"workspace7",
 "description":"",
 "price":"$1500"},
 
-{"image":"/src/containers/products/workspaces/workspaces-assets/workspace8.jpg",
+{"image":"/products/workspaces/workspaces-assets/workspace8.jpg",
 "text":"workspace8",
 "description":"",
 "price":"$1500"},
 
-{"image":"/src/containers/products/workspaces/workspaces-assets/workspace9.jpg",
+{"image":"/products/workspaces/workspaces-assets/workspace9.jpg",
 "text":"workspace9",
 "description":"",
 "price":"$1500"}
@@ -285,47 +285,47 @@
 
 "LivingRooms": [
 
-  {"image":"src/containers/products/livingRomms/livingRooms-assets/livingRoom1.jpg",
+  {"image":"products/livingRomms/livingRooms-assets/livingRoom1.jpg",
    "text":"livingRoom1livingRoom1",
   "description":"",
   "price":"$1500"},
 
-  {"image":"src/containers/products/livingRomms/livingRooms-assets/livingRoom2.jpg",
+  {"image":"products/livingRomms/livingRooms-assets/livingRoom2.jpg",
   "text":"livingRoom2",
  "description":"",
  "price":"$1500"},
 
- {"image":"src/containers/products/livingRomms/livingRooms-assets/livingRoom3.jpg",
+ {"image":"products/livingRomms/livingRooms-assets/livingRoom3.jpg",
  "text":"livingRoom3",
 "description":"",
 "price":"$1500"},
 
-{"image":"src/containers/products/livingRomms/livingRooms-assets/livingRoom4.jpg",
+{"image":"products/livingRomms/livingRooms-assets/livingRoom4.jpg",
 "text":"livingRoom4",
 "description":"",
 "price":"$1500"},
 
-{"image":"src/containers/products/livingRomms/livingRooms-assets/livingRoom5.jpg",
+{"image":"products/livingRomms/livingRooms-assets/livingRoom5.jpg",
 "text":"livingRoom5",
 "description":"",
 "price":"$1500"},
 
-{"image":"src/containers/products/livingRomms/livingRooms-assets/livingRoom6.jpg",
+{"image":"products/livingRomms/livingRooms-assets/livingRoom6.jpg",
 "text":"livingRoom6",
 "description":"",
 "price":"$1500"},
 
-{"image":"src/containers/products/livingRomms/livingRooms-assets/livingRoom7.jpg",
+{"image":"products/livingRomms/livingRooms-assets/livingRoom7.jpg",
 "text":"livingRoom7",
 "description":"",
 "price":"$1500"},
 
-{"image":"src/containers/products/livingRomms/livingRooms-assets/livingRoom8.jpg",
+{"image":"products/livingRomms/livingRooms-assets/livingRoom8.jpg",
 "text":"livingRoom8",
 "description":"",
 "price":"$1500"},
 
-{"image":"src/containers/products/livingRomms/livingRooms-assets/livingRoom9.jpg",
+{"image":"products/livingRomms/livingRooms-assets/livingRoom9.jpg",
 "text":"livingRoom9",
 "description":"",
 "price":"$1500"}
@@ -335,47 +335,47 @@
 
 "RoomKitchens": [
 
-  {"image":"src/containers/products/rommKitchens/roomKitchens-assets/kitchen1.jpg",
+  {"image":"products/rommKitchens/roomKitchens-assets/kitchen1.jpg",
    "text":"kitchen1",
   "description":"",
   "price":"$4000"},
 
-  {"image":"src/containers/products/rommKitchens/roomKitchens-assets/kitchen2.jpg",
+  {"image":"products/rommKitchens/roomKitchens-assets/kitchen2.jpg",
   "text":"kitchen2",
  "description":"",
  "price":"$4000"},
 
- {"image":"src/containers/products/rommKitchens/roomKitchens-assets/kitchen3.jpg",
+ {"image":"products/rommKitchens/roomKitchens-assets/kitchen3.jpg",
  "text":"kitchen3",
 "description":"",
 "price":"$4000"},
 
-{"image":"src/containers/products/rommKitchens/roomKitchens-assets/kitchen4.jpg",
+{"image":"products/rommKitchens/roomKitchens-assets/kitchen4.jpg",
 "text":"kitchen4",
 "description":"",
 "price":"$4000"},
 
-{"image":"src/containers/products/rommKitchens/roomKitchens-assets/kitchen5.jpg",
+{"image":"products/rommKitchens/roomKitchens-assets/kitchen5.jpg",
 "text":"kitchen5",
 "description":"",
 "price":"$4000"},
 
-{"image":"src/containers/products/rommKitchens/roomKitchens-assets/kitchen6.jpg",
+{"image":"products/rommKitchens/roomKitchens-assets/kitchen6.jpg",
 "text":"kitchen6",
 "description":"",
 "price":"$4000"},
 
-{"image":"src/containers/products/rommKitchens/roomKitchens-assets/kitchen7.jpg",
+{"image":"products/rommKitchens/roomKitchens-assets/kitchen7.jpg",
 "text":"kitchen7",
 "description":"",
 "price":"$4000"},
 
-{"image":"src/containers/products/rommKitchens/roomKitchens-assets/kitchen8.jpg",
+{"image":"products/rommKitchens/roomKitchens-assets/kitchen8.jpg",
 "text":"kitchen8",
 "description":"",
 "price":"$4000"},
 
-{"image":"src/containers/products/rommKitchens/roomKitchens-assets/kitchen9.jpg",
+{"image":"products/rommKitchens/roomKitchens-assets/kitchen9.jpg",
 "text":"kitchen9",
 "description":"",
 "price":"$4000"}
