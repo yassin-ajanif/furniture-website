@@ -13,7 +13,7 @@ export { default as DinningRooms } from '../src/containers/products/DinningRooms
 export { default as LivingRooms } from '../src/containers/products/LivingRomms/LivingRooms'
 export { default as MeetingRooms } from '../src/containers/products/MeetingRooms/MeetingRooms'
 export { default as RoomKitchens } from '../src/containers/products/RommKitchens/RoomKitchens'
-export { default as Workspaces } from '../src/containers/products/Workspaces/workspaces'
+export { default as Workspaces } from '../src/containers/products/Workspaces/Workspaces'
 
 export { default as AllProducts } from '../src/containers/allProducts/AllProducts'
 
