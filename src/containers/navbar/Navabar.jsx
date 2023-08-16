@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import MobileMenu from '../header/header-assets/mobileMenu.png'
-import logo from '../header/header-assets/logo.png'
+import logo from '../header/header-assets/Logo.png'
 import search from '../header/header-assets/search.png'
 import card from '../header/header-assets/card.png'
 import member from '../header/header-assets/member.png'
