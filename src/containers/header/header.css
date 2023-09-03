@@ -152,6 +152,14 @@ padding-top: 2rem;
 
 }
 
+.categories a:hover{
+    
+    display: inline-block;
+    scale: 1.05;
+    text-decoration: underline;
+  
+}
+
 
 .header .YourCard{
 
